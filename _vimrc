@@ -1,3 +1,4 @@
+set nocompatible
 "auto update vimrc every time you modify it
 augroup reload_vimrc " {
     autocmd!
