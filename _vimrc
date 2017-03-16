@@ -89,7 +89,4 @@ map <silent> <C-n> :NERDTreeToggle "C:\Users\Pratik\Documents\Programming-Projec
 
 "ctrlP support
 map <silent> <C-p> :CtrlP C:\Users\Pratik\Documents\Programming-Projects<CR>
-
-"remove press enter key to continue message at the beginning
-
-
+map <silent> <C-b> :CtrlPBuffer<CR>
