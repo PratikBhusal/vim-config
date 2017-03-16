@@ -20,8 +20,6 @@ Plug 'Yggdroot/indentLine'
 "Plug 'SirVer/ultisnips'
 "add the actual snippets
 "Plug 'honza/vim-snippets'
-"add BufExplorer
-"Plug 'jlanzarotta/bufexplorer'
 "add EasyMotion
 Plug 'easymotion/vim-easymotion' 
 "add Fugitive
@@ -48,7 +46,7 @@ autocmd BufEnter * silent! lcd %:p:h
 "autocmd VimEnter * silent!cd C:\Users\Pratik\Documents\Programming-Projects
 
 "make things look nice
-set shortmess=a
+set shortmess=at
 syntax on
 set hidden
 set number
@@ -74,15 +72,6 @@ map <C-S-Tab> gT
 "horizontal scrolling
 map <C-L> 20zl " Scroll 20 characters to the right
 map <C-H> 20zh " Scroll 20 characters to the left
-
-"compile the program for c++
-autocmd FileType cpp noremap <buffer> <silent> <F9> :w<cr>:!"C:\Binaries\compileRun\C++\compileRunC++.bat" "%:p:r"<cr><cr>
-autocmd FileType cpp noremap <buffer> <silent> <F10> :!%:p:r.exe<cr>
-"autocmd FileType cpp noremap <buffer> <silent> <F9> :w<cr>:!"C:\Binaries\compileRun\C++\compileRunC++.bat" %:p:r<cr><cr>
-
-"compile the program for java
-autocmd FileType java noremap <buffer> <F9> :w<cr>:exec '!javac' shellescape(expand('%'), 1) '&& java' shellescape(expand('%:r'), 1)<cr><cr>
-autocmd FileType java noremap <buffer> <F10> :exec '!java' shellescape(expand('%:r'), 1)<cr><cr>
 
 "Toggle NERD Tree
 map <silent> <C-n> :NERDTreeToggle "C:\Users\Pratik\Documents\Programming-Projects"<CR>
