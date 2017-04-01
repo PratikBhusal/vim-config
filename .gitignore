@@ -1,5 +1,12 @@
+# All the things that are being ignored:
 /*
 /*/
+/.vim/plugged
+
+# All the things that will be in the repository:
 !/_myvimrc
 !/.gitignore
 !/vimfiles
+!/.vim
+!/.vim/ftplugin
+
