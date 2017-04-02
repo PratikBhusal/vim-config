@@ -1,11 +1,15 @@
 set nocompatible
+
 "auto update vimrc every time you modify it
+""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Platform Identification
+"Platform Identification & Compatibility
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:OSX = has('macunix')
 let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
 let g:WINDOWS = has('win32') || has('win64')
@@ -14,13 +18,13 @@ let g:WINDOWS = has('win32') || has('win64')
 if g:WINDOWS
     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Vim Plugin Installation
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 "add molokai colorscheme
 Plug 'tomasr/molokai'
-"add colorscheme Solarized
-"Plug 'altercation/vim-colors-solarized'
 "add base16
 Plug 'chriskempson/base16-vim'
 "add vim sensible
@@ -53,12 +57,22 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "on demand loading of ctrlp
 Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
 call plug#end()
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-autocmd! FileType c,cpp,java,php call CSyntaxAfter() 
+"Platform Dependent Configs
+""""""""""""""""""""""""""""""""""""""""""
+if g:WINDOWS
+	source $home\.vim\configs\Windows.vim
+endif
+if g:LINUX
+	source $home\.vim\configs\OSX.vim
+endif
+if g:OSX
+	source $home\.vim\configs\Linux.vim
+endif
+""""""""""""""""""""""""""""""""""""""""""
 
-autocmd BufEnter * silent!cd C:\Users\Pratik\Documents\Programming-Projects
-autocmd BufEnter * silent! lcd %:p:h
-"autocmd VimEnter * silent!cd C:\Users\Pratik\Documents\Programming-Projects
+autocmd! FileType c,cpp,java,php call CSyntaxAfter()
 
 "make things look nice
 set shortmess=at
@@ -78,7 +92,6 @@ if has("gui_running")
 else
   "set t_Co=256
   set background=dark
-  "let base16colorspace=256
   colorscheme base16-eighties
   
   "IDK what this does yet :/
@@ -98,19 +111,4 @@ map <C-S-Tab> gT
 
 "horizontal scrolling
 "map <C-L> 20zl " Scroll 20 characters to the right
-"map <C-H> 20zh " Scroll 20 characters to the left
-
-"Toggle NERD Tree
-map <silent> <C-n> :NERDTreeToggle "C:\Users\Pratik\Documents\Programming-Projects"<CR>
-
-"ctrlP
-let g:ctrlp_root_markers = ['2016']
-map <silent> <Leader>p :CtrlP C:\Users\Pratik\Documents\Programming-Projects<CR>
-map <silent> <Leader>b :CtrlPBuffer<CR>
-
-"UltiSnips
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<Leader>b"
-"let g:UltiSnipsJumpBackwardTrigger="<Leader>z"
-
+"map <C-H> 20zh " Scroll 20 characters to the lefts
