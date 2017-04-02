@@ -15,3 +15,8 @@ let g:ctrlp_root_markers = ['2016']
 map <silent> <Leader>p :CtrlP C:\Users\Pratik\Documents\Programming-Projects<CR>
 map <silent> <Leader>b :CtrlPBuffer<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Mis Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+au GUIEnter * simalt ~x "Maximize Vim on Windows
+"""""""""""""""""""""""""""""""""""""""""""""""""

@@ -9,4 +9,5 @@
 !/vimfiles
 !/.vim
 !/.vim/ftplugin
+*.swp
 
