@@ -7,8 +7,14 @@ autocmd BufEnter * silent! lcd %:p:h
 
 "Plugin Configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Toggle NERD Tree
-map <silent> <C-n> :NERDTreeToggle "C:\Users\Pratik\Documents\Programming-Projects"<CR>
+"Nerd Tree
+    "Toggle NERD Tree
+    map <silent> <C-n> :NERDTreeToggle "C:\Users\Pratik\Documents\Programming-Projects"<CR>
+    "Arrow Indicators
+    let g:NERDTreeDirArrowExpandable="+"
+    let g:NERDTreeDirArrowCollapsible="~"
+    "Show hidden files/folders by default
+    let NERDTreeShowHidden=1
 
 "ctrlP
 let g:ctrlp_root_markers = ['2016']
