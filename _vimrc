@@ -1,4 +1,3 @@
-"Make settings only work for vim and not vi
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -47,10 +46,14 @@ Plug 'tpope/vim-fugitive' | Plug 'airblade/vim-gitgutter'
 Plug 'PratikBhusal/cSyntaxAfter'
 "add vim-numbers
 Plug 'myusuf3/numbers.vim'
+"add better c++ syntax highlighting
+Plug 'octol/vim-cpp-enhanced-highlight'
 "add YouCompleteMe
 "Plug 'Valloric/YouCompleteMe'
 "add vim-taglist
 "Plug 'emnh/taglist.vim'
+"add vim-starify
+Plug 'mhinz/vim-startify'
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -62,8 +65,12 @@ call plug#end()
 
 "Lazy Kebindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = ','
+let mapleader = ' '
 nnoremap ; :
+command WQ wq
+command Wq wq
+command W w
+command Q q
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Platform Dependent Configs
@@ -79,7 +86,9 @@ if g:OSX
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-autocmd! FileType c,cpp,java,php call CSyntaxAfter()
+"autocmd! FileType c,cpp,java,php call CSyntaxAfter()
+autocmd! FileType c,java,php call CSyntaxAfter()
+
 
 "make things look nice
 set shortmess=at
@@ -96,7 +105,7 @@ execute "set colorcolumn=" . join(range(80,166), ',')
 "set colorscheme, font, have no toolbar, etc
 set guioptions-=T  " no toolbar
 set guifont=Consolas:h12
-let g:indent_guides_guide_size= 1
+let g:indent_guides_guide_size= 2
 "let g:molokai_original = 1
 "Colorscheme Choice
 if has("gui_running")
@@ -115,13 +124,19 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 "map <C-L> 20zl " Scroll 20 characters to the right
 "map <C-H> 20zh " Scroll 20 characters to the lefts
 
+"Folding Practice
+set foldmethod=indent
+set foldlevelstart=1
+
 "Ultisnips Configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"set runtimepath+=~/.vim/UltiSnips
+set runtimepath+=~\plugged\vim-snippets\UltiSnips
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "plugged/vim-snippets/UltiSnips"]
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<Leader>z"
 let g:UltiSnipsEditSplit="vertical"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
