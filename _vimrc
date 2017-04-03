@@ -19,7 +19,8 @@ let g:WINDOWS = has('win32') || has('win64')
 
 "Windows and heterogeneous OS compatibilty
 if g:WINDOWS
-    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
+    set runtimepath+=$Home/.vim/after
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -33,32 +34,29 @@ Plug 'chriskempson/base16-vim'
 "add vim sensible
 Plug 'tpope/vim-sensible'
 "add vim-airline & themes
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "add indent lines
 Plug 'Yggdroot/indentLine'
 "add utilisnips and snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 "add EasyMotion
 Plug 'easymotion/vim-easymotion' 
-"add Fugitive
-Plug 'tpope/vim-fugitive'
+"add Git Support
+Plug 'tpope/vim-fugitive' | Plug 'airblade/vim-gitgutter'
 "add cSyntaxAfter
 Plug 'PratikBhusal/cSyntaxAfter'
-"add vim-taglist
-"Plug 'emnh/taglist.vim'
-"add vim-gitgutter
-Plug 'airblade/vim-gitgutter'
 "add vim-numbers
 Plug 'myusuf3/numbers.vim'
 "add YouCompleteMe
 "Plug 'Valloric/YouCompleteMe'
+"add vim-taglist
+"Plug 'emnh/taglist.vim'
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "on demand loading of ctrlp
-Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
+Plug 'ctrlpvim/ctrlp.vim', { 'on': ['CtrlP', 'CtrlPBuffer'] }
+
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -112,11 +110,18 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"move between tabs
-map <C-Tab> gt
-map <C-S-Tab> gT
-
+ 
 "horizontal scrolling
 "map <C-L> 20zl " Scroll 20 characters to the right
 "map <C-H> 20zh " Scroll 20 characters to the lefts
+
+"Ultisnips Configuration
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+"set runtimepath+=~/.vim/UltiSnips
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
