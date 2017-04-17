@@ -67,10 +67,10 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ' '
 nnoremap ; :
-command WQ wq
-command Wq wq
-command W w
-command Q q
+command! WQ wq
+command! Wq wq
+command! W w
+command! Q q
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Platform Dependent Configs
@@ -107,11 +107,11 @@ set guioptions-=T  " no toolbar
 set guifont=Consolas:h12
 let g:indent_guides_guide_size= 2
 "let g:molokai_original = 1
+set background=dark
 "Colorscheme Choice
 if has("gui_running")
   colorscheme molokai
 else
-  set background=dark
   colorscheme base16-eighties
 endif
 
