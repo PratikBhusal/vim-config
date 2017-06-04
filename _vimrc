@@ -1,3 +1,4 @@
+"Disable Vi compatibility
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -23,6 +24,8 @@ if g:WINDOWS
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
+
 "Vim Plugin Installation
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
@@ -45,7 +48,7 @@ Plug 'tpope/vim-fugitive' | Plug 'airblade/vim-gitgutter'
 "add cSyntaxAfter
 Plug 'PratikBhusal/cSyntaxAfter'
 "add vim-numbers
-Plug 'myusuf3/numbers.vim'
+"Plug 'myusuf3/numbers.vim'
 "add better c++ syntax highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
 "add YouCompleteMe
@@ -95,6 +98,7 @@ set shortmess=at
 syntax on
 set hidden
 set number
+set relativenumber
 
 "text Wrapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -103,6 +107,7 @@ execute "set colorcolumn=" . join(range(80,166), ',')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "set colorscheme, font, have no toolbar, etc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set guioptions-=T  " no toolbar
 set guifont=Consolas:h12
 let g:indent_guides_guide_size= 2
@@ -114,6 +119,19 @@ if has("gui_running")
 else
   colorscheme base16-eighties
 endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Change how the cursor looks
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set guicursor=c-i-ci:ver15-Cursor/lCursor
+set guicursor=v:hor15-Cursor/lCursor
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Make searching less tedious (if you want to do without, put \c at the end)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set ignorecase
+set smartcase
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "set tab indent to 4 spaces
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
