@@ -5,6 +5,17 @@ autocmd BufEnter * silent! lcd %:p:h
 "autocmd VimEnter * silent!cd C:\Users\Pratik\Documents\Programming-Projects
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"Visual Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set guifont=Consolas:h12:cANSI:qDRAFT,DejaVu_Sans_Mono:h12:cANSI:qDRAFT
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"User powershell instead of Windows CMD (work in progress)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set shell=powershell
+"set shellcmdflag=-command
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "Plugin Configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Nerd Tree
