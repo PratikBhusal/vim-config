@@ -3,14 +3,6 @@
 set nocompatible
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"auto update vimrc every time you modify it
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup reload_vimrc " {
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "Platform Identification & Compatibility
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:OSX = has('macunix')
@@ -22,6 +14,14 @@ if g:WINDOWS
     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
     set runtimepath+=$Home/.vim/after
 endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"auto update vimrc every time you modify it
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Vim Plugin Installation
@@ -75,10 +75,6 @@ command! Wq wq
 command! W w
 command! Q q
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"autocmd! FileType c,cpp,java,php call CSyntaxAfter()
-autocmd! FileType c,java,php call CSyntaxAfter()
-
 
 "make things look nice
 set shortmess=at
@@ -139,12 +135,19 @@ set foldlevelstart=1
 " Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 set runtimepath+=~\plugged\vim-snippets\UltiSnips
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "plugged/vim-snippets/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips","plugged/vim-snippets/UltiSnips"]
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<Leader>z"
 let g:UltiSnipsEditSplit="vertical"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Syntax Highligh Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let python_highlight_all = 1
+"autocmd! FileType c,cpp,java,php call CSyntaxAfter()
+autocmd! FileType c,java,php call CSyntaxAfter()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Platform Dependent Configs
@@ -158,9 +161,4 @@ endif
 if g:OSX
 	source $home\.vim\configs\OSX.vim
 endif
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"Plugin Configs
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let python_highlight_all = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
