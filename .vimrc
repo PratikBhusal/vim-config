@@ -116,7 +116,7 @@ set guicursor=v:hor15-Cursor/lCursor
 set ignorecase
 set smartcase
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""test
+
 "set tab indent to 4 spaces
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
