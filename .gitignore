@@ -2,6 +2,7 @@
 /*
 /*/
 /.vim/plugged
+*.swp
 
 # All the things that will be in the repository:
 !/.vimrc
@@ -9,5 +10,5 @@
 !/vimfiles
 !/.vim
 !/.vim/ftplugin
-*.swp
+
 

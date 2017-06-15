@@ -3,6 +3,14 @@
 set nocompatible
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"Vim. Live it
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "Platform Identification & Compatibility
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:OSX = has('macunix')
@@ -27,6 +35,7 @@ augroup END " }
 "Vim Plugin Installation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
+
 "add molokai colorscheme
 Plug 'tomasr/molokai'
 "add base16 colorscheme
@@ -45,8 +54,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive' | Plug 'airblade/vim-gitgutter'
 "add cSyntaxAfter
 Plug 'PratikBhusal/cSyntaxAfter'
-"add vim-numbers
-"Plug 'myusuf3/numbers.vim'
 "add better c++ syntax highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
 "add YouCompleteMe
@@ -77,16 +84,19 @@ command! Q q
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "make things look nice
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set shortmess=at
 syntax on
 set hidden
 set number
 set relativenumber
-
-"text Wrapping
+set mousehide
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:set tw=80
-execute "set colorcolumn=" .join(range(81,166), ',')
+
+"text Wrapping and border
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set tw=80
+execute "set colorcolumn=" .join(range(81,999), ',')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "set colorscheme, font, and have no toolbar
@@ -126,8 +136,10 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 "map <C-H> 20zh " Scroll 20 characters to the lefts
 
 "Folding Practice
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set foldmethod=indent
 set foldlevelstart=1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Ultisnips Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
