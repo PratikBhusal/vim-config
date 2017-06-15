@@ -102,7 +102,6 @@ execute "set colorcolumn=" .join(range(81,999), ',')
 "set colorscheme, font, and have no toolbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set guioptions-=T  " no toolbar
-set guifont=DejaVu\ Sans\ Mono\ 11
 let g:indent_guides_guide_size= 2
 "let g:molokai_original = 1
 set background=dark
