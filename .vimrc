@@ -92,7 +92,7 @@ execute "set colorcolumn=" .join(range(81,166), ',')
 "set colorscheme, font, and have no toolbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set guioptions-=T  " no toolbar
-set guifont=DejaVu_Sans_Mono:h11:cANSI:qDRAFT
+set guifont=DejaVu\ Sans\ Mono\ 11
 let g:indent_guides_guide_size= 2
 "let g:molokai_original = 1
 set background=dark
@@ -100,7 +100,8 @@ set background=dark
 if has("gui_running")
   colorscheme molokai
 else
-  colorscheme base16-eighties
+    set t_Co=256
+    colorscheme base16-eighties
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -153,12 +154,12 @@ autocmd! FileType c,java,php call CSyntaxAfter()
 "Platform Dependent Configs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if g:WINDOWS
-	source $home\.vim\configs\Windows.vim
+	source $HOME\.vim\configs\Windows.vim
 endif
 if g:LINUX
-	source $home\.vim\configs\Linux.vim
+	source $HOME/.vim/configs/Linux.vim
 endif
 if g:OSX
-	source $home\.vim\configs\OSX.vim
+	source $HOME\.vim\configs\OSX.vim
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
