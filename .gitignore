@@ -1,0 +1,14 @@
+# All the things that are being ignored:
+/*
+/*/
+/.vim/plugged
+*.swp
+
+# All the things that will be in the repository:
+!/.vimrc
+!/.gitignore
+!/vimfiles
+!/.vim
+!/.vim/ftplugin
+
+
