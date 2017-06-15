@@ -77,7 +77,7 @@ command! Q q
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "make things look nice
-set shortmess=at
+"set shortmess=at
 syntax on
 set hidden
 set number
