@@ -11,25 +11,25 @@ noremap <left> <nop>
 noremap <right> <nop>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Platform Identification & Compatibility
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:OSX = has('macunix')
-let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
-let g:WINDOWS = has('win32') || has('win64')
-
-"Windows and heterogeneous OS compatibilty
-if g:WINDOWS
-    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
-    set runtimepath+=$Home/.vim/after
-endif
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "auto update vimrc every time you modify it
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Platform Identification & Compatibility
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:OSX = has('macunix')
+let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
+let g:WINDOWS = has('win32') || has('win64')
+
+"Windows heterogeneous OS compatibilty
+if g:WINDOWS
+    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
+    set runtimepath+=$Home/.vim/after
+endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Vim Plugin Installation
@@ -103,7 +103,6 @@ execute "set colorcolumn=" .join(range(81,999), ',')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set guioptions-=T  " no toolbar
 let g:indent_guides_guide_size= 2
-"let g:molokai_original = 1
 set background=dark
 "Colorscheme Choice
 if has("gui_running")
@@ -165,12 +164,12 @@ autocmd! FileType c,java,php call CSyntaxAfter()
 "Platform Dependent Configs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if g:WINDOWS
-	source $HOME\.vim\configs\Windows.vim
+	source $HOME/.vim/configs/Windows.vim
 endif
 if g:LINUX
 	source $HOME/.vim/configs/Linux.vim
 endif
 if g:OSX
-	source $HOME\.vim\configs\OSX.vim
+	source $HOME/.vim/configs/OSX.vim
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
