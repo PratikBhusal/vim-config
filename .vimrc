@@ -112,7 +112,7 @@ else
     colorscheme base16-eighties
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+"Ubuntu Git Test
 "Change how the cursor looks
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set guicursor=c-i-ci:ver15-Cursor/lCursor
