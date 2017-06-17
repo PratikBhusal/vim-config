@@ -104,11 +104,11 @@ execute "set colorcolumn=" .join(range(81,999), ',')
 set guioptions-=T  " no toolbar
 let g:indent_guides_guide_size= 2
 set background=dark
-set t_Co=256
 "Colorscheme Choice
 if has("gui_running")
     colorscheme molokai 
 else 
+    set t_Co=256
     colorscheme base16-eighties
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
