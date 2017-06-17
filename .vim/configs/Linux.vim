@@ -5,7 +5,7 @@ set guifont=DejaVu\ Sans\ Mono\ 11
 
 "NerdTree Plugin Configs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <C-n> :NERDTreeToggle<CR>
+map <silent> <leader>n :NERDTreeToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Maximize Vim
