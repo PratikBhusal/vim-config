@@ -12,24 +12,26 @@ set directory=~/.vim/.swp//
 " }}} 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 
-"Vim. Live it
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Live the Vim life {{{
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
+ "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"auto update vimrc every time you modify it
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto Update at save {{{
 augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
+"}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Platform Identification & Compatibility
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Platform Identification & Compatibility {{{
 let g:OSX = has('macunix')
 let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
 let g:WINDOWS = has('win32') || has('win64')
@@ -39,6 +41,7 @@ if g:WINDOWS
     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
     set runtimepath+=$Home/.vim/after
 endif
+" }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -83,35 +86,32 @@ call plug#end()
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Lazy Kebindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Lazy Kebindings {{{
 let mapleader = ' '
 nnoremap ; :
 command! WQ wq
 command! Wq wq
 command! W w
 command! Q q
+" }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"make things look nice
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text Wrapping & Border Config {{{
+set tw=80
+execute "set colorcolumn=" .join(range(81,999), ',')
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Make things look nice{{{
 set shortmess=at
 syntax on
 set hidden
 set number
 set relativenumber
 set mousehide
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"text Wrapping and border
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tw=80
-execute "set colorcolumn=" .join(range(81,999), ',')
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"set colorscheme, font, and have no toolbar
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
@@ -123,38 +123,39 @@ if has("gui_running")
 else 
     set t_Co=256
     colorscheme base16-eighties
-endif
+endif 
+"}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Change how the cursor looks
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Change how the cursor looks {{{
 set guicursor=c-i-ci:ver15-Cursor/lCursor
 set guicursor=v:hor15-Cursor/lCursor
+"}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Make searching less tedious (Without it, put \c (insen) or \C (sen) at end)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Make searching less tedious (Without it put \c (insen) or \C (sen) at end) {{{
 set ignorecase
 set smartcase
+ "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"set tab indent to 4 spaces
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set tab intent to 4 spaces {{{
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+ "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- 
-"horizontal scrolling
-"map <C-L> 20zl " Scroll 20 characters to the right
-"map <C-H> 20zh " Scroll 20 characters to the lefts
 
-"Folding Practice
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Folding Practice {{{
 set foldmethod=marker
 set foldlevelstart=1
+ "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Ultisnips Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ultisnips Config {{{
 " Trigger configuration. 
 " Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 set runtimepath+=~\plugged\vim-snippets\UltiSnips
@@ -165,17 +166,19 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<Leader>z"
 let g:UltiSnipsEditSplit="vertical"
+ "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Syntax Highligh Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax Highlight Settings {{{
 let python_highlight_all = 1
 "autocmd! FileType c,cpp,java,php call CSyntaxAfter()
 autocmd! FileType c,java,php call CSyntaxAfter()
+ "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Platform Dependent Configs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Platform Dependent Configs {{{
 if g:WINDOWS
 	source $HOME/.vim/configs/Windows.vim
 endif
@@ -185,4 +188,5 @@ endif
 if g:OSX
 	source $HOME/.vim/configs/OSX.vim
 endif
+ "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
