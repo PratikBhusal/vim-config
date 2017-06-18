@@ -20,7 +20,7 @@ set guifont=Consolas:h12:cANSI:qDRAFT,DejaVu_Sans_Mono:h12:cANSI:qDRAFT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Nerd Tree
     "Toggle NERD Tree
-    map <silent> <C-n> :NERDTreeToggle "C:\Users\Pratik\Documents\Programming-Projects"<CR>
+    nmap <silent> <Leader>n :NERDTreeToggle "C:\Users\Pratik\Documents\Programming-Projects"<CR>
     "Arrow Indicators
     let g:NERDTreeDirArrowExpandable="+"
     let g:NERDTreeDirArrowCollapsible="~"
