@@ -167,21 +167,6 @@ set foldlevelstart=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ultisnips Config {{{
-" Trigger configuration. 
-" Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-set runtimepath+=~\plugged\vim-snippets\UltiSnips
-let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-let g:UltiSnipsSnippetDirectories=["UltiSnips","plugged/vim-snippets/UltiSnips"]
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<Leader>z"
-let g:UltiSnipsEditSplit="vertical"
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax Highlight Settings {{{
 let python_highlight_all = 1
 "autocmd! FileType c,cpp,java,php call CSyntaxAfter()
@@ -200,5 +185,11 @@ endif
 if g:OSX
 	source $HOME/.vim/configs/OSX.vim
 endif
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin Configs {{{
+source $HOME/.vim/configs/Plugins.vim
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
