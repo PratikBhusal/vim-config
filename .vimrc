@@ -1,14 +1,15 @@
-"Disable Vi compatibility
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Disable Vi compatibility {{{
 set nocompatible
+ "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Change location of temporary files {{{1
+" Change location of temporary files {{{
 set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
-" 1}}} 
+" }}} 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 
 "Vim. Live it
@@ -40,8 +41,8 @@ if g:WINDOWS
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Vim Plugin Installation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim Plugin Installation {{{
 call plug#begin('~/.vim/plugged')
 
 "add molokai colorscheme
@@ -79,6 +80,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim', { 'on': ['CtrlP', 'CtrlPBuffer'] }
 
 call plug#end()
+" }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Lazy Kebindings
@@ -109,7 +111,10 @@ execute "set colorcolumn=" .join(range(81,999), ',')
 
 "set colorscheme, font, and have no toolbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set guioptions-=T  " no toolbar
+"set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
 let g:indent_guides_guide_size= 2
 set background=dark
 "Colorscheme Choice
