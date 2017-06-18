@@ -13,7 +13,7 @@ set lines=999 columns=999
 map <silent> <leader>n :NERDTreeToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"ctrlP Plugin Configs
+"CtrlP Plugin Configs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <silent> <Leader>p :CtrlP<CR>
 map <silent> <Leader>b :CtrlPBuffer<CR>
