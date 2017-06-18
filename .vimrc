@@ -76,6 +76,8 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'mhinz/vim-startify'
 "add enhanced python synthax
 Plug 'hdima/python-syntax'
+"add vim-hardtime to force learn vim movements
+Plug 'takac/vim-hardtime'
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -94,6 +96,12 @@ command! WQ wq
 command! Wq wq
 command! W w
 command! Q q
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Forced use of more efficient movement commands {{{
+let g:hardtime_default_on = 1
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
