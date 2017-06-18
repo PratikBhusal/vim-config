@@ -14,18 +14,22 @@ set directory=~/.vim/.swp//
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Live the Vim life {{{
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
+inoremap <up> <nop>
+vnoremap <up> <nop>
+inoremap <down> <nop>
+vnoremap <down> <nop>
+inoremap <left> <nop>
+vnoremap <left> <nop>
+inoremap <right> <nop>
+vnoremap <right> <nop>
  "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto Update at save {{{
 augroup reload_vimrc " {
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+autocmd!
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 "}}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
