@@ -1,6 +1,20 @@
+"Platform Identification & Compatibility
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:OSX = has('macunix')
+let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
+let g:WINDOWS = has('win32') || has('win64')
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree {{{
-let NERDTreeBookmarksFile=expand("$HOME/.vim/.NERDTreeBookmarks")
+if g:LINUX
+    let NERDTreeBookmarksFile=expand("$HOME/.vim/.NERDTreeBookmarks-Linux")
+endif
+if g:WINDOWS
+    let NERDTreeBookmarksFile=expand("$HOME/.vim/.NERDTreeBookmarks-Windows")
+endif
+
+let NERDTreeShowLineNumbers=1
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
