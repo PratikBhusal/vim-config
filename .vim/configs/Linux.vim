@@ -15,6 +15,6 @@ map <silent> <leader>n :NERDTreeToggle<CR>
 
 "CtrlP Plugin Configs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <Leader>p :CtrlP<CR>
+map <silent> <Leader>p :CtrlP<<CR>
 map <silent> <Leader>b :CtrlPBuffer<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
