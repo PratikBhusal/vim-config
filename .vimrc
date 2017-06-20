@@ -177,13 +177,11 @@ autocmd! FileType c,java,php call CSyntaxAfter()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Platform Dependent Configs {{{
 if g:WINDOWS
-	source $HOME/.vim/configs/Windows.vim
-endif
-if g:LINUX
-	source $HOME/.vim/configs/Linux.vim
-endif
-if g:OSX
-	source $HOME/.vim/configs/OSX.vim
+    source $HOME/.vim/configs/Windows.vim
+elseif g:LINUX
+    source $HOME/.vim/configs/Linux.vim
+else
+    source $HOME/.vim/configs/OSX.vim
 endif
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
