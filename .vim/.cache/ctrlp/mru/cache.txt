@@ -1,0 +1,5 @@
+C:\Users\Pratik\.git\index
+C:\Users\Pratik\.vimrc
+C:\Users\Pratik\.gitignore
+C:\Users\Pratik\AppData\Local\Temp\VIH4501.tmp
+C:\Users\Pratik\AppData\Local\Temp\VIG41D2.tmp

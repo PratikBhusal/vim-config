@@ -76,8 +76,6 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 "Plug 'Valloric/YouCompleteMe'
 "add vim-taglist
 "Plug 'emnh/taglist.vim'
-"add vim-starify
-Plug 'mhinz/vim-startify'
 "add enhanced python synthax
 Plug 'hdima/python-syntax'
 "add vim-hardtime to force learn vim movements
@@ -191,3 +189,5 @@ endif
 source $HOME/.vim/configs/Plugins.vim
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set autochdir
+imap <C-c> <Esc>
