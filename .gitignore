@@ -12,5 +12,6 @@
 !/.vim
 !/.vim/ftplugin
 !C:\Programming-Projects
+!/.vim/.cache/ctrlp/bkd/*.txt
 
 
