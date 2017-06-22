@@ -31,17 +31,8 @@ set guifont=Consolas:h12:cANSI:qDRAFT,DejaVu_Sans_Mono:h12:cANSI:qDRAFT
     let g:ctrlp_working_path_mode = 'rw'
 
 "ctrlP
-let g:ctrlp_root_markers = ['2016']
-map <silent> <Leader>p :CtrlPMixed<CR>
-map <silent> <Leader>b :CtrlPBuffer<CR>
-map <silent> <Leader>B :CtrlPBookmarkDir<CR>
-let g:ctrlp_working_path_mode = 'w'
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_root_markers = ['.gitignore']
-let g:ctrlp_extensions = ['mixed', 'bookmarkdir']
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") |CtrlP /Programming-Projects | endif
+let g:ctrlp_cache_dir = $HOME.'/.vim/.cache/ctrlp-windows'
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") |CtrlP /Programming-Projects | endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Mis Settings
