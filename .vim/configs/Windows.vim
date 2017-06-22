@@ -32,7 +32,8 @@ set guifont=Consolas:h12:cANSI:qDRAFT,DejaVu_Sans_Mono:h12:cANSI:qDRAFT
 
 "ctrlP
 let g:ctrlp_cache_dir = $HOME.'/.vim/.cache/ctrlp-windows'
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") |CtrlP /Programming-Projects | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") |CtrlP /Programming-Projects | endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Mis Settings
