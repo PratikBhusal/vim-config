@@ -1,5 +1,0 @@
-C:\Users\Pratik\.git\index
-C:\Users\Pratik\.vimrc
-C:\Users\Pratik\.git\COMMIT_EDITMSG
-C:\Users\Pratik\.vim\.cache\ctrlp\mru\cache.txt
-C:\Users\Pratik\.vim\.cache\ctrlp\C%%Programming-Projects.txt

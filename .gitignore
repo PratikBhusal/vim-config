@@ -3,6 +3,7 @@
 /*/
 /.vim/plugged
 *.swp
+/.vim/.cache/ctrlp
 
 # All the things that will be in the repository:
 !/.vimrc

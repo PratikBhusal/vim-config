@@ -1,4 +1,0 @@
-
-vimrc
-.vim
- p
