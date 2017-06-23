@@ -80,12 +80,11 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'hdima/python-syntax'
 "add vim-hardtime to force learn vim movements
 Plug 'takac/vim-hardtime'
+"CtrlP- Fuzzy Finding PLugin
+Plug 'ctrlpvim/ctrlp.vim'
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-"on demand loading of ctrlp
-Plug 'ctrlpvim/ctrlp.vim', { 'on': ['CtrlP', 'CtrlPBuffer'] }
-
 call plug#end()
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -98,6 +97,8 @@ command! WQ wq
 command! Wq wq
 command! W w
 command! Q q
+imap <C-c> <Esc>
+"set autochdir
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -189,5 +190,3 @@ endif
 source $HOME/.vim/configs/Plugins.vim
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set autochdir
-imap <C-c> <Esc>
