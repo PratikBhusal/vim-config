@@ -96,7 +96,7 @@ command! Wq wq
 command! W w
 command! Q q
 imap <C-c> <Esc>
-"set autochdir
+set autochdir
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
