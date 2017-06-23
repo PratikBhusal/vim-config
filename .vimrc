@@ -54,8 +54,6 @@ call plug#begin('~/.vim/plugged')
 
 "add molokai colorscheme
 Plug 'tomasr/molokai'
-"add base16 colorscheme
-Plug 'chriskempson/base16-vim'
 "add vim sensible
 Plug 'tpope/vim-sensible'
 "add vim-airline & themes
@@ -128,12 +126,11 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 let g:indent_guides_guide_size= 2
 set background=dark
+colorscheme molokai
 "Colorscheme Choice
-if has("gui_running")
-    colorscheme molokai 
-else 
-    set t_Co=256
-    colorscheme base16-eighties
+colorscheme molokai
+if !has("gui_running")
+    let g:rehash256 = 1
 endif 
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
