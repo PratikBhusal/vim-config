@@ -8,7 +8,7 @@ let g:WINDOWS = has('win32') || has('win64')
 "run the program
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if g:WINDOWS
-    noremap <buffer> <silent> <F9> :w<cr>:!py -3 "%:p"<cr>
+    noremap <buffer> <silent> <F9> :w<cr>:!py -3 "%:p"<cr><cr>
 endif
 if g:LINUX
     noremap <buffer> <silent> <F9> :w<cr>:!python3 "%:p"<cr>
