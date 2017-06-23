@@ -4,6 +4,8 @@
 /.vim/plugged
 *.swp
 /.vim/.cache/ctrlp-windows
+/.vim/.cache/ctrlp-linux
+/.git/index
 
 # All the things that will be in the repository:
 !/.vimrc
@@ -13,5 +15,6 @@
 !/.vim/ftplugin
 !C:\Programming-Projects
 #!/.vim/.cache/ctrlp-windows/bkd/cache.txt
+#!/.vim/.cache/ctrlp-linux/bkd/cache.txt
 
 
