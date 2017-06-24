@@ -168,6 +168,9 @@ set foldlevelstart=1
 let python_highlight_all = 1
 "autocmd! FileType c,cpp,java,php call CSyntaxAfter()
 autocmd! FileType c,java,php call CSyntaxAfter()
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
