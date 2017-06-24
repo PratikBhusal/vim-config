@@ -52,10 +52,12 @@ endif
 " Vim Plugin Installation {{{
 call plug#begin('~/.vim/plugged')
 
+if !has('nvim')
+    "add vim sensible
+    Plug 'tpope/vim-sensible'
+endif
 "add molokai colorscheme
 Plug 'tomasr/molokai'
-"add vim sensible
-Plug 'tpope/vim-sensible'
 "add vim-airline & themes
 Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "add indent lines
