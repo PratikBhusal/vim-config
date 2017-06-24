@@ -36,13 +36,13 @@ let g:UltiSnipsEditSplit="vertical"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP {{{
-map <silent> <Leader>p :CtrlPMixed<CR>
+map <silent> <Leader>p :CtrlP<CR>
 map <silent> <Leader>b :CtrlPBuffer<CR>
 map <silent> <Leader>B :CtrlPBookmarkDir<CR>
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co 
     \--exclude-standard']
 let g:ctrlp_root_markers = ['.gitignore']
-let g:ctrlp_extensions = ['mixed', 'bookmarkdir']
+let g:ctrlp_extensions = ['bookmarkdir']
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
