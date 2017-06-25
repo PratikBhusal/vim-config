@@ -73,7 +73,7 @@ Plug 'PratikBhusal/cSyntaxAfter'
 "add better c++ syntax highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
 "add YouCompleteMe
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 "add vim-taglist
 "Plug 'emnh/taglist.vim'
 "add enhanced python synthax
@@ -82,6 +82,8 @@ Plug 'hdima/python-syntax'
 Plug 'takac/vim-hardtime'
 "CtrlP- Fuzzy Finding PLugin
 Plug 'ctrlpvim/ctrlp.vim'
+"Add Syntastic
+"Plug 'vim-syntastic/syntastic'
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -123,7 +125,7 @@ set hidden
 set number
 set relativenumber
 set mousehide
-set guioptions-=m  "remove menubar
+"set guioptions-=m  "remove menubar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
@@ -134,7 +136,8 @@ colorscheme molokai
 colorscheme molokai
 if !has("gui_running")
     let g:rehash256 = 1
-endif 
+endif
+set encoding=utf-8
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
