@@ -24,3 +24,10 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") |exe
     \strftime('%Y')|endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" YouCompleteMe {{{
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm'
+let g:ycm_global_ycm_extra_conf = '~/.vim/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_python_binary_path = '/usr/bin/python3'
+" }}}
+

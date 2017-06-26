@@ -50,11 +50,14 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Plugin Installation {{{
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/bundle')
 
 if !has('nvim')
     "add vim sensible
     Plug 'tpope/vim-sensible'
+endif
+if g:LINUX
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 endif
 "add molokai colorscheme
 Plug 'tomasr/molokai'
@@ -73,7 +76,7 @@ Plug 'PratikBhusal/cSyntaxAfter'
 "add better c++ syntax highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
 "add YouCompleteMe
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe' 
 "add vim-taglist
 "Plug 'emnh/taglist.vim'
 "add enhanced python synthax

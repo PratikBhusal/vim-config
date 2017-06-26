@@ -27,8 +27,8 @@ set runtimepath+=~\plugged\vim-snippets\UltiSnips
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 let g:UltiSnipsSnippetDirectories=["UltiSnips","plugged/vim-snippets/UltiSnips"]
 let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsExpandTrigger="<Leader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<Leader><tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<Leader>z"
 let g:UltiSnipsEditSplit="vertical"
 " }}}
@@ -46,6 +46,12 @@ let g:ctrlp_root_markers = ['.gitignore']
 let g:ctrlp_extensions = ['bookmarkdir']
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" YouCompleteMe {{{
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+" }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic {{{1
