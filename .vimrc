@@ -52,10 +52,12 @@ endif
 " Vim Plugin Installation {{{
 call plug#begin('~/.vim/plugged')
 
+if !has('nvim')
+    "add vim sensible
+    Plug 'tpope/vim-sensible'
+endif
 "add molokai colorscheme
 Plug 'tomasr/molokai'
-"add vim sensible
-Plug 'tpope/vim-sensible'
 "add vim-airline & themes
 Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "add indent lines
@@ -71,7 +73,7 @@ Plug 'PratikBhusal/cSyntaxAfter'
 "add better c++ syntax highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
 "add YouCompleteMe
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 "add vim-taglist
 "Plug 'emnh/taglist.vim'
 "add enhanced python synthax
@@ -80,6 +82,8 @@ Plug 'hdima/python-syntax'
 Plug 'takac/vim-hardtime'
 "CtrlP- Fuzzy Finding PLugin
 Plug 'ctrlpvim/ctrlp.vim'
+"Add Syntastic
+"Plug 'vim-syntastic/syntastic'
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -121,7 +125,7 @@ set hidden
 set number
 set relativenumber
 set mousehide
-set guioptions-=m  "remove menubar
+"set guioptions-=m  "remove menubar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
@@ -132,7 +136,8 @@ colorscheme molokai
 colorscheme molokai
 if !has("gui_running")
     let g:rehash256 = 1
-endif 
+endif
+set encoding=utf-8
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -168,6 +173,9 @@ set foldlevelstart=1
 let python_highlight_all = 1
 "autocmd! FileType c,cpp,java,php call CSyntaxAfter()
 autocmd! FileType c,java,php call CSyntaxAfter()
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

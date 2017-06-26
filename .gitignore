@@ -6,15 +6,17 @@
 /.vim/.cache/ctrlp-windows
 /.vim/.cache/ctrlp-linux
 /.git/index
+.vim/.swp/git.txt
+.vim/.undo/git.txt
+.vim/.backup/git.txt
 
 # All the things that will be in the repository:
 !/.vimrc
 !/.gitignore
 !/vimfiles
 !/.vim
+!/.config/nvim
 !/.vim/ftplugin
 !C:\Programming-Projects
 #!/.vim/.cache/ctrlp-windows/bkd/cache.txt
 #!/.vim/.cache/ctrlp-linux/bkd/cache.txt
-
-
