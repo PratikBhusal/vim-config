@@ -74,8 +74,6 @@ Plug 'PratikBhusal/cSyntaxAfter'
 Plug 'octol/vim-cpp-enhanced-highlight'
 "add YouCompleteMe
 Plug 'Valloric/YouCompleteMe'
-"add vim-taglist
-"Plug 'emnh/taglist.vim'
 "add enhanced python synthax
 Plug 'hdima/python-syntax'
 "add vim-hardtime to force learn vim movements
@@ -83,7 +81,7 @@ Plug 'takac/vim-hardtime'
 "CtrlP- Fuzzy Finding PLugin
 Plug 'ctrlpvim/ctrlp.vim'
 "Add Syntastic
-"Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
