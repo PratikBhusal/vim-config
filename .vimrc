@@ -76,13 +76,7 @@ Plug 'PratikBhusal/cSyntaxAfter'
 "add better c++ syntax highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
 "add YouCompleteMe
-<<<<<<< HEAD
-Plug 'Valloric/YouCompleteMe' 
-"add vim-taglist
-"Plug 'emnh/taglist.vim'
-=======
 Plug 'Valloric/YouCompleteMe'
->>>>>>> 34d88892bd14390cd46219e2f78ebe8a5588b055
 "add enhanced python synthax
 Plug 'hdima/python-syntax'
 "add vim-hardtime to force learn vim movements
