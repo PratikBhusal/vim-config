@@ -1,6 +1,9 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
+cd ~
+let g:loaded_python_provider = 1
+set lines=999 columns=999
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme settings {{{1
