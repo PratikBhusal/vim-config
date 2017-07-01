@@ -21,3 +21,19 @@
 !C:\Programming-Projects
 #!/.vim/.cache/ctrlp-windows/bkd/cache.txt
 #!/.vim/.cache/ctrlp-linux/bkd/cache.txt
+
+
+# Swap
+**/[._]*.s[a-v][a-z]
+**/[._]*.sw[a-p]
+**/[._]s[a-v][a-z]
+**/[._]sw[a-p]
+
+# Session
+**/Session.vim
+
+# Temporary
+**/.netrwhist
+**/*~
+# Auto-generated tag files
+**/tags
