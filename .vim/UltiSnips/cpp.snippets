@@ -3,12 +3,10 @@ snippet header "Default header for new cpp files" b
 
 int main()
 {
-    try 
-    {
+    try {
         std::cout << "Hello World" << std::endl; 
     }
-    catch (...)
-    {
+    catch (...) {
         std::cout << "An error occurred.\n" << std::endl;
         return -1;
     }
