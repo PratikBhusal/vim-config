@@ -83,6 +83,8 @@ Plug 'hdima/python-syntax'
 Plug 'takac/vim-hardtime'
 "CtrlP- Fuzzy Finding PLugin
 Plug 'ctrlpvim/ctrlp.vim'
+"automatically add closed bracekets and braces
+Plug 'jiangmiao/auto-pairs'
 "Add Syntastic
 "Plug 'vim-syntastic/syntastic'
 
