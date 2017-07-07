@@ -123,7 +123,7 @@ let g:hardtime_default_on = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text Wrapping & Border Config {{{
 set tw=80
-execute "set colorcolumn=" .join(range(81,999), ',')
+execute "set colorcolumn=" .join(range(81,&columns), ',')
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
