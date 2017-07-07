@@ -14,7 +14,7 @@ set makeprg=g++\ %\ -o\ %:p:r\ -Wall\ -fexceptions\ -g\ -O3\
     \-Wswitch-default\ -Wzero-as-null-pointer-constant\ -Wmain\ 
     \-pedantic-errors\ -pedantic\ -Wextra\ -std=gnu++11
 "-Weffc++
-noremap <buffer> <silent> <F9> :w<cr>:make<cr><cr>
+noremap <buffer> <silent> <F9> :w<cr>:make<cr>
 
 if g:WINDOWS
     "noremap <buffer> <silent> <F9> :w<cr>:!"C:\Binaries\compileRun\C++\compileRunC++.bat" "%:p:r"<cr><cr>  
