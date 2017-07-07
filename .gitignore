@@ -10,11 +10,12 @@
 .vim/.undo/git.txt
 .vim/.backup/git.txt
 .vim/bundle
+.vim/eclim
 
 # All the things that will be in the repository:
 !/.vimrc
 !/.gitignore
-!/vimfiles
+#!/vimfiles
 !/.vim
 !/.config/nvim
 !/.vim/ftplugin

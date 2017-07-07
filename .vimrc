@@ -39,8 +39,11 @@ augroup END " }
 let g:OSX = has('macunix')
 let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
 let g:WINDOWS = has('win32') || has('win64')
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Windows heterogeneous OS compatibilty
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Windows heterogeneous OS compatibilty {{{
 if g:WINDOWS
     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
     set runtimepath+=$Home/.vim/after
@@ -55,6 +58,10 @@ call plug#begin('~/.vim/bundle')
 if !has('nvim')
     "add vim sensible
     Plug 'tpope/vim-sensible'
+endif
+if g:WINDOWS
+    Plug 'xolox/vim-shell'
+    Plug 'xolox/vim-misc'
 endif
 if g:LINUX
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}

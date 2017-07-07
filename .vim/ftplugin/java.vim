@@ -1,3 +1,18 @@
-"compile/run the program
-noremap <buffer> <F9> :w<cr>:exec '!javac' shellescape(expand('%'), 1) '&& java' shellescape(expand('%:r'), 1)<cr><cr>
-noremap <buffer> <F10> :exec '!java' shellescape(expand('%:r'), 1)<cr><cr>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Platform Identification & Compatibility {{{
+let g:OSX = has('macunix')
+let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
+let g:WINDOWS = has('win32') || has('win64')
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Windows Configs {{{
+if g:WINDOWS
+    noremap <buffer> <silent> <F2> :silent exec "!C:/Users/Pratik/eclipse/java-neon/eclipse/eclimd.bat"<cr>
+    noremap <buffer> <silent> <F9> :w<cr>:silent exec "Java"<cr>
+endif
+"noremap <buffer> <F9> :w<cr>:exec '!javac' shellescape(expand('%'), 1) '&& java' shellescape(expand('%:r'), 1)<cr><cr>
+"noremap <buffer> <F10> :exec '!java' shellescape(expand('%:r'), 1)<cr><cr>
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
