@@ -111,6 +111,7 @@ command! W w
 command! Q q
 imap <C-c> <Esc>
 set autochdir
+autocmd BufEnter * silent! lcd %:p:h
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
