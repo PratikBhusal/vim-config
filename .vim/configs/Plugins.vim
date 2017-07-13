@@ -51,6 +51,7 @@ let g:ctrlp_extensions = ['bookmarkdir']
 " YouCompleteMe {{{
 let g:ycm_key_list_select_completion=['<Leader>n']
 let g:ycm_key_list_previous_completion=['<Leader>p']
+let g:ycm_autoclose_preview_window_after_completion=1
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
