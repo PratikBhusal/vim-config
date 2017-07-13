@@ -17,7 +17,7 @@ let g:WINDOWS = has('win32') || has('win64')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Eclim Configs {{{
 let g:EclimCompletionMethod = 'omnifunc'
-noremap <buffer> <silent> <F9> :w<cr>:silent exec "Java"<cr>
+noremap <buffer> <silent> <F9> :w<cr>:silent exec "Java %"<cr>
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
