@@ -9,8 +9,8 @@ set nocompatible
 set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
-" }}} 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Live the Vim life {{{
@@ -22,7 +22,7 @@ inoremap <left> <nop>
 vnoremap <left> <nop>
 inoremap <right> <nop>
 vnoremap <right> <nop>
- "}}}
+" }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -31,7 +31,7 @@ augroup reload_vimrc " {
 autocmd!
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
-"}}}
+" }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -75,7 +75,7 @@ Plug 'Yggdroot/indentLine'
 "add utilisnips and snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 "add EasyMotion
-Plug 'easymotion/vim-easymotion' 
+Plug 'easymotion/vim-easymotion'
 "add Git Support
 Plug 'tpope/vim-fugitive' | Plug 'airblade/vim-gitgutter'
 "add cSyntaxAfter
@@ -94,6 +94,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 "Add Syntastic
 "Plug 'vim-syntastic/syntastic'
+"Add a commenting plugin
+Plug 'tpope/vim-commentary'
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -124,7 +126,7 @@ let g:hardtime_default_on = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text Wrapping & Border Config {{{
 set tw=80
-execute "set colorcolumn=" .join(range(81,&columns), ',')
+execute "set colorcolumn=" .join(range(81,999), ',')
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -136,7 +138,7 @@ set hidden
 set number
 set relativenumber
 set mousehide
-"set guioptions-=m  "remove menubar
+set guioptions-=m  "remove menubar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
@@ -149,6 +151,8 @@ if !has("gui_running")
     let g:rehash256 = 1
 endif
 set encoding=utf-8
+" Delete Trailing Whitespace
+" autocmd BufWritePre * %s/\s\+$//e
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -173,9 +177,14 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Folding Practice {{{
-set foldmethod=marker
-set foldlevelstart=1
+" Folding {{{
+"set foldmethod=marker
+"set foldlevelstart=1
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+augroup folding
+  au BufReadPre * setlocal foldmethod=indent
+  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=marker | endif
+augroup END
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
