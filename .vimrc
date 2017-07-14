@@ -9,6 +9,7 @@ set nocompatible
 set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
+<<<<<<< HEAD
 " }}} 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -23,6 +24,8 @@ endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
+=======
+>>>>>>> d72f1b077cdda30e29bb19bfa7f996b16ea14c4b
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
