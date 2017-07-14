@@ -14,8 +14,12 @@ endif
 if g:WINDOWS
     let NERDTreeBookmarksFile=expand("$HOME/.vim/.NERDTreeBookmarks-Windows")
 endif
-
+let NERDTreeShowBookmarks=1
 let NERDTreeShowLineNumbers=1
+let NERDTreeIgnore=['\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
+                    \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
+                    \ '\.embed\.manifest$', '\.embed\.manifest.res$',
+                    \ '\.intermediate\.manifest$', '^mt.dep$' ]
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -39,6 +43,7 @@ let g:UltiSnipsEditSplit="vertical"
 map <silent> <Leader>p :CtrlP<CR>
 map <silent> <Leader>b :CtrlPBuffer<CR>
 map <silent> <Leader>B :CtrlPBookmarkDir<CR>
+let g:ctrlp_dont_split = 'NERD_tree_2'
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co 
     \--exclude-standard']
