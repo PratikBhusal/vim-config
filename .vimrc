@@ -10,7 +10,21 @@ set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
 " }}} 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Create temporary file folders if they currently do not exit  {{{
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Live the Vim life {{{
@@ -65,6 +79,8 @@ if g:WINDOWS
 endif
 if g:LINUX
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+    "add YouCompleteMe
+    Plug 'Valloric/YouCompleteMe'
 endif
 "add molokai colorscheme
 Plug 'tomasr/molokai'
@@ -82,8 +98,8 @@ Plug 'tpope/vim-fugitive' | Plug 'airblade/vim-gitgutter'
 Plug 'PratikBhusal/cSyntaxAfter'
 "add better c++ syntax highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
-"add YouCompleteMe
-Plug 'Valloric/YouCompleteMe'
+"add clang_complete plugin
+Plug 'Rip-Rip/clang_complete'
 "add enhanced python synthax
 Plug 'hdima/python-syntax'
 "add vim-hardtime to force learn vim movements
@@ -125,6 +141,13 @@ let g:hardtime_default_on = 1
 " Text Wrapping & Border Config {{{
 set tw=80
 execute "set colorcolumn=" .join(range(81,&columns), ',')
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sorting {{{
+nnoremap <leader>s vip:!sort<cr>
+vnoremap <leader>s :!sort<cr>
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
