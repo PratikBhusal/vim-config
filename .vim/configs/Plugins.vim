@@ -76,7 +76,7 @@ let g:ctrlp_custom_ignore = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Clang_Complete  {{{
+" Clang_Complete {{{
 " if g:WINDOWS
 "     let g:clang_library_path='C:\Program Files\LLVM\bin'
 " endif

@@ -13,15 +13,16 @@
 .vim/eclim
 
 # All the things that will be in the repository:
-!/.vimrc
+# !/.vimrc
+!/.vim/vimrc
 !/.gitignore
-#!/vimfiles
+# !/vimfiles
 !/.vim
 !/.config/nvim
 !/.vim/ftplugin
 !C:\Programming-Projects
-#!/.vim/.cache/ctrlp-windows/bkd/cache.txt
-#!/.vim/.cache/ctrlp-linux/bkd/cache.txt
+# /.vim/.cache/ctrlp-windows/bkd/cache.txt
+# /.vim/.cache/ctrlp-linux/bkd/cache.txt
 
 
 # Swap

@@ -19,7 +19,7 @@ let g:WINDOWS = has('win32') || has('win64')
 let g:EclimCompletionMethod = 'completefunc'
 
 " Single file compilation
-" noremap <buffer> <silent> <F9> :w<cr>:silent exec "Java %"<cr>
+" noremap <buffer> <silent> <F9> :w<cr>:silent exec Java %"<cr>
 
 " Multi-file compilation
 noremap <buffer> <silent> <F9> :w<cr>:Java<cr>
