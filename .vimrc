@@ -9,7 +9,6 @@ set nocompatible
 set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
-<<<<<<< HEAD
 " }}} 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -24,8 +23,6 @@ endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
-=======
->>>>>>> d72f1b077cdda30e29bb19bfa7f996b16ea14c4b
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -39,7 +36,7 @@ inoremap <left> <nop>
 vnoremap <left> <nop>
 inoremap <right> <nop>
 vnoremap <right> <nop>
- "}}}
+" }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -48,7 +45,7 @@ augroup reload_vimrc " {
 autocmd!
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
-"}}}
+" }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -82,7 +79,6 @@ if g:WINDOWS
 endif
 if g:LINUX
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-    "add YouCompleteMe
     Plug 'Valloric/YouCompleteMe'
 endif
 "add molokai colorscheme
@@ -94,15 +90,13 @@ Plug 'Yggdroot/indentLine'
 "add utilisnips and snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 "add EasyMotion
-Plug 'easymotion/vim-easymotion' 
+Plug 'easymotion/vim-easymotion'
 "add Git Support
 Plug 'tpope/vim-fugitive' | Plug 'airblade/vim-gitgutter'
 "add cSyntaxAfter
 Plug 'PratikBhusal/cSyntaxAfter'
 "add better c++ syntax highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
-"add clang_complete plugin
-Plug 'Rip-Rip/clang_complete'
 "add enhanced python synthax
 Plug 'hdima/python-syntax'
 "add vim-hardtime to force learn vim movements
@@ -111,8 +105,18 @@ Plug 'takac/vim-hardtime'
 Plug 'ctrlpvim/ctrlp.vim'
 "automatically add closed bracekets and braces
 Plug 'jiangmiao/auto-pairs'
+"Add a commenting plugin
+Plug 'tpope/vim-commentary'
+"AutoCompletion Plugins{{{
+"add YouCompleteMe
+" Add Vim-Clang
+"Plug 'justmao945/vim-clang'
 "Add Syntastic
 "Plug 'vim-syntastic/syntastic'
+"add clang_complete plugin
+"Plug 'Rip-Rip/clang_complete'
+"Add VimCompletesMe
+"Plug 'ajh17/VimCompletesMe'}}}
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -143,7 +147,7 @@ let g:hardtime_default_on = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text Wrapping & Border Config {{{
 set tw=80
-execute "set colorcolumn=" .join(range(81,&columns), ',')
+execute "set colorcolumn=" .join(range(81,999), ',')
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -162,7 +166,7 @@ set hidden
 set number
 set relativenumber
 set mousehide
-"set guioptions-=m  "remove menubar
+set guioptions-=m  "remove menubar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
@@ -175,6 +179,8 @@ if !has("gui_running")
     let g:rehash256 = 1
 endif
 set encoding=utf-8
+" Delete Trailing Whitespace
+" autocmd BufWritePre * %s/\s\+$//e
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -199,9 +205,14 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Folding Practice {{{
-set foldmethod=marker
-set foldlevelstart=1
+" Folding {{{
+"set foldmethod=marker
+"set foldlevelstart=1
+nnoremap <silent> \ @=(foldlevel('.')?'za':"\\")<CR>
+augroup folding
+  au BufReadPre * setlocal foldmethod=indent
+  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=marker | endif
+augroup END
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
