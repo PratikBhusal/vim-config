@@ -59,14 +59,14 @@ let g:ctrlp_custom_ignore = {
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe {{{
-"let g:ycm_key_list_select_completion=['<Leader>n']
-"let g:ycm_key_list_previous_completion=['<Leader>p']
-"let g:ycm_autoclose_preview_window_after_completion=1
-
-"if g:LINUX
-    "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm'
-    "let g:ycm_global_ycm_extra_conf = '~/.vim/YouCompleteMe/.ycm_extra_conf.py'
-    "let g:ycm_python_binary_path = '/usr/bin/python3'endif
+if g:LINUX
+    let g:ycm_key_list_select_completion=['<Leader>n']
+    let g:ycm_key_list_previous_completion=['<Leader>p']
+    let g:ycm_autoclose_preview_window_after_completion=1
+    " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm'
+    let g:ycm_global_ycm_extra_conf = '~/.vim/YouCompleteMe/.ycm_extra_conf.py'
+    let g:ycm_python_binary_path = '/usr/bin/python3'
+endif
 "if g:WINDOWS
     "let g:ycm_keep_logfiles = 1
     "let g:ycm_log_level = 'debug'
