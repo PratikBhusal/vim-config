@@ -15,8 +15,14 @@ let g:WINDOWS = has('win32') || has('win64')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Eclim Configs {{{
-let g:EclimCompletionMethod = 'omnifunc'
-noremap <buffer> <silent> <F9> :w<cr>:silent exec "Java %"<cr>
+" let g:EclimCompletionMethod = 'omnifunc'
+let g:EclimCompletionMethod = 'completefunc'
+
+" Single file compilation
+" noremap <buffer> <silent> <F9> :w<cr>:silent exec "Java %"<cr>
+
+" Multi-file compilation
+noremap <buffer> <silent> <F9> :w<cr>:Java<cr>
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
