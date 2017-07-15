@@ -41,7 +41,7 @@ let g:UltiSnipsEditSplit="vertical"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP {{{
 map <silent> <Leader>p :CtrlP<CR>
-map <silent> <Leader>b :CtrlPBuffer<CR>
+cabbrev ls <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'ls')<CR>
 map <silent> <Leader>B :CtrlPBookmarkDir<CR>
 let g:ctrlp_dont_split = 'NERD_tree_2'
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
