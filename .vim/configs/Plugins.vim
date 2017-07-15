@@ -76,6 +76,22 @@ let g:ctrlp_custom_ignore = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clang_Complete  {{{
+" if g:WINDOWS
+"     let g:clang_library_path='C:\Program Files\LLVM\bin'
+" endif
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VimCompletesMe {{{
+" let g:vcm_default_maps = 0
+" imap <Leader><Tab>   <plug>vim_completes_me_forward
+" imap <S-Tab> <plug>vim_completes_me_backward
+" " }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic {{{1
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
