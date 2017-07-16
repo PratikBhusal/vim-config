@@ -74,12 +74,16 @@ if !has('nvim')
     Plug 'tpope/vim-sensible'
 endif
 if g:WINDOWS
-    Plug 'xolox/vim-shell'
-    Plug 'xolox/vim-misc'
+    " Add tag generation
+    " Plug 'xolox/vim-easytags'
+    " Plug 'xolox/vim-misc'
+    " Plug 'xolox/vim-shell'
+    " C++ Autocompletion
+    Plug 'Rip-Rip/clang_complete'
 endif
 if g:LINUX
-    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-    Plug 'Valloric/YouCompleteMe'
+    " Autocompletion
+    Plug 'Valloric/YouCompleteMe' | Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 endif
 "add molokai colorscheme
 Plug 'tomasr/molokai'
@@ -107,16 +111,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 "Add a commenting plugin
 Plug 'tpope/vim-commentary'
-"AutoCompletion Plugins{{{
-"add YouCompleteMe
-" Add Vim-Clang
-"Plug 'justmao945/vim-clang'
-"Add Syntastic
-"Plug 'vim-syntastic/syntastic'
-"add clang_complete plugin
-"Plug 'Rip-Rip/clang_complete'
-"Add VimCompletesMe
-"Plug 'ajh17/VimCompletesMe'}}}
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -132,9 +126,10 @@ command! WQ wq
 command! Wq wq
 command! W w
 command! Q q
-imap <C-c> <Esc>
+inoremap <C-c> <Esc>
 set autochdir
 autocmd BufEnter * silent! lcd %:p:h
+set clipboard=unnamed
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -166,7 +161,7 @@ set hidden
 set number
 set relativenumber
 set mousehide
-set guioptions-=m  "remove menubar
+" set guioptions-=m  "remove menubar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
@@ -224,6 +219,21 @@ autocmd! FileType c,java,php call CSyntaxAfter()
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Autocompletion {{{
+setlocal completeopt+=noinsert
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+inoremap <C-@> <C-Space>
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

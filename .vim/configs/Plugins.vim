@@ -42,6 +42,7 @@ let g:UltiSnipsEditSplit="vertical"
 " CtrlP {{{
 map <silent> <Leader>p :CtrlP<CR>
 cabbrev ls <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'ls')<CR>
+cabbrev sl <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'sl')<CR>
 map <silent> <Leader>B :CtrlPBookmarkDir<CR>
 let g:ctrlp_dont_split = 'NERD_tree_2'
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
@@ -67,18 +68,10 @@ if g:LINUX
     let g:ycm_global_ycm_extra_conf = '~/.vim/YouCompleteMe/.ycm_extra_conf.py'
     let g:ycm_python_binary_path = '/usr/bin/python3'
 endif
-"if g:WINDOWS
-    "let g:ycm_keep_logfiles = 1
-    "let g:ycm_log_level = 'debug'
-    "let g:ycm_global_ycm_extra_conf = '~/.vim/YouCompleteMe/.ycm_extra_conf.py'
-"endif
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Clang_Complete {{{
 " if g:WINDOWS
-"     let g:clang_library_path='C:\Program Files\LLVM\bin'
+"     let g:ycm_keep_logfiles = 1
+"     let g:ycm_log_level = 'debug'
+"     let g:ycm_global_ycm_extra_conf = '~/.vim/YouCompleteMe/.ycm_extra_conf.py'
 " endif
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

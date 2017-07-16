@@ -15,8 +15,14 @@ let g:WINDOWS = has('win32') || has('win64')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Eclim Configs {{{
-" let g:EclimCompletionMethod = 'omnifunc'
-let g:EclimCompletionMethod = 'completefunc'
+inoremap <C-Space> <C-x><C-o>
+let g:EclimCompletionMethod = 'omnifunc'
+" let g:EclimCompletionMethod = 'completefunc'
+if g:EclimCompletionMethod == 'completefunc'
+    inoremap <C-Space> <C-x><C-u>
+else
+    inoremap <C-Space> <C-x><C-o>
+endif
 
 " Single file compilation
 " noremap <buffer> <silent> <F9> :w<cr>:silent exec Java %"<cr>

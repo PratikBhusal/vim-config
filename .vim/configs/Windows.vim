@@ -31,7 +31,7 @@ set guifont=Consolas:h12:cANSI:qDRAFT,DejaVu_Sans_Mono:h12:cANSI:qDRAFT
     
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP Configs {{{
-let g:ctrlp_working_path_mode = 'rw'
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_cache_dir = $HOME.'/.vim/.cache/ctrlp-windows'
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") |exe 
@@ -41,10 +41,12 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") |exe
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Shell Configs {{{
-call xolox#misc#os#exec({'command': 'vimrun', 'async': 1})
+" call xolox#misc#os#exec({'command': 'vimrun', 'async': 1})
 " }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Mis Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au GUIEnter * simalt ~x "Maximize Vim on Windows
+set encoding=utf-8
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
