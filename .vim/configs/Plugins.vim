@@ -54,6 +54,7 @@ let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn)$',
     \ 'file': '\v\.(exe|so|dll)$'
 \ }
+let g:ctrlp_follow_symlinks = 1
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -94,4 +95,26 @@ endif
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
 "  1}}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-lightline {{{
+set noshowmode
+let g:lightline = {
+    \ 'colorscheme': 'default',
+\ }
+let g:lightline.mode_map = {
+	\ 'n' : 'Normal',
+	\ 'i' : 'Insert',
+	\ 'R' : 'Replace',
+	\ 'v' : 'Visual',
+	\ 'V' : 'V-Line',
+	\ "\<C-v>": 'V-Block',
+	\ 'c' : 'Command',
+	\ 's' : 'Select',
+	\ 'S' : 'S-Line',
+	\ "\<C-s>": 'S-Block',
+	\ 't': 'Terminal',
+\ }
+" }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
