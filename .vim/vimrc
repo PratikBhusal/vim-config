@@ -123,6 +123,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 "Add a commenting plugin
 Plug 'tpope/vim-commentary'
+" Add better cwindow support
+Plug 'romainl/vim-qf'
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
