@@ -1,6 +1,18 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Disable Vi compatibility {{{
+" Essentials {{{
 set nocompatible
+set showcmd
+set hlsearch
+set autoindent
+set nostartofline
+set confirm
+set visualbell
+
+" Return to last edit position
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -9,7 +21,7 @@ set nocompatible
 set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
-" }}} 
+" }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -58,10 +70,10 @@ let g:WINDOWS = has('win32') || has('win64')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows heterogeneous OS compatibilty {{{
-" if g:WINDOWS
-"     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
-"     set runtimepath+=$Home/.vim/after
-" endif
+if g:WINDOWS
+    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
+    set runtimepath+=$Home/.vim/after
+endif
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
