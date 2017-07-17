@@ -7,7 +7,7 @@ set autoindent
 set nostartofline
 set confirm
 set visualbell
-
+nnoremap <TAB> <C-^>
 " Return to last edit position
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -125,6 +125,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 " Add better cwindow support
 Plug 'romainl/vim-qf'
+
+" add vim-lightline. Will eventually replace vim-airline
+" Plug 'itchyny/lightline.vim'
+
+" Add VimCompletesMe. Alternative to SuperTab. I'm currently not using either,
+" but I may in the future
+"Plug 'ajh17/VimCompletesMe'
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
