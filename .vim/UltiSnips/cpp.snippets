@@ -1,3 +1,4 @@
+priority 1
 snippet header "Default header for new cpp files" b
 #include <iostream>
 
@@ -16,4 +17,12 @@ endsnippet
 
 snippet inc "Include Template" b
 #include <${1:iostream}> 
+endsnippet
+
+snippet cout "std::cout" b
+std::cout << ${1} << std::endl;
+endsnippet
+
+snippet cin "std::cin" b
+std::cin >> ${1};
 endsnippet
