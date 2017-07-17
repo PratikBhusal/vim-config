@@ -8,13 +8,13 @@ let g:WINDOWS = has('win32') || has('win64')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "compile/run the program
 if g:LINUX
-    set makeprg=g++\ %:p\ -o\ %:p:r.out\ -Wall\ -fexceptions\ -g\ -O3\ -Wcast-align\
+    setlocal makeprg=g++\ %:p\ -o\ %:p:r.out\ -Wall\ -fexceptions\ -g\ -O3\ -Wcast-align\
         \ -Wnon-virtual-dtor\ -Wshadow\ -Winit-self\ -Wredundant-decls\ -Wundef\
         \ -Wfloat-equal\ -Winline\ -Wunreachable-code\ -Wmissing-declarations\
         \ -Wmissing-include-dirs\ -Wswitch-enum\ -Wswitch-default\ -Wmain\ -Wextra\
         \ -Wzero-as-null-pointer-constant\ -pedantic-errors\ -pedantic\ -std=c++11
 elseif g:WINDOWS
-     set makeprg=g++\ %:p\ -o\ %:p:r\ -Wall\ -fexceptions\ -g\ -O3\ -Wcast-align\
+    setlocal makeprg=g++\ %:p\ -o\ %:p:r\ -Wall\ -fexceptions\ -g\ -O3\ -Wcast-align\
         \ -Wnon-virtual-dtor\ -Wshadow\ -Winit-self\ -Wredundant-decls\ -Wundef\
         \ -Wfloat-equal\ -Winline\ -Wunreachable-code\ -Wmissing-declarations\
         \ -Wmissing-include-dirs\ -Wswitch-enum\ -Wswitch-default\ -Wmain\ -Wextra\
