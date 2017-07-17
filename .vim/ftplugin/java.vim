@@ -15,13 +15,12 @@ let g:WINDOWS = has('win32') || has('win64')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Eclim Configs {{{
-inoremap <C-Space> <C-x><C-o>
 let g:EclimCompletionMethod = 'omnifunc'
 " let g:EclimCompletionMethod = 'completefunc'
 if g:EclimCompletionMethod == 'completefunc'
-    inoremap <C-Space> <C-x><C-u>
+    inoremap <buffer> <C-Space> <C-x><C-u>
 else
-    inoremap <C-Space> <C-x><C-o>
+    inoremap <buffer> <C-Space> <C-x><C-o>
 endif
 
 " Single file compilation
