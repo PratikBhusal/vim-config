@@ -9,6 +9,7 @@ let g:WINDOWS = has('win32') || has('win64')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fugitive {{{
 nnoremap <leader>gg :Gstatus<cr>
+nnoremap <leader>gp :Gpush<cr>
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -31,7 +32,7 @@ let NERDTreeIgnore=['\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ultisnips {{{
-" Trigger configuration. 
+" Trigger configuration.
 " Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 set runtimepath+=~\plugged\vim-snippets\UltiSnips
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
