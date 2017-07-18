@@ -1,4 +1,31 @@
+# All the things that will be in the repository:
+# !/.vimrc
+!/.vim/vimrc
+!/.gitignore
+# !/vimfiles
+!/.vim
+!/.config/nvim
+!/.vim/ftplugin
+!C:\Programming-Projects
+!/.vim/plugin-projects/**
+!.vim/plugin-projects/**
+!/.vim/plugin-projects/vim-osplugin
+!/.vim/plugin-projects/vim-osplugin
+!/.vim/plugin-projects/vim-osplugin/**
+!/.vim/plugin-projects/vim-osplugin/**
+!\.vim\plugin-projects\**
+!.vim\plugin-projects\**
+!\.vim\plugin-projects\vim-osplugin
+!\.vim\plugin-projects\vim-osplugin
+!\.vim\plugin-projects\vim-osplugin\**
+!\.vim\plugin-projects\vim-osplugin\**
+# /.vim/.cache/ctrlp-windows/bkd/cache.txt
+# /.vim/.cache/ctrlp-linux/bkd/cache.txt
+
+
 # All the things that are being ignored:
+
+
 /*
 /*/
 /.vim/plugged
@@ -11,19 +38,6 @@
 .vim/.backup/git.txt
 .vim/bundle
 .vim/eclim
-
-# All the things that will be in the repository:
-# !/.vimrc
-!/.vim/vimrc
-!/.gitignore
-# !/vimfiles
-!/.vim
-!/.config/nvim
-!/.vim/ftplugin
-!C:\Programming-Projects
-# /.vim/.cache/ctrlp-windows/bkd/cache.txt
-# /.vim/.cache/ctrlp-linux/bkd/cache.txt
-
 
 # Swap
 **/[._]*.s[a-v][a-z]
@@ -39,3 +53,10 @@
 **/*~
 # Auto-generated tag files
 **/tags
+
+# Binaries
+*.exe
+
+# Ignore License files
+**/LICENSE
+LICENSE
