@@ -6,7 +6,10 @@ set hlsearch
 set autoindent
 set nostartofline
 set confirm
-set visualbell
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
 nnoremap <TAB> <C-^>
 " Return to last edit position
 autocmd BufReadPost *
