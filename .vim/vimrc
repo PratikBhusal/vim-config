@@ -153,7 +153,11 @@ command! Q q
 inoremap <C-c> <Esc>
 set autochdir
 autocmd BufEnter * silent! lcd %:p:h
-set clipboard=unnamed
+if g:WINDOWS
+    set clipboard=unnamed
+elseif g:LINUX
+    set clipboard=unnamedplus
+endif
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
