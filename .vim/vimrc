@@ -100,6 +100,8 @@ if g:LINUX
     " Autocompletion
     Plug 'Valloric/YouCompleteMe' | Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 endif
+" Add my vim-osplugin plugin :D
+Plug '~/.vim/plugin-projects/vim-osplugin'
 "add molokai colorscheme
 Plug 'tomasr/molokai'
 "add vim-airline & themes
@@ -129,12 +131,26 @@ Plug 'tpope/vim-commentary'
 " Add better cwindow support
 Plug 'romainl/vim-qf'
 
+" Plugins for consideration {{{
+" Add neocomplete. Better AutoComplPop & Ultisnips compatibility.
+" TODO: Get the settings configured to my likings
+" Plug 'Shougo/neocomplete.vim'
+
 " add vim-lightline. Will eventually replace vim-airline
 " Plug 'itchyny/lightline.vim'
 
-" Add VimCompletesMe. Alternative to SuperTab. I'm currently not using either,
-" but I may in the future
-"Plug 'ajh17/VimCompletesMe'
+" Add VimCompletesMe. Alternative to SuperTab. I may use in the future.
+" Plug 'ajh17/VimCompletesMe'
+
+" Add SuperTab. Alternative to VimCompletesMe. I may use in the future.
+" Plug 'ervandew/supertab'
+
+" Built-in markdown support
+" Plug 'suan/vim-instant-markdown'
+
+" Visual whitespace detection
+" Plug 'ntpeters/vim-better-whitespace'
+" }}}
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
