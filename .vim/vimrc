@@ -13,7 +13,7 @@ nnoremap <TAB> <C-^>
 " Return to last edit position
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
+     \     exe "normal! g`\"" |
      \ endif
 let s:linux = has('unix') && !has('macunix') && !has('win32unix')
 let s:windows = has('win32') || has('win64')
@@ -40,14 +40,14 @@ if !has('nvim')
     "add vim sensible
     Plug 'tpope/vim-sensible'
 endif
-" if s:windows
-"     " Add tag generation
-"     " Plug 'xolox/vim-easytags'
-"     " Plug 'xolox/vim-misc'
-"     " Plug 'xolox/vim-shell'
-"     " C++ Autocompletion
-"     Plug 'Rip-Rip/clang_complete'
-" endif
+if s:windows
+    " Add tag generation
+    " Plug 'xolox/vim-easytags'
+    " Plug 'xolox/vim-misc'
+    " Plug 'xolox/vim-shell'
+    " C++ Autocompletion
+    Plug 'Rip-Rip/clang_complete'
+endif
 if s:linux
     " Autocompletion
     Plug 'Valloric/YouCompleteMe' | Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
@@ -78,8 +78,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 "Add a commenting plugin
 Plug 'tpope/vim-commentary'
-" Add better cwindow support
-Plug 'romainl/vim-qf'
+
+" Add async compiling
+Plug 'tpope/vim-dispatch'
 
 " Plugins for consideration {{{
 " Add neocomplete. Better AutoComplPop & Ultisnips compatibility.
@@ -95,17 +96,20 @@ Plug 'romainl/vim-qf'
 " Add SuperTab. Alternative to VimCompletesMe. I may use in the future.
 " Plug 'ervandew/supertab'
 
-" Built-in markdown support
-" Plug 'suan/vim-instant-markdown'
+" markdown preview
+" Plug 'MikeCoder/markdown-preview.vim'
 
 " Visual whitespace detection
 " Plug 'ntpeters/vim-better-whitespace'
+
+" Add better cwindow support
+" Plug 'romainl/vim-qf'
 " }}}
 
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 call plug#end()
-call  osplugin#initilize()
+call osplugin#begin()
 "  }}} -------------------------------------------------------------------------
 
 " Change location of temporary files {{{ ---------------------------------------
@@ -150,15 +154,16 @@ augroup END " }
 " }}} --------------------------------------------------------------------------
 
 " Lazy Kebindings {{{ ----------------------------------------------------------
-let mapleader = ' '
-nnoremap ; :
+autocmd BufEnter * silent! lcd %:p:h
+command! Q q
+command! W w
 command! WQ wq
 command! Wq wq
-command! W w
-command! Q q
 inoremap <C-c> <Esc>
+let mapleader = "\<Space>"
+nnoremap <SPACE> <Nop>
+nnoremap ; :
 set autochdir
-autocmd BufEnter * silent! lcd %:p:h
 " }}} --------------------------------------------------------------------------
 
 " Forced use of more efficient movement commands {{{ ---------------------------
@@ -209,11 +214,11 @@ set smartcase
 " }}} --------------------------------------------------------------------------
 
 " Set tab intent to 4 spaces {{{ -----------------------------------------------
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=8 softtabstop=4 expandtab shiftwidth=4 smarttab
 " }}} --------------------------------------------------------------------------
 
 " Folding {{{ ------------------------------------------------------------------
-"set foldmethod=marker
+set foldmethod=marker
 "set foldlevelstart=1
 nnoremap <silent> \ @=(foldlevel('.')?'za':"\\")<CR>
 augroup folding
