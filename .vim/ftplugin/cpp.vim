@@ -12,7 +12,7 @@ setlocal makeprg=g++\ -Wall\ -fexceptions\ -g\ -O3\ -Wcast-align\
 " command -nargs=* Make make <args> | cwindow
 " command  Make make | cwindow
 if g:windows
-    noremap <buffer> <silent> <F9> :w<cr>:make %:p -o %:p:r.exe<cr><cr>
+    noremap <buffer> <silent> <F9> :w<cr>:Make %:p -o %:p:r.exe<cr><cr>
     noremap <buffer> <silent> <F10> :!%:p:r.exe<cr><cr>
 endif
 if g:linux
