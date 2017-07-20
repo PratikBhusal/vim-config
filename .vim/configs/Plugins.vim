@@ -1,6 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Platform Identification {{{
-let g:OSX = has('macunix')
 let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
 let g:WINDOWS = has('win32') || has('win64')
 " }}}
@@ -24,9 +23,9 @@ endif
 let NERDTreeShowBookmarks=1
 let NERDTreeShowLineNumbers=1
 let NERDTreeIgnore=['\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
-                    \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
-                    \ '\.embed\.manifest$', '\.embed\.manifest.res$',
-                    \ '\.intermediate\.manifest$', '^mt.dep$' ]
+    \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
+    \ '\.embed\.manifest$', '\.embed\.manifest.res$',
+    \ '\.intermediate\.manifest$', '^mt.dep$' ]
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -107,21 +106,27 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-lightline {{{
 set noshowmode
-let g:lightline = {
-    \ 'colorscheme': 'default',
-\ }
-let g:lightline.mode_map = {
-	\ 'n' : 'Normal',
-	\ 'i' : 'Insert',
-	\ 'R' : 'Replace',
-	\ 'v' : 'Visual',
-	\ 'V' : 'V-Line',
-	\ "\<C-v>": 'V-Block',
-	\ 'c' : 'Command',
-	\ 's' : 'Select',
-	\ 'S' : 'S-Line',
-	\ "\<C-s>": 'S-Block',
-	\ 't': 'Terminal',
-\ }
+" let g:lightline = {
+"     \ 'colorscheme': 'default',
+" \ }
+" let g:lightline.mode_map = {
+" 	\ 'n' : 'Normal',
+" 	\ 'i' : 'Insert',
+" 	\ 'R' : 'Replace',
+" 	\ 'v' : 'Visual',
+" 	\ 'V' : 'V-Line',
+" 	\ "\<C-v>": 'V-Block',
+" 	\ 'c' : 'Command',
+" 	\ 's' : 'Select',
+" 	\ 'S' : 'S-Line',
+" 	\ "\<C-s>": 'S-Block',
+" 	\ 't': 'Terminal',
+" \ }
+" }}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Neocomplete {{{
+" TODO : Add new configurations
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

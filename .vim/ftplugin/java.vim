@@ -1,10 +1,3 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Platform Identification & Compatibility {{{
-let g:OSX = has('macunix')
-let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
-let g:WINDOWS = has('win32') || has('win64')
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Backup Code Compile/Run {{{
@@ -33,7 +26,7 @@ noremap <buffer> <silent> <F9> :w<cr>:Java<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Windows Configs {{{
-if g:WINDOWS
+if g:windows
     noremap <buffer> <silent> <F2> :silent exec "!C:/Users/Pratik/eclipse/java-neon/eclipse/eclimd.bat"<cr> 
 endif
 " }}}

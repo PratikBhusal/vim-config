@@ -1,5 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Essentials {{{
+" Essentials {{{ ---------------------------------------------------------------
 set nocompatible
 set showcmd
 set hlsearch
@@ -16,92 +15,43 @@ autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let s:linux = has('unix') && !has('macunix') && !has('win32unix')
+let s:windows = has('win32') || has('win64')
+" }}} --------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Change location of temporary files {{{
-set undodir=~/.vim/.undo//
-set backupdir=~/.vim/.backup//
-set directory=~/.vim/.swp//
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Create temporary file folders if they currently do not exit  {{{
-if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), "p")
-endif
-if !isdirectory(expand(&backupdir))
-    call mkdir(expand(&backupdir), "p")
-endif
-if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), "p")
+" Vim Plugin Installation {{{ --------------------------------------------------
+" Vim-Plug automatic download {{{
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Live the Vim life {{{
-inoremap <up> <nop>
-vnoremap <up> <nop>
-inoremap <down> <nop>
-vnoremap <down> <nop>
-inoremap <left> <nop>
-vnoremap <left> <nop>
-inoremap <right> <nop>
-vnoremap <right> <nop>
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Auto Update at save {{{
-augroup reload_vimrc " {
-autocmd!
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Platform Identification & Compatibility {{{
-let g:OSX = has('macunix')
-let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
-let g:WINDOWS = has('win32') || has('win64')
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Windows heterogeneous OS compatibilty {{{
-if g:WINDOWS
-    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
-    set runtimepath+=$Home/.vim/after
-endif
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim Plugin Installation {{{
 call plug#begin('~/.vim/bundle')
+" Add my own plugins :D
+if isdirectory(expand("$HOME/.vim/plugin-projects/vim-osplugin"))
+    Plug '~/.vim/plugin-projects/vim-osplugin'
+else
+    Plug 'PratikBhusal/vim-osplugin'
+endif
 
 if !has('nvim')
     "add vim sensible
     Plug 'tpope/vim-sensible'
 endif
-if g:WINDOWS
-    " Add tag generation
-    " Plug 'xolox/vim-easytags'
-    " Plug 'xolox/vim-misc'
-    " Plug 'xolox/vim-shell'
-    " C++ Autocompletion
-    Plug 'Rip-Rip/clang_complete'
-endif
-if g:LINUX
+" if s:windows
+"     " Add tag generation
+"     " Plug 'xolox/vim-easytags'
+"     " Plug 'xolox/vim-misc'
+"     " Plug 'xolox/vim-shell'
+"     " C++ Autocompletion
+"     Plug 'Rip-Rip/clang_complete'
+" endif
+if s:linux
     " Autocompletion
     Plug 'Valloric/YouCompleteMe' | Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 endif
-" Add my vim-osplugin plugin :D
-Plug '~/.vim/plugin-projects/vim-osplugin'
 "add molokai colorscheme
 Plug 'tomasr/molokai'
 "add vim-airline & themes
@@ -155,11 +105,51 @@ Plug 'romainl/vim-qf'
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 call plug#end()
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call  osplugin#initilize()
+"  }}} -------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Lazy Kebindings {{{
+" Change location of temporary files {{{ ---------------------------------------
+set undodir=~/.vim/.cache/.undo//
+set backupdir=~/.vim/.cache/.backup//
+set directory=~/.vim/.cache/.swp//
+
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+"  1}}} ------------------------------------------------------------------------
+
+" Live the Vim Life {{{ --------------------------------------------------------
+inoremap <up> <nop>
+vnoremap <up> <nop>
+inoremap <down> <nop>
+vnoremap <down> <nop>
+inoremap <left> <nop>
+vnoremap <left> <nop>
+inoremap <right> <nop>
+vnoremap <right> <nop>
+"  }}} -------------------------------------------------------------------------
+
+" Auto Update at save {{{ ------------------------------------------------------
+augroup reload_vimrc " {
+autocmd!
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+" }}} --------------------------------------------------------------------------
+
+" Windows heterogeneous OS compatibilty {{{ ------------------------------------
+" if g:windows
+"     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
+"     set runtimepath+=$Home/.vim/after
+" endif
+" }}} --------------------------------------------------------------------------
+
+" Lazy Kebindings {{{ ----------------------------------------------------------
 let mapleader = ' '
 nnoremap ; :
 command! WQ wq
@@ -169,36 +159,23 @@ command! Q q
 inoremap <C-c> <Esc>
 set autochdir
 autocmd BufEnter * silent! lcd %:p:h
-if g:WINDOWS
-    set clipboard=unnamed
-elseif g:LINUX
-    set clipboard=unnamedplus
-endif
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}} --------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Forced use of more efficient movement commands {{{
+" Forced use of more efficient movement commands {{{ ---------------------------
 let g:hardtime_default_on = 1
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}} --------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Text Wrapping & Border Config {{{
+" Text Wrapping & Border Config {{{ --------------------------------------------
 set tw=80
 execute "set colorcolumn=" .join(range(81,999), ',')
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}} --------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sorting {{{
+" Sorting {{{ ------------------------------------------------------------------
 nnoremap <leader>s vip:!sort<cr>
 vnoremap <leader>s :!sort<cr>
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}} --------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Make things look nice{{{
+" Make things look nice {{{ ----------------------------------------------------
 set shortmess=at
 syntax on
 set hidden
@@ -211,7 +188,6 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 let g:indent_guides_guide_size= 2
 set background=dark
-colorscheme molokai
 "Colorscheme Choice
 colorscheme molokai
 if !has("gui_running")
@@ -220,31 +196,23 @@ endif
 set encoding=utf-8
 " Delete Trailing Whitespace
 " autocmd BufWritePre * %s/\s\+$//e
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}} --------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Change how the cursor looks {{{
+" Change how the cursor looks {{{ ----------------------------------------------
 set guicursor=c-i-ci:ver15-Cursor/lCursor
 set guicursor=v:hor15-Cursor/lCursor
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}} --------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Make searching less tedious (Without it put \c (insen) or \C (sen) at end) {{{
 set ignorecase
 set smartcase
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}} --------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set tab intent to 4 spaces {{{
+" Set tab intent to 4 spaces {{{ -----------------------------------------------
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}} --------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Folding {{{
+" Folding {{{ ------------------------------------------------------------------
 "set foldmethod=marker
 "set foldlevelstart=1
 nnoremap <silent> \ @=(foldlevel('.')?'za':"\\")<CR>
@@ -252,24 +220,20 @@ augroup folding
   au BufReadPre * setlocal foldmethod=indent
   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=marker | endif
 augroup END
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}} --------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntax Highlight Settings {{{
+" Syntax Highlight Settings {{{ ------------------------------------------------
 let python_highlight_all = 1
 "autocmd! FileType c,cpp,java,php call CSyntaxAfter()
 autocmd! FileType c,java,php call CSyntaxAfter()
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}} --------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Autocompletion {{{
+" Autocompletion {{{ -----------------------------------------------------------
 setlocal completeopt+=noinsert
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 inoremap <C-@> <C-Space>
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -278,23 +242,8 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}} --------------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Platform Dependent Configs {{{
-if g:WINDOWS
-    source $HOME/.vim/configs/Windows.vim
-elseif g:LINUX
-    source $HOME/.vim/configs/Linux.vim
-else
-    source $HOME/.vim/configs/OSX.vim
-endif
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin Configs {{{
+" Plugin Configs {{{ -----------------------------------------------------------
 source $HOME/.vim/configs/Plugins.vim
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}} --------------------------------------------------------------------------
