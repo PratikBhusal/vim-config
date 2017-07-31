@@ -9,13 +9,14 @@ snippet borc "Add a close border"
 endsnippet
 
 snippet borp "Add a border pair" b
-" ${1} {{{ ---------------------------------------------------------------------
+" $1 {{{ ------------------------------------------------------------------
 ${0:"Content}
-" }}} -------------------------------------------------------------------------------
+" $1 }}} ------------------------------------------------------------------
 endsnippet
 
 snippet pl "Vim-plug Plugin definition"
-Plug '${0}'
+Plug '${1:SirVer/ultisnips}'
+$0
 endsnippet
 
 snippet fold "Add a new fold marker" b
@@ -29,5 +30,9 @@ endsnippet
 snippet foldp "Insert a vim fold marker pair" b
 " ${1} {{{
 ${0:"Content}
-" }}}
+" $1 }}}
+endsnippet
+
+snippet testing "Testing to see how commands work with ultisnips" b
+`echo %USERNAME%`
 endsnippet
