@@ -1,35 +1,7 @@
-# All the things that will be in the repository:
-# !/.vimrc
-!/.vim/vimrc
-!/.gitignore
-# !/vimfiles
-!/.vim
-!/.config/nvim
-!/.vim/ftplugin
-!C:\Programming-Projects
-!/.vim/plugin-projects/**
-!.vim/plugin-projects/**
-!/.vim/plugin-projects/vim-osplugin
-!/.vim/plugin-projects/vim-osplugin
-!/.vim/plugin-projects/vim-osplugin/**
-!/.vim/plugin-projects/vim-osplugin/**
-!\.vim\plugin-projects\**
-!.vim\plugin-projects\**
-!\.vim\plugin-projects\vim-osplugin
-!\.vim\plugin-projects\vim-osplugin
-!\.vim\plugin-projects\vim-osplugin\**
-!\.vim\plugin-projects\vim-osplugin\**
-# /.vim/.cache/ctrlp-windows/bkd/cache.txt
-# /.vim/.cache/ctrlp-linux/bkd/cache.txt
-
-
 # All the things that are being ignored:
-
-
 /*
 /*/
 /.vim/plugged
-*.swp
 /.vim/.cache/ctrlp-windows
 /.vim/.cache/ctrlp-linux
 /.git/index
@@ -37,6 +9,7 @@
 .vim/.undo/git.txt
 .vim/.backup/git.txt
 .vim/bundle
+/.vim/bundle
 .vim/eclim
 
 # Swap
@@ -52,7 +25,7 @@
 **/.netrwhist
 **/*~
 # Auto-generated tag files
-**/tags
+tags
 
 # Binaries
 *.exe
@@ -60,3 +33,23 @@
 # Ignore License files
 **/LICENSE
 LICENSE
+
+# All the things that will be in the repository:
+# !/.vimrc
+!/.vim/vimrc
+!/.gitignore
+# !/vimfiles
+!/.vim
+!/.config/nvim
+!/.vim/ftplugin
+!C:\Programming-Projects
+!/.vim/osplugin
+!.vim/ftplugin
+!.vim\ftplugin
+
+# /.vim/.cache/ctrlp-windows/bkd/cache.txt
+# /.vim/.cache/ctrlp-linux/bkd/cache.txt
+
+# Plugin-projects folder
+!.vim/plugin-projects/vim-osplugin/
+!.vim/plugin-projects/vim-osplugin
