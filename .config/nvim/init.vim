@@ -2,8 +2,11 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vim/vimrc
 cd ~
+
 let g:loaded_python_provider = 1
-set lines=999 columns=999
+autocmd GUIEnter * set lines=999 columns=999
+let g:GuiWindowFullScreen=1
+" call GuiWindowMaximized(1)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme settings {{{1
