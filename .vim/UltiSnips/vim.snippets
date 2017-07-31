@@ -10,7 +10,7 @@ endsnippet
 
 snippet borp "Add a border pair" b
 " $1 {{{ ------------------------------------------------------------------
-${0:"Content}
+${0:${VISUAL:" Content}}
 " $1 }}} ------------------------------------------------------------------
 endsnippet
 
@@ -29,10 +29,6 @@ endsnippet
 
 snippet foldp "Insert a vim fold marker pair" b
 " ${1} {{{
-${0:"Content}
+${0:${VISUAL:" Content}}
 " $1 }}}
-endsnippet
-
-snippet testing "Testing to see how commands work with ultisnips" b
-`echo %USERNAME%`
 endsnippet
