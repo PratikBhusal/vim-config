@@ -161,6 +161,7 @@ let mapleader = "\<Space>"
 nnoremap <SPACE> <Nop>
 nnoremap ; :
 set autochdir
+set mouse=a
 " Lazy Kebindings }}} ----------------------------------------------------------
 
 " Forced use of more efficient movement commands {{{ ---------------------------
