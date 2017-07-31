@@ -28,8 +28,8 @@ endif
 
 call plug#begin('~/.vim/bundle')
 " Add my own plugins :D
-if isdirectory(expand("$HOME/.vim/plugin-projects/vim-osplugin"))
-    Plug '~/.vim/plugin-projects/vim-osplugin'
+if isdirectory(expand("$HOME/.vim/src/vim-osplugin"))
+    Plug '~/.vim/src/vim-osplugin'
 else
     Plug 'PratikBhusal/vim-osplugin'
 endif
