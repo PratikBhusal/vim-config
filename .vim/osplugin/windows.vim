@@ -12,5 +12,5 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") |exe
 " Misc Settings {{{ -------------------------------------------------------------
 au GUIEnter * simalt ~x "Maximize Vim on Windows
 set encoding=utf-8
-set clipboard=unname
+set clipboard=unnamed
 " Misc Settings }}} ------------------------------------------------------------
