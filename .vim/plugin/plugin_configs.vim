@@ -21,6 +21,9 @@ let NERDTreeIgnore=['\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
     \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
     \ '\.embed\.manifest$', '\.embed\.manifest.res$',
     \ '\.intermediate\.manifest$', '^mt.dep$' ]
+nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let g:NERDTreeChDirMode = 2
 " NERDTree }}} -----------------------------------------------------------------
 
 " Ultisnips {{{ ----------------------------------------------------------------

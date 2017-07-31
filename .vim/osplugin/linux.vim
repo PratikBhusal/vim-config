@@ -10,11 +10,6 @@ set lines=999 columns=999
 set clipboard=unnamedplus
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"NerdTree Plugin Configs
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <leader>n :NERDTreeToggle<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "CtrlP Plugin Configs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") |CtrlP /media/pratik/10264CD2264CBB0C/Programming-Projects | endif
