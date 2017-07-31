@@ -1,4 +1,4 @@
 " Text Wrapping & Border Config {{{ --------------------------------------------
-set tw=78
-execute "set colorcolumn=" .join(range(79,999), ',')
+setlocal tw=78
+execute "setlocal colorcolumn=" .join(range(78,999), ',')
 " }}} --------------------------------------------------------------------------
