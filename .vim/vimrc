@@ -15,9 +15,7 @@ autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \     exe "normal! g`\"" |
      \ endif
-let s:linux = has('unix') && !has('macunix') && !has('win32unix')
-let s:windows = has('win32') || has('win64')
-" }}} --------------------------------------------------------------------------
+" Essentials }}} ---------------------------------------------------------------
 
 " Vim Plugin Installation {{{ --------------------------------------------------
 " Vim-Plug automatic download {{{
@@ -48,7 +46,7 @@ if s:windows
     " C++ Autocompletion
     Plug 'Rip-Rip/clang_complete'
 endif
-if s:linux
+if has('unix') && !has('macunix') && !has('win32unix')
     " Autocompletion
     Plug 'Valloric/YouCompleteMe' | Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 endif
@@ -109,8 +107,7 @@ Plug 'tpope/vim-dispatch'
 " on demand loading of NERD Tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 call plug#end()
-call osplugin#begin()
-"  }}} -------------------------------------------------------------------------
+" Vim Plugin Installation  }}} -------------------------------------------------
 
 " Change location of temporary files {{{ ---------------------------------------
 set undodir=~/.vim/.cache/.undo//
@@ -126,7 +123,7 @@ endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
-"  1}}} ------------------------------------------------------------------------
+" Change location of temporary files  1}}} -------------------------------------
 
 " Live the Vim Life {{{ --------------------------------------------------------
 inoremap <up> <nop>
@@ -137,14 +134,14 @@ inoremap <left> <nop>
 vnoremap <left> <nop>
 inoremap <right> <nop>
 vnoremap <right> <nop>
-"  }}} -------------------------------------------------------------------------
+" Live the Vim Life  }}} -------------------------------------------------------
 
 " Auto Update at save {{{ ------------------------------------------------------
 augroup reload_vimrc " {
 autocmd!
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
-" }}} --------------------------------------------------------------------------
+" Auto Update at save }}} ------------------------------------------------------
 
 " Windows heterogeneous OS compatibilty {{{ ------------------------------------
 " if g:windows
@@ -164,21 +161,21 @@ let mapleader = "\<Space>"
 nnoremap <SPACE> <Nop>
 nnoremap ; :
 set autochdir
-" }}} --------------------------------------------------------------------------
+" Lazy Kebindings }}} ----------------------------------------------------------
 
 " Forced use of more efficient movement commands {{{ ---------------------------
 let g:hardtime_default_on = 1
-" }}} --------------------------------------------------------------------------
+" Forced use of more efficient movement commands  }}} --------------------------
 
 " Text Wrapping & Border Config {{{ --------------------------------------------
 set tw=80
 execute "set colorcolumn=" .join(range(81,999), ',')
-" }}} --------------------------------------------------------------------------
+" Text Wrapping & Border Config }}} --------------------------------------------
 
 " Sorting {{{ ------------------------------------------------------------------
 nnoremap <leader>s vip:!sort<cr>
 vnoremap <leader>s :!sort<cr>
-" }}} --------------------------------------------------------------------------
+" Sorting }}} ------------------------------------------------------------------
 
 " Make things look nice {{{ ----------------------------------------------------
 set shortmess=at
@@ -201,21 +198,21 @@ endif
 set encoding=utf-8
 " Delete Trailing Whitespace
 " autocmd BufWritePre * %s/\s\+$//e
-" }}} --------------------------------------------------------------------------
+" Make things look nice }}} ----------------------------------------------------
 
 " Change how the cursor looks {{{ ----------------------------------------------
 set guicursor=c-i-ci:ver15-Cursor/lCursor
 set guicursor=v:hor15-Cursor/lCursor
-" }}} --------------------------------------------------------------------------
+" Change how the cursor looks }}} ----------------------------------------------
 
 " Make searching less tedious (Without it put \c (insen) or \C (sen) at end) {{{
 set ignorecase
 set smartcase
-" }}} --------------------------------------------------------------------------
+" Make searching less tedious (Without it put \c (insen) or \C (sen) at end)  }}}
 
 " Set tab intent to 4 spaces {{{ -----------------------------------------------
 set tabstop=8 softtabstop=4 expandtab shiftwidth=4 smarttab
-" }}} --------------------------------------------------------------------------
+" Set tab intent to 4 spaces }}} -----------------------------------------------
 
 " Folding {{{ ------------------------------------------------------------------
 set foldmethod=marker
@@ -225,26 +222,25 @@ augroup folding
   au BufReadPre * setlocal foldmethod=indent
   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=marker | endif
 augroup END
-" }}} --------------------------------------------------------------------------
+" Folding }}} ------------------------------------------------------------------
 
 " Syntax Highlight Settings {{{ ------------------------------------------------
 let python_highlight_all = 1
-"autocmd! FileType c,cpp,java,php call CSyntaxAfter()
 autocmd! FileType c,java,php call CSyntaxAfter()
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
-" }}} --------------------------------------------------------------------------
+" Syntax Highlight Settings }}} ------------------------------------------------
 
 " Autocompletion {{{ -----------------------------------------------------------
-setlocal completeopt+=noinsert
+set completeopt+=noinsert
 " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 inoremap <C-@> <C-Space>
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+"   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-" }}} --------------------------------------------------------------------------
+" inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+"   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" Autocompletion }}} -----------------------------------------------------------

@@ -1,19 +1,14 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Platform Identification {{{
+" Platform Identification {{{ --------------------------------------------------
 let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
 let g:WINDOWS = has('win32') || has('win64')
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Platform Identification }}} --------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Fugitive {{{
+" Vim-Fugitive {{{ -------------------------------------------------------------
 nnoremap <leader>gg :Gstatus<cr>
 nnoremap <leader>gp :Gpush<cr>
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim-Fugitive }}} -------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree {{{
+" NERDTree {{{ -----------------------------------------------------------------
 if g:LINUX
     let NERDTreeBookmarksFile=expand("$HOME/.vim/.NERDTreeBookmarks-Linux")
 endif
@@ -26,11 +21,9 @@ let NERDTreeIgnore=['\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
     \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
     \ '\.embed\.manifest$', '\.embed\.manifest.res$',
     \ '\.intermediate\.manifest$', '^mt.dep$' ]
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree }}} -----------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ultisnips {{{
+" Ultisnips {{{ ----------------------------------------------------------------
 " Trigger configuration.
 " Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 set runtimepath+=~\plugged\vim-snippets\UltiSnips
@@ -41,11 +34,9 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<Leader>z"
 let g:UltiSnipsEditSplit="vertical"
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ultisnips }}} ----------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CtrlP {{{
+" CtrlP {{{ --------------------------------------------------------------------
 map <silent> <Leader>p :CtrlP<CR>
 cabbrev ls <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'ls')<CR>
 cabbrev sl <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'sl')<CR>
@@ -61,11 +52,9 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\v\.(exe|so|dll)$'
 \ }
 let g:ctrlp_follow_symlinks = 1
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlP }}} --------------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" YouCompleteMe {{{
+" YouCompleteMe {{{ ------------------------------------------------------------
 if g:LINUX
     let g:ycm_key_list_select_completion=['<Leader>n']
     let g:ycm_key_list_previous_completion=['<Leader>p']
@@ -74,24 +63,15 @@ if g:LINUX
     let g:ycm_global_ycm_extra_conf = '~/.vim/YouCompleteMe/.ycm_extra_conf.py'
     let g:ycm_python_binary_path = '/usr/bin/python3'
 endif
-" if g:WINDOWS
-"     let g:ycm_keep_logfiles = 1
-"     let g:ycm_log_level = 'debug'
-"     let g:ycm_global_ycm_extra_conf = '~/.vim/YouCompleteMe/.ycm_extra_conf.py'
-" endif
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" YouCompleteMe }}} ------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VimCompletesMe {{{
+" VimCompletesMe {{{ -----------------------------------------------------------
 " let g:vcm_default_maps = 0
 " imap <Leader><Tab>   <plug>vim_completes_me_forward
 " imap <S-Tab> <plug>vim_completes_me_backward
-" " }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VimCompletesMe }}} -----------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntastic {{{1
+" Syntastic {{{ ----------------------------------------------------------------
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
@@ -100,11 +80,13 @@ endif
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
-"  1}}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic }}} ----------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-lightline {{{
+" vim-airline {{{ --------------------------------------------------------------
+let g:airline_theme='molokai'
+" }}} --------------------------------------------------------------------------
+
+" vim-lightline {{{ ------------------------------------------------------------
 set noshowmode
 " let g:lightline = {
 "     \ 'colorscheme': 'default',
@@ -122,11 +104,8 @@ set noshowmode
 " 	\ "\<C-s>": 'S-Block',
 " 	\ 't': 'Terminal',
 " \ }
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-lightline }}} ------------------------------------------------------------
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Neocomplete {{{
+" Neocomplete {{{ --------------------------------------------------------------
 " TODO : Add new configurations
-" }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Neocomplete }}} --------------------------------------------------------------
