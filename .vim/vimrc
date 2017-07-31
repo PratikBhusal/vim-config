@@ -178,7 +178,7 @@ vnoremap <leader>s :!sort<cr>
 " Sorting }}} ------------------------------------------------------------------
 
 " Make things look nice {{{ ----------------------------------------------------
-set shortmess=at
+set shortmess=atI
 syntax on
 set hidden
 set number
