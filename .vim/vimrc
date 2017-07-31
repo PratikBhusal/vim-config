@@ -38,11 +38,7 @@ if !has('nvim')
     "add vim sensible
     Plug 'tpope/vim-sensible'
 endif
-if s:windows
-    " Add tag generation
-    " Plug 'xolox/vim-easytags'
-    " Plug 'xolox/vim-misc'
-    " Plug 'xolox/vim-shell'
+if has('win32') || has('win64')
     " C++ Autocompletion
     Plug 'Rip-Rip/clang_complete'
 endif
@@ -52,7 +48,7 @@ if has('unix') && !has('macunix') && !has('win32unix')
 endif
 "add molokai colorscheme
 Plug 'tomasr/molokai'
-"add vim-airline & themes
+" add vim-airline & themes
 Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "add indent lines
 Plug 'Yggdroot/indentLine'
@@ -76,20 +72,24 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 "Add a commenting plugin
 Plug 'tpope/vim-commentary'
-
 " Add async compiling
 Plug 'tpope/vim-dispatch'
+" Auto Generate Tags File
+Plug 'ludovicchabant/vim-gutentags'
 
 " Plugins for consideration {{{
 " Add neocomplete. Better AutoComplPop & Ultisnips compatibility.
 " TODO: Get the settings configured to my likings
 " Plug 'Shougo/neocomplete.vim'
 
-" add vim-lightline. Will eventually replace vim-airline
+" add vim-lightline. May eventually replace vim-airline
 " Plug 'itchyny/lightline.vim'
 
 " Add VimCompletesMe. Alternative to SuperTab. I may use in the future.
 " Plug 'ajh17/VimCompletesMe'
+
+" Another vim autocomplete plugin
+" Plug 'lifepillar/vim-mucomplete'
 
 " Add SuperTab. Alternative to VimCompletesMe. I may use in the future.
 " Plug 'ervandew/supertab'
