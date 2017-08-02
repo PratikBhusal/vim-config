@@ -16,7 +16,7 @@ endif
 " noremap <buffer> <silent> <F9> :w<cr>:silent exec Java %"<cr>
 
 " Multi-file compilation
-nnoremap <buffer> <silent> <F9> :w<cr>:Java<cr>
+nnoremap <buffer> <silent> <F9> :w<cr>:Java<cr><cr>
 " Eclim Configs }}} ------------------------------------------------------------
 
 " Windows Configs {{{ ----------------------------------------------------------
