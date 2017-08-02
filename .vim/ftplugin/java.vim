@@ -21,6 +21,6 @@ nnoremap <buffer> <silent> <F9> :w<cr>:Java<cr>
 
 " Windows Configs {{{ ----------------------------------------------------------
 if g:windows
-    nnoremap <buffer> <silent> <F2> :silent exec "!C:/Users/Pratik/eclipse/java-neon/eclipse/eclimd.bat"<cr>
+    nnoremap <buffer> <silent> <F2> :silent exec "!C:/Users/Pratik/eclipse/eclimd.bat"<cr>
 endif
 " Windows Configs }}} ----------------------------------------------------------
