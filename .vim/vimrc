@@ -113,6 +113,7 @@ call plug#end()
 set undodir=~/.vim/.cache/.undo//
 set backupdir=~/.vim/.cache/.backup//
 set directory=~/.vim/.cache/.swp//
+set viminfo+=n~/.vim/viminfo
 
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
