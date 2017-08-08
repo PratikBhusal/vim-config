@@ -127,14 +127,20 @@ endif
 " Change location of temporary files  1}}} -------------------------------------
 
 " Live the Vim Life {{{ --------------------------------------------------------
-inoremap <up> <nop>
-vnoremap <up> <nop>
-inoremap <down> <nop>
-vnoremap <down> <nop>
-inoremap <left> <nop>
-vnoremap <left> <nop>
-inoremap <right> <nop>
-vnoremap <right> <nop>
+inoremap <silent> <up> <nop>
+inoremap <silent> <down> <nop>
+inoremap <silent> <left> <nop>
+inoremap <silent> <right> <nop>
+
+nnoremap <silent> <up> <nop>
+nnoremap <silent> <down> <nop>
+nnoremap <silent> <left> <nop>
+nnoremap <silent> <right> <nop>
+
+vnoremap <silent> <up> <nop>
+vnoremap <silent> <down> <nop>
+vnoremap <silent> <left> <nop>
+vnoremap <silent> <right> <nop>
 " Live the Vim Life  }}} -------------------------------------------------------
 
 " Auto Update at save {{{ ------------------------------------------------------
@@ -168,6 +174,7 @@ set mouse=a
 
 " Forced use of more efficient movement commands {{{ ---------------------------
 let g:hardtime_default_on = 1
+let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 " Forced use of more efficient movement commands  }}} --------------------------
 
 " Text Wrapping & Border Config {{{ --------------------------------------------
