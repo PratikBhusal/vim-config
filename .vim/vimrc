@@ -70,11 +70,10 @@ Plug 'tpope/vim-dispatch'
 Plug 'ludovicchabant/vim-gutentags'
 " C++ Autocompletion
 Plug 'Rip-Rip/clang_complete'
+" Automatic Completion Menu popup
+Plug 'Shougo/neocomplete.vim'
 
 " Plugins for consideration {{{
-" Add neocomplete. Better AutoComplPop & Ultisnips compatibility.
-" TODO: Get the settings configured to my likings
-Plug 'Shougo/neocomplete.vim'
 
 " add vim-lightline. May eventually replace vim-airline
 " Plug 'itchyny/lightline.vim'
