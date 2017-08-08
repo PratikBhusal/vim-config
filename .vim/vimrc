@@ -38,14 +38,6 @@ if !has('nvim')
     "add vim sensible
     Plug 'tpope/vim-sensible'
 endif
-if has('win32') || has('win64')
-    " C++ Autocompletion
-    Plug 'Rip-Rip/clang_complete'
-endif
-if has('unix') && !has('macunix') && !has('win32unix')
-    " Autocompletion
-    Plug 'Valloric/YouCompleteMe' | Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-endif
 "add molokai colorscheme
 Plug 'tomasr/molokai'
 " add vim-airline & themes
@@ -76,6 +68,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 " Auto Generate Tags File
 Plug 'ludovicchabant/vim-gutentags'
+" C++ Autocompletion
+Plug 'Rip-Rip/clang_complete'
 
 " Plugins for consideration {{{
 " Add neocomplete. Better AutoComplPop & Ultisnips compatibility.
@@ -163,7 +157,6 @@ command! Q q
 command! W w
 command! WQ wq
 command! Wq wq
-" inoremap <C-c> <Esc>
 inoremap jk <Esc>
 let mapleader = "\<Space>"
 nnoremap <SPACE> <Nop>
@@ -249,11 +242,11 @@ autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
 inoremap <C-@> <C-Space>
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-"   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-" inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-"   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 " Autocompletion }}} -----------------------------------------------------------
 
 " Cursor Line Highlight {{{ ----------------------------------------------------
