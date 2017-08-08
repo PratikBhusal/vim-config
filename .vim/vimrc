@@ -255,3 +255,11 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 "   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 " Autocompletion }}} -----------------------------------------------------------
+
+" Cursor Line Highlight {{{ ----------------------------------------------------
+" augroup CursorLine
+"   au!
+"   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+"   au WinLeave * setlocal nocursorline
+" augroup END
+" Cursor Line Highlight }}} ----------------------------------------------------
