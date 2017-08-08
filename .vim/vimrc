@@ -80,7 +80,7 @@ Plug 'ludovicchabant/vim-gutentags'
 " Plugins for consideration {{{
 " Add neocomplete. Better AutoComplPop & Ultisnips compatibility.
 " TODO: Get the settings configured to my likings
-" Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neocomplete.vim'
 
 " add vim-lightline. May eventually replace vim-airline
 " Plug 'itchyny/lightline.vim'
@@ -156,7 +156,8 @@ command! Q q
 command! W w
 command! WQ wq
 command! Wq wq
-inoremap <C-c> <Esc>
+" inoremap <C-c> <Esc>
+inoremap jk <Esc>
 let mapleader = "\<Space>"
 nnoremap <SPACE> <Nop>
 nnoremap ; :
@@ -234,9 +235,9 @@ let g:cpp_class_decl_highlight = 1
 " Syntax Highlight Settings }}} ------------------------------------------------
 
 " Autocompletion {{{ -----------------------------------------------------------
-set completeopt+=noinsert
-" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+set completeopt=preview,menu,noinsert
+autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
 inoremap <C-@> <C-Space>
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
