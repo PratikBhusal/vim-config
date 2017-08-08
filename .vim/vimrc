@@ -194,7 +194,7 @@ set hidden
 set number
 set relativenumber
 set mousehide
-" set guioptions-=m  "remove menubar
+set guioptions-=m  "remove menubar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
