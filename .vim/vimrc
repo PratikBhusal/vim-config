@@ -201,8 +201,9 @@ set guioptions-=L  "remove left-hand scroll bar
 let g:indent_guides_guide_size= 2
 set background=dark
 "Colorscheme Choice
-colorscheme molokai
-if !has("gui_running")
+if has("gui_running")
+    colorscheme molokai
+else
     let g:rehash256 = 1
 endif
 set encoding=utf-8
