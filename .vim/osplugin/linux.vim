@@ -3,7 +3,7 @@
 " Make Vim Useable {{{ ---------------------------------------------------------
 set guifont=DejaVu\ Sans\ Mono\ 11
 set lines=999 columns=999
-set clipboard=unnamedplu
+set clipboard^=unnamedplus
 " Make Vim Useable }}} ---------------------------------------------------------
 
 " CtrlP {{{ --------------------------------------------------------------------

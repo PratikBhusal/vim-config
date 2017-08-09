@@ -14,5 +14,5 @@ autocmd VimEnter *
 " Misc Settings {{{ -------------------------------------------------------------
 au GUIEnter * simalt ~x "Maximize Vim on Windows
 set encoding=utf-8
-set clipboard=unnamed
+set clipboard^=unnamed
 " Misc Settings }}} ------------------------------------------------------------
