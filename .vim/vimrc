@@ -107,6 +107,7 @@ set undodir=~/.vim/.cache/.undo//
 set backupdir=~/.vim/.cache/.backup//
 set directory=~/.vim/.cache/.swp//
 set viminfo+=n~/.vim/.cache/.viminfo
+let g:netrw_home='~/.vim/.cache'
 
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
