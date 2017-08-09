@@ -20,9 +20,13 @@ snippet inc "Include Template" b
 endsnippet
 
 snippet cout "std::cout" b
-std::cout << ${1} << std::endl;
+std::cout << ${1:"Hello World"} << ${2:"\n"};
 endsnippet
 
 snippet cin "std::cin" b
 std::cin >> ${1};
+endsnippet
+
+snippet std "C++ Standard Library" b
+std::
 endsnippet
