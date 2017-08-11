@@ -55,6 +55,22 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\v\.(exe|so|dll)$'
 \ }
 let g:ctrlp_follow_symlinks = 1
+
+autocmd StdinReadPre * let s:std_in=1
+if g:LINUX
+    let g:ctrlp_cache_dir = $HOME.'/.vim/.cache/ctrlp-linux'
+    autocmd VimEnter *
+        \ if argc() == 0 && !exists("s:std_in") |
+            \ exe "CtrlP /media/pratik/10264CD2264CBB0C/Programming-Projects/" .
+            \ strftime('%Y') |
+        \ endif
+elseif g:WINDOWS
+    let g:ctrlp_cache_dir = $HOME.'/.vim/.cache/ctrlp-windows'
+    autocmd VimEnter *
+        \ if argc() == 0 && !exists("s:std_in") |
+            \ exe "CtrlP C:/Programming-Projects/" . strftime('%Y') |
+        \ endif
+endif
 " CtrlP }}} --------------------------------------------------------------------
 
 " YouCompleteMe {{{ ------------------------------------------------------------
