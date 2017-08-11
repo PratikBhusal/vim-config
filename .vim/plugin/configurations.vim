@@ -10,10 +10,9 @@ nnoremap <leader>gp :Gpush<cr>
 
 " NERDTree {{{ -----------------------------------------------------------------
 if g:LINUX
-    let NERDTreeBookmarksFile=expand("$HOME/.vim/.cache/.NERDTree-Linux")
-endif
-if g:WINDOWS
-    let NERDTreeBookmarksFile=expand("$HOME/.vim/.cache/.NERDTree-Windows")
+    let NERDTreeBookmarksFile=expand("$HOME/.vim/.cache/NERDTree/.Linux")
+elseif g:WINDOWS
+    let NERDTreeBookmarksFile=expand("$HOME/.vim/.cache/NERDTree/.Windows")
 endif
 let NERDTreeShowBookmarks=1
 let NERDTreeShowLineNumbers=1
