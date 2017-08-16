@@ -5,6 +5,8 @@ set hlsearch
 set autoindent
 set nostartofline
 set confirm
+set fileformat=unix
+set fileformats=unix,dos
 set noerrorbells visualbell t_vb=
 if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
