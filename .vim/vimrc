@@ -1,5 +1,6 @@
 " Essentials {{{ ---------------------------------------------------------------
 set nocompatible
+set noshowmode
 set showcmd
 set hlsearch
 set autoindent

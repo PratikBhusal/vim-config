@@ -105,7 +105,6 @@ let g:airline_theme='molokai'
 " }}} --------------------------------------------------------------------------
 
 " vim-lightline {{{ ------------------------------------------------------------
-set noshowmode
 " let g:lightline = {
 "     \ 'colorscheme': 'default',
 " \ }
