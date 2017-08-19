@@ -21,6 +21,9 @@ nnoremap <buffer> <silent> <F9> :w<cr>:Java<cr><cr>
 
 " Windows Configs {{{ ----------------------------------------------------------
 if g:windows
-    nnoremap <buffer> <silent> <F2> :silent exec "!C:/Users/Pratik/eclipse/eclimd.bat"<cr>
+    " nnoremap <buffer> <silent> <F2> :silent exec "!C:/Users/Pratik/eclipse/eclimd.bat
+    nnoremap <silent> <F2> :silent exec "!C:/Users/Pratik/eclipse/eclimd.bat
+        \ -Dnailgun.server.port=9091
+        \ -Dosgi.instance.area.default=" . expand('%:p:h')<cr>
 endif
 " Windows Configs }}} ----------------------------------------------------------
