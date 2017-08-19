@@ -1,15 +1,15 @@
 priority 1
 
-snippet bord "Add an open border"
-" ${1} {{{${0:1} ------------------------------------------------------------------------
+snippet bord "Insert a vim fold border" b
+" ${1} {{{${0:1} ${2:`!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 8)`}
 endsnippet
 
-snippet bordc "Add a close border"
-"  ${0:1}}}} ------------------------------------------------------------------------
+snippet bordc "Insert a vim fold close border" b
+" $1${0:1}}}} ${2:`!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 7)`}
 endsnippet
 
 snippet bordp "Add a border pair" b
-" $1 {{{ ${2:------------------------------------------------------------------}
+" $1 {{{ ${2:`!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 7)`}
 ${0:${VISUAL:" Content }}
 " $1 }}} $2
 endsnippet
@@ -19,11 +19,11 @@ Plug '${1:SirVer/ultisnips}'
 $0
 endsnippet
 
-snippet fold "Add a new fold marker" b
+snippet fold "Insert a vim fold marker" b
 " ${1} {{{${0:1}
 endsnippet
 
-snippet foldc "Add fold close marker" b
+snippet foldc "Insert a vim fold close marker" b
 "  ${0:1}}}}
 endsnippet
 
