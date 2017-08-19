@@ -12,7 +12,7 @@ set noerrorbells visualbell t_vb=
 if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
-nnoremap <TAB> <C-^>
+nnoremap <silent> <TAB> :bnext<cr>
 " Return to last edit position
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
