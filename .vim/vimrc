@@ -259,3 +259,15 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 "   au WinLeave * setlocal nocursorline
 " augroup END
 " Cursor Line Highlight }}} ----------------------------------------------------
+
+" wildignore settings {{{ ------------------------------------------------------
+" Temporary & Vim Files
+set wildignore+=*/tmp/*,*\\tmp\\*,*.swp
+
+" Zipped Files
+set wildignore+=*.zip
+
+" Compiled Files
+set wildignore+=*.exe,*.so
+
+" Wildignore Settings }}} ------------------------------------------------------

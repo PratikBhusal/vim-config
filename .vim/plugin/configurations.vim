@@ -44,14 +44,12 @@ cabbrev ls <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'ls')<CR
 cabbrev sl <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'sl')<CR>
 map <silent> <Leader>b :CtrlPBookmarkDir<CR>
 let g:ctrlp_dont_split = 'NERD_tree_2'
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_root_markers = ['.gitignore']
 let g:ctrlp_extensions = ['bookmarkdir']
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-    \ 'file': '\v\.(exe|so|dll)$'
+    \ 'dir':  '\v[\/]\.(git|hg|svn|bin)$',
+    \ 'file': '\v\.(exe|so|dll|out|xmi)$'
 \ }
 let g:ctrlp_follow_symlinks = 1
 
