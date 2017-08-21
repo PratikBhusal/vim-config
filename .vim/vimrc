@@ -166,6 +166,7 @@ nnoremap <SPACE> <Nop>
 nnoremap ; :
 set autochdir
 set mouse=a
+set gdefault " no need to include g flag in substitutions
 " Lazy Kebindings }}} ----------------------------------------------------------
 
 " Forced use of more efficient movement commands {{{ ---------------------------
