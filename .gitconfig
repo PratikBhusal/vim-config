@@ -1,0 +1,8 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = PratikBhusal
+	email = PratikBhusal@users.noreply.github.com
+[core]
+	excludesfile = C:/Users/Pratik/.gitignore_global
+	autocrlf = input
