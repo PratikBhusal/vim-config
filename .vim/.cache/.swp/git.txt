@@ -1,2 +1,0 @@
-The only purpose of having this file is to have the folder inside the dotfiles
-repository.
