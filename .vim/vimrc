@@ -115,7 +115,7 @@ set undodir=~/.vim/.cache/.undo//
 set backupdir=~/.vim/.cache/.backup//
 set directory=~/.vim/.cache/.swp//
 set viminfo+=n~/.vim/.cache/.viminfo
-let g:netrw_home='~/.vim/.cache'
+let g:netrw_home='~/.vim/.cache//'
 
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
@@ -133,6 +133,7 @@ inoremap <silent> <up> <nop>
 inoremap <silent> <down> <nop>
 inoremap <silent> <left> <nop>
 inoremap <silent> <right> <nop>
+inoremap <silent> <C-c> <nop>
 
 nnoremap <silent> <up> <nop>
 nnoremap <silent> <down> <nop>
@@ -171,6 +172,7 @@ nnoremap <SPACE> <Nop>
 nnoremap ; :
 set autochdir
 set mouse=a
+cabbrev ex Ex
 " Lazy Kebindings }}} ----------------------------------------------------------
 
 " Forced use of more efficient movement commands {{{ ---------------------------
