@@ -45,6 +45,7 @@ cabbrev sl <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'sl')<CR
 map <silent> <Leader>b :CtrlPBookmarkDir<CR>
 let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 let g:ctrlp_root_markers = ['.gitignore']
 let g:ctrlp_extensions = ['bookmarkdir']
 let g:ctrlp_custom_ignore = {
