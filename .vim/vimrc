@@ -36,6 +36,11 @@ if isdirectory(expand("$HOME/.vim/src/vim-osplugin"))
 else
     Plug 'PratikBhusal/vim-osplugin'
 endif
+if isdirectory(expand("$HOME/.vim/src/vim-SnippetsCompleteMe"))
+    Plug '~/.vim/src/vim-SnippetsCompleteMe'
+else
+    Plug 'PratikBhusal/vim-SnippetsCompleteMe'
+endif
 
 if !has('nvim')
     "add vim sensible
