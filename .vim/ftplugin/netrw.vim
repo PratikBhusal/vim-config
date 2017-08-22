@@ -1,14 +1,11 @@
-" Netrw automatically load CtrlP {{{ -------------------------------------------
-" augroup NetrwLineNumbers
-"     setlocal updatetime=500
-"     autocmd CursorHold *
-"         \ if (&filetype == 'netrw')
-"             \ | CtrlP
-"         \ | endif
-"     autocmd BufLeave *
-"         \ if (&filetype == 'netrw')
-"             \ | bdelete
-"             \ | set updatetime=4000
-"         \ | endif
-" augroup END
-" Netrw automatically load CtrlP }}} -------------------------------------------
+" Change how netrw Looks {{{ ---------------------------------------------------
+let g:netrw_liststyle = 1
+let g:netrw_sizestyle = "H"
+" Change how netrw Looks }}} ---------------------------------------------------
+
+" If avalable, open CtrlP instead {{{ -----------------------------------------
+if exists(':CtrlP')
+    let g:netrw_banner = 0
+    autocmd! FileType netrw CtrlP
+endif
+" If avaliable, open CtrlP instead }}} -----------------------------------------
