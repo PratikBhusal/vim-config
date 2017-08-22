@@ -8,7 +8,7 @@ snippet bordc "Insert a vim fold close border" b
 " $1${0:1}}}} ${2:`!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 7)`}
 endsnippet
 
-snippet bordp "Add a border pair" b
+snippet bordp "Insert a vim border pair" b
 " $1 {{{ ${2:`!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 7)`}
 ${0:${VISUAL:" Content }}
 " $1 }}} $2
