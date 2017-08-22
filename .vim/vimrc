@@ -230,7 +230,7 @@ set tabstop=8 softtabstop=4 expandtab shiftwidth=4 smarttab
 
 " Folding {{{ ------------------------------------------------------------------
 set foldmethod=marker
-"set foldlevelstart=1
+" set foldlevelstart=0
 nnoremap <silent> \ @=(foldlevel('.')?'za':"\\")<CR>
 augroup folding
   au BufReadPre * setlocal foldmethod=indent
