@@ -23,6 +23,15 @@ let NERDTreeIgnore=['\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let g:NERDTreeChDirMode = 2
+
+" Auto Expand on Startup {{{
+function! Nerdtree_auto_expand()
+    let b:NERDTreeZoomed = 0
+    call feedkeys("A")
+endfunction
+
+autocmd Filetype nerdtree call Nerdtree_auto_expand()
+" Auto Expand on Startup }}}
 " NERDTree }}} -----------------------------------------------------------------
 
 " Ultisnips {{{ ----------------------------------------------------------------
