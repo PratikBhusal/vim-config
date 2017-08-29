@@ -204,6 +204,7 @@ set guioptions-=m  "remove menubar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
+set linespace=0
 let g:indent_guides_guide_size= 2
 set background=dark
 "Colorscheme Choice
