@@ -51,8 +51,8 @@ cabbrev ls <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'ls')<CR
 cabbrev sl <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'sl')<CR>
 map <silent> <Leader>b :CtrlPBookmarkDir<CR>
 let g:ctrlp_dont_split = 'NERD_tree_2'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 let g:ctrlp_root_markers = ['.gitignore']
 let g:ctrlp_extensions = ['bookmarkdir']
 let g:ctrlp_custom_ignore = {
@@ -61,6 +61,7 @@ let g:ctrlp_custom_ignore = {
 \ }
 let g:ctrlp_follow_symlinks = 1
 
+" Load CtrlP at startup {{{
 autocmd StdinReadPre * let s:std_in=1
 if g:LINUX
     let g:ctrlp_cache_dir = $HOME.'/.vim/.cache/ctrlp-linux'
@@ -76,6 +77,7 @@ elseif g:WINDOWS
             \ exe "CtrlP C:/Programming-Projects/" . strftime('%Y') |
         \ endif
 endif
+" Load CtrlP at startup }}}
 " CtrlP }}} --------------------------------------------------------------------
 
 " YouCompleteMe {{{ ------------------------------------------------------------
