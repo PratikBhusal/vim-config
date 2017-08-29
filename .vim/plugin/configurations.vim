@@ -139,3 +139,9 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " Neocomplete }}} --------------------------------------------------------------
+
+" SnippetsCompleteMe {{{ -------------------------------------------------------
+let g:scm_move_with_ctrl_s = 1
+let g:scm_expand_on_confirm = 1
+let g:scm_expand_on_enter = 1
+" SnippetsCompleteMe }}} -------------------------------------------------------
