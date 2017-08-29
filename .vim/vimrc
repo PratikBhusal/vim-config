@@ -82,6 +82,8 @@ Plug 'Rip-Rip/clang_complete'
 Plug 'Shougo/neocomplete.vim'
 
 " Plugins for consideration {{{
+" Add editexisting.vim
+packadd! editexisting
 
 " add vim-lightline. May eventually replace vim-airline
 " Plug 'itchyny/lightline.vim'
