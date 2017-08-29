@@ -252,14 +252,13 @@ let g:cpp_class_decl_highlight = 1
 
 " Autocompletion {{{ -----------------------------------------------------------
 set completeopt=preview,menu,noinsert
-autocmd CursorMovedI *  if pumvisible() == 0|silent! pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
+autocmd CompleteDone * if pumvisible() == 0|silent! pclose|endif
 inoremap <C-@> <C-Space>
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+" inoremap <expr> <silent> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent> <expr>  <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+inoremap <silent> <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 " Autocompletion }}} -----------------------------------------------------------
 
