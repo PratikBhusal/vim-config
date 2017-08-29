@@ -35,11 +35,9 @@ autocmd Filetype nerdtree call Nerdtree_auto_expand()
 " NERDTree }}} -----------------------------------------------------------------
 
 " Ultisnips {{{ ----------------------------------------------------------------
-" Trigger configuration.
-" Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-set runtimepath+=~\plugged\vim-snippets\UltiSnips
+set runtimepath+=~/.vim/UltiSnips
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-let g:UltiSnipsSnippetDirectories=["UltiSnips","plugged/vim-snippets/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips","bundle/vim-snippets/UltiSnips"]
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
