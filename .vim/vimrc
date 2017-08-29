@@ -185,7 +185,7 @@ let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 
 " Text Wrapping & Border Config {{{ --------------------------------------------
 set tw=80
-execute "set colorcolumn=" .join(range(81,999), ',')
+execute "set colorcolumn=" .join(range(81,120), ',')
 " Text Wrapping & Border Config }}} --------------------------------------------
 
 " Sorting {{{ ------------------------------------------------------------------
