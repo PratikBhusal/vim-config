@@ -34,10 +34,13 @@ if g:windows
     let g:clang_auto_select = 1
     let g:clang_close_preview = 1
     let g:clang_complete_copen = 1
-    let g:AutoPairsMapCR = 0
-    imap <buffer> <silent> <CR> <CR><Plug>AutoPairsReturn
     let g:clang_auto_select = 1
     let g:clang_complete_optional_args_in_snippets = 1
     inoremap <buffer> <C-Space> <C-x><C-o>
+
+    " Auto-Pairs Compatibility {{{
+    let g:AutoPairsMapCR = 0
+    imap <buffer> <silent> <CR> <CR><Plug>AutoPairsReturn
+    " Auto-Pairs Compatibility }}}
 endif
 " Clang_Complete }}} -----------------------------------------------------------
