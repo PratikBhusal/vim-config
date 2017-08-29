@@ -175,6 +175,7 @@ nnoremap ; :
 set autochdir
 set mouse=a
 cabbrev ex Ex
+cabbrev vimtutor view $HOME/.vim/vimtutor
 set gdefault " no need to include g flag in substitutions
 " Lazy Kebindings }}} ----------------------------------------------------------
 
