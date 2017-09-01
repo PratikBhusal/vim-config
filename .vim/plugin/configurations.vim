@@ -46,20 +46,20 @@ let g:UltiSnipsEditSplit="vertical"
 " Ultisnips }}} ----------------------------------------------------------------
 
 " CtrlP {{{ --------------------------------------------------------------------
-map <silent> <Leader>p :CtrlP<CR>
-cabbrev ls <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'ls')<CR>
-cabbrev sl <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'sl')<CR>
-map <silent> <Leader>b :CtrlPBookmarkDir<CR>
-let g:ctrlp_dont_split = 'NERD_tree_2'
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-let g:ctrlp_root_markers = ['.gitignore']
+let g:ctrlp_reuse_window = 'nerdtree\|netrw\|help\|quickfix'
 let g:ctrlp_extensions = ['bookmarkdir']
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|bin)$',
     \ 'file': '\v\.(exe|so|dll|out|xmi)$'
 \ }
 let g:ctrlp_follow_symlinks = 1
+
+" Ignore and Index files with .gitignore file. Prefer rg > git {{{
+let g:ctrlp_root_markers = ['.gitignore']
+let g:ctrlp_user_command = ( executable('rg') )
+    \ ? 'rg %s -i --files --no-heading'
+    \ : ['.git', 'cd %s && git ls-files']
+" Ignore and Index files with .gitignore file. Prefer rg > ag > git }}}
 
 " Load CtrlP at startup {{{
 autocmd StdinReadPre * let s:std_in=1
@@ -78,18 +78,14 @@ elseif g:WINDOWS
         \ endif
 endif
 " Load CtrlP at startup }}}
-" CtrlP }}} --------------------------------------------------------------------
 
-" YouCompleteMe {{{ ------------------------------------------------------------
-if g:LINUX
-    let g:ycm_key_list_select_completion=['<Leader>n']
-    let g:ycm_key_list_previous_completion=['<Leader>p']
-    let g:ycm_autoclose_preview_window_after_completion=1
-    " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm'
-    let g:ycm_global_ycm_extra_conf = '~/.vim/YouCompleteMe/.ycm_extra_conf.py'
-    let g:ycm_python_binary_path = '/usr/bin/python3'
-endif
-" YouCompleteMe }}} ------------------------------------------------------------
+" Hotkeys {{{
+nnoremap <silent> <Leader>p :CtrlP<CR>
+cabbrev ls <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'ls')<CR>
+cabbrev sl <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'CtrlPBuffer' : 'sl')<CR>
+nnoremap <silent> <Leader>b :CtrlPBookmarkDir<CR>
+" Hotkeys }}}
+" CtrlP }}} --------------------------------------------------------------------
 
 " VimCompletesMe {{{ -----------------------------------------------------------
 " let g:vcm_default_maps = 0
