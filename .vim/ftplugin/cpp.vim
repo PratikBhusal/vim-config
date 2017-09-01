@@ -1,9 +1,13 @@
 " Compile/Run programs {{{ -----------------------------------------------------
-setlocal makeprg=g++\ -Wall\ -fexceptions\ -g\ -O3\ -Wcast-align\
-    \ -Wnon-virtual-dtor\ -Wshadow\ -Winit-self\ -Wredundant-decls\ -Wundef\
-    \ -Wfloat-equal\ -Winline\ -Wunreachable-code\ -Wmissing-declarations\
-    \ -Wmissing-include-dirs\ -Wswitch-enum\ -Wswitch-default\ -Wmain\ -Wextra\
-    \ -Wzero-as-null-pointer-constant\ -pedantic-errors\ -pedantic
+
+if !( filereadable(expand('%:p:h') . "\/GNUmakefile") )
+    setlocal makeprg=g++\ -Wall\ -fexceptions\ -g\ -O3\ -Wcast-align\
+        \ -Wnon-virtual-dtor\ -Wshadow\ -Winit-self\ -Wredundant-decls\ -Wundef\
+        \ -Wfloat-equal\ -Winline\ -Wunreachable-code\ -Wmissing-declarations\
+        \ -Wmissing-include-dirs\ -Wswitch-enum\ -Wswitch-default\ -Wmain\ -Wextra\
+        \ -Wzero-as-null-pointer-constant\ -pedantic-errors\ -pedantic\ %:p\ -o
+endif
+
 " -std=c++11
 " -Weffc++
 " -Wfatal-errors
@@ -11,18 +15,21 @@ setlocal makeprg=g++\ -Wall\ -fexceptions\ -g\ -O3\ -Wcast-align\
 " command -nargs=* Make make <args> | cwindow
 " command  Make make | cwindow
 if g:windows
-    noremap <buffer> <silent> <F9> :w<cr>:Make %:p -o %:p:r.exe<cr><cr>
+    noremap <buffer> <silent> <F9> :w<cr>:make %:p:r.exe<cr><cr>
 
     if has('nvim')
         noremap <buffer> <silent> <F10> :!%:p:r.exe<cr>
     else
         noremap <buffer> <silent> <F10> :!%:p:r.exe<cr><cr>
     endif
-endif
-if g:linux
-    noremap <buffer> <silent> <F9> :w<cr>:make %:p -o %:p:r.out<cr><cr>
+elseif g:linux
+    noremap <buffer> <silent> <F9> :w<cr>:make %:p:r.out<cr><cr>
     noremap <buffer> <silent> <F10> :!"%:p:r.out"<cr>
 endif
+
+" Automatically open the quickfix window on error
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
 " Compile/Run programs }}} -----------------------------------------------------
 
 " Clang_Complete {{{ -----------------------------------------------------------
