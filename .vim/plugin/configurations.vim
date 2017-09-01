@@ -9,11 +9,9 @@ nnoremap <leader>gp :Gpush<cr>
 " Vim-Fugitive }}} -------------------------------------------------------------
 
 " NERDTree {{{ -----------------------------------------------------------------
-if g:LINUX
-    let NERDTreeBookmarksFile=expand("$HOME/.vim/.cache/NERDTree/.Linux")
-elseif g:WINDOWS
-    let NERDTreeBookmarksFile=expand("$HOME/.vim/.cache/NERDTree/.Windows")
-endif
+let NERDTreeBookmarksFile= ( g:LINUX )
+    \ ? expand("$HOME/.vim/.cache/NERDTree/.Linux")
+    \ : expand("$HOME/.vim/.cache/NERDTree/.Windows")
 let NERDTreeShowBookmarks=1
 let NERDTreeShowLineNumbers=1
 let NERDTreeIgnore=['\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
@@ -37,7 +35,7 @@ autocmd Filetype nerdtree call Nerdtree_auto_expand()
 " Ultisnips {{{ ----------------------------------------------------------------
 set runtimepath+=~/.vim/UltiSnips
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-let g:UltiSnipsSnippetDirectories=["UltiSnips","bundle/vim-snippets/UltiSnips"]
+" let g:UltiSnipsSnippetDirectories=["UltiSnips","bundle/vim-snippets/UltiSnips"]
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
