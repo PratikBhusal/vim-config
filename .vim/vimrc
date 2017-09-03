@@ -254,6 +254,8 @@ let g:cpp_class_decl_highlight = 1
 " Autocompletion {{{ -----------------------------------------------------------
 set completeopt=preview,menu,noinsert
 autocmd CompleteDone * if pumvisible() == 0|silent! pclose|endif
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
 inoremap <C-@> <C-Space>
 " inoremap <expr> <silent> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent> <expr>  <C-n> pumvisible() ? '<C-n>' :

@@ -26,10 +26,6 @@ elseif g:linux
     noremap <buffer> <silent> <F9> :w<cr>:make %:p:r.out<cr><cr>
     noremap <buffer> <silent> <F10> :!"%:p:r.out"<cr>
 endif
-
-" Automatically open the quickfix window on error
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
 " Compile/Run programs }}} -----------------------------------------------------
 
 " Clang_Complete {{{ -----------------------------------------------------------
