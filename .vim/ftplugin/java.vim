@@ -1,8 +1,3 @@
-" Backup Code Compile/Run {{{ --------------------------------------------------
-"noremap <buffer> <F9> :w<cr>:exec '!javac' shellescape(expand('%'), 1) '&& java' shellescape(expand('%:r'), 1)<cr>
-"noremap <buffer> <F10> :exec '!java' shellescape(expand('%:r'), 1)<cr>
-" Backup Code Compile/Run }}} --------------------------------------------------
-
 " Eclim Configs {{{ ------------------------------------------------------------
 let g:EclimCompletionMethod = 'omnifunc'
 " let g:EclimCompletionMethod = 'completefunc'
@@ -12,18 +7,16 @@ else
     inoremap <buffer> <C-Space> <C-x><C-o>
 endif
 
-" Single file compilation
-" noremap <buffer> <silent> <F9> :w<cr>:silent exec Java %"<cr>
-
-" Multi-file compilation
+" Compile Code
 nnoremap <buffer> <silent> <F9> :w<cr>:Java<cr><cr>
+" noremap <buffer> <silent> <F9> :w<cr>:make -d "%:p:h:h/bin" "%:p"<cr><cr>
+" noremap <buffer> <silent> <F10> :!java -cp "%:p:h:h/bin" %:r<cr><cr>
 " Eclim Configs }}} ------------------------------------------------------------
 
 " Windows Configs {{{ ----------------------------------------------------------
 if g:windows
-    " nnoremap <buffer> <silent> <F2> :silent exec "!C:/Users/Pratik/eclipse/eclimd.bat
     nnoremap <silent> <F2> :silent exec "!C:/Users/Pratik/eclipse/eclimd.bat
         \ -Dnailgun.server.port=9091
-        \ -Dosgi.instance.area.default=" . expand('%:p:h')<cr>
+        \ -Dosgi.instance.area.default=" . expand( getcwd() )<cr>
 endif
 " Windows Configs }}} ----------------------------------------------------------
