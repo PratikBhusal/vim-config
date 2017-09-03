@@ -95,13 +95,15 @@ Plug 'junegunn/vim-easy-align'
 " add vim-lightline. May eventually replace vim-airline
 " Plug 'itchyny/lightline.vim'
 
-" Add VimCompletesMe. Alternative to SuperTab. I may use in the future.
+" Add a vim wiki for notetaking and other needs
+" Plug 'vimwiki/vimwiki'
+
+" Add a syntax checking plugin
+" Plug 'vim-syntastic/syntastic'
+
+" Autocompletion Options
 " Plug 'ajh17/VimCompletesMe'
-
-" Another vim autocomplete plugin
 " Plug 'lifepillar/vim-mucomplete'
-
-" Add SuperTab. Alternative to VimCompletesMe. I may use in the future.
 " Plug 'ervandew/supertab'
 
 " markdown preview
