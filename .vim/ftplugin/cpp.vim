@@ -31,7 +31,7 @@ endif
 " Clang_Complete {{{ -----------------------------------------------------------
 if g:windows
     let g:clang_library_path='C:\Program Files\LLVM\bin'
-    let g:clang_user_options = '--target=x86_64-w64-mingw32 -Weverything -std=c++11'
+    let g:clang_user_options = '--target=x86_64-w64-mingw32 -Weverything -std=c++14'
     let g:clang_snippets = 1
     let g:clang_snippets_engine = 'ultisnips'
     let g:clang_auto_select = 1
