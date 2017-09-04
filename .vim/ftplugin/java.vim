@@ -8,8 +8,8 @@ else
 endif
 
 " Compile Code
-nnoremap <buffer> <silent> <F9> :w<cr>:Java<cr><cr>
-" noremap <buffer> <silent> <F9> :w<cr>:make -d "%:p:h:h/bin" "%:p"<cr><cr>
+nnoremap <buffer> <silent> <F9> :update <bar> Java<cr><cr>
+" noremap <buffer> <silent> <F9> :update <bar> make -d "%:p:h:h/bin" "%:p"<cr><cr>
 " noremap <buffer> <silent> <F10> :!java -cp "%:p:h:h/bin" %:r<cr><cr>
 " Eclim Configs }}} ------------------------------------------------------------
 

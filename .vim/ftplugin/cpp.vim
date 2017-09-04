@@ -15,7 +15,7 @@ endif
 " command -nargs=* Make make <args> | cwindow
 " command  Make make | cwindow
 if g:windows
-    noremap <buffer> <silent> <F9> :w<cr>:make %:p:r.exe<cr><cr>
+    noremap <buffer> <silent> <F9> :update <bar> make %:p:r.exe<cr><cr>
 
     if has('nvim')
         noremap <buffer> <silent> <F10> :!%:p:r.exe<cr>
@@ -23,7 +23,7 @@ if g:windows
         noremap <buffer> <silent> <F10> :!%:p:r.exe<cr><cr>
     endif
 elseif g:linux
-    noremap <buffer> <silent> <F9> :w<cr>:make %:p:r.out<cr><cr>
+    noremap <buffer> <silent> <F9> :update <bar> make %:p:r.out<cr><cr>
     noremap <buffer> <silent> <F10> :!"%:p:r.out"<cr>
 endif
 " Compile/Run programs }}} -----------------------------------------------------
