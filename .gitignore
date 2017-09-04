@@ -36,6 +36,7 @@ LICENSE
 
 # All the things that will be in the repository:
 # !/.vimrc
+!.bash_aliases
 !/.vim/vimrc
 !/.gitignore
 # !/vimfiles
