@@ -50,6 +50,11 @@ endif
 
 " Clang-Format {{{ -------------------------------------------------------------
 vnoremap <buffer> <Leader>cf :ClangFormat<CR>
+
+if g:linux
+    let g:clang_format#command = 'clang-format-4.0'
+endif
+
 " Configurations {{{
 let g:clang_format#code_style = 'llvm'
 let g:clang_format#style_options = {

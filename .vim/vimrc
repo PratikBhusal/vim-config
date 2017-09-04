@@ -83,11 +83,10 @@ Plug 'Shougo/neocomplete.vim'
 
 " Plugins for consideration {{{
 " Add editexisting.vim
-packadd! editexisting
 
 " Add vim-clang-format to format my c-family code
 Plug 'rhysd/vim-clang-format'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " Add vim-easy-align to quickly align code.
 Plug 'junegunn/vim-easy-align'
