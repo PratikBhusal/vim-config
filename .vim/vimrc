@@ -1,5 +1,5 @@
 " Essentials {{{ ---------------------------------------------------------------
-set nocompatible
+scriptencoding utf-8
 set noshowmode
 set showcmd
 set hlsearch
