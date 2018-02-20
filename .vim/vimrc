@@ -79,7 +79,8 @@ command! W w
 command! WQ wq
 command! Wq wq
 inoremap jk <Esc>
-let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
+let g:maplocalleader = "\<Space>"
 nnoremap <SPACE> <Nop>
 nnoremap ; :
 set autochdir
