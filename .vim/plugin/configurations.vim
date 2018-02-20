@@ -35,13 +35,13 @@ autocmd Filetype nerdtree call Nerdtree_auto_expand()
 
 " Ultisnips {{{ ----------------------------------------------------------------
 set runtimepath+=~/.vim/UltiSnips
-let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-" let g:UltiSnipsSnippetDirectories=["UltiSnips","bundle/vim-snippets/UltiSnips"]
+let g:UltiSnipsSnippetsDir='~/.vim/UltiSnips'
+" let g:UltiSnipsSnippetDirectories=['UltiSnips','bundle/vim-snippets/UltiSnips']
 let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<Leader>z"
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<Leader>z'
+let g:UltiSnipsEditSplit='vertical'
 " Ultisnips }}} ----------------------------------------------------------------
 
 " CtrlP {{{ --------------------------------------------------------------------
@@ -53,11 +53,12 @@ let g:ctrlp_custom_ignore = {
 \ }
 let g:ctrlp_follow_symlinks = 1
 
-" Ignore and Index files with .gitignore file. Prefer rg > git {{{
+" Ignore and Index files with .gitignore file. Prefer ripgrep > git {{{
 let g:ctrlp_root_markers = ['.gitignore']
 let g:ctrlp_user_command = ( executable('rg') )
-    \ ? 'rg %s -i --files --no-heading'
+    \ ? 'rg %s -i --files --no-heading --color=never --glob ""'
     \ : ['.git', 'cd %s && git ls-files']
+let g:ctrlp_use_caching = 0
 " Ignore and Index files with .gitignore file. Prefer rg > ag > git }}}
 
 " Load CtrlP at startup {{{
