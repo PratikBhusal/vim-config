@@ -101,7 +101,9 @@ vnoremap <leader>s :!sort<cr>
 " Sorting }}} ------------------------------------------------------------------
 
 " Make things look nice {{{ ----------------------------------------------------
-set shortmess=atI
+set shortmess=at
+set list " Display whitespace
+" set listchars+=eol:¬
 syntax on
 set hidden
 set number
