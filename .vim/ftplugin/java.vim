@@ -1,7 +1,7 @@
 " Eclim Configs {{{ ------------------------------------------------------------
 let g:EclimCompletionMethod = 'omnifunc'
 " let g:EclimCompletionMethod = 'completefunc'
-if g:EclimCompletionMethod == 'completefunc'
+if g:EclimCompletionMethod ==# 'completefunc'
     inoremap <buffer> <C-Space> <C-x><C-u>
 else
     inoremap <buffer> <C-Space> <C-x><C-o>
