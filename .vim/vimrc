@@ -192,11 +192,6 @@ cabbrev vimtutor view $HOME/.vim/vimtutor
 set gdefault " no need to include g flag in substitutions
 " Lazy Kebindings }}} ----------------------------------------------------------
 
-" Forced use of more efficient movement commands {{{ ---------------------------
-let g:hardtime_default_on = 1
-let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
-" Forced use of more efficient movement commands  }}} --------------------------
-
 " Text Wrapping & Border Config {{{ --------------------------------------------
 set tw=80
 execute "set colorcolumn=" .join(range(81,120), ',')
@@ -256,13 +251,11 @@ augroup folding
 augroup END
 " Folding }}} ------------------------------------------------------------------
 
-" Syntax Highlight Settings {{{ ------------------------------------------------
-let python_highlight_all = 1
-autocmd! FileType c,java,php call CSyntaxAfter()
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-" Syntax Highlight Settings }}} ------------------------------------------------
+set foldmethod=marker " Fold on marker
+" set foldclose=all     " Close folds if you leave them in any way
+set foldenable        " Turn on folding
+set foldlevel=0       " Autofold everything by default
+" Folding }}} ------------------------------------------------------------------
 
 " Autocompletion {{{ -----------------------------------------------------------
 set completeopt=preview,menu,noinsert

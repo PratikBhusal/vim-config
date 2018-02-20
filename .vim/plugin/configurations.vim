@@ -158,3 +158,27 @@ let g:scm_expand_on_enter = 1
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 " Vim-Easy-Align }}} -----------------------------------------------------------
+
+" vim-hardtime {{{ -------------------------------------------------------------
+let g:hardtime_default_on = 1
+let g:list_of_disabled_keys = ['<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']
+let g:hardtime_ignore_buffer_patterns = [ 'NERD.*' ]
+" vim-hardtime }}} -------------------------------------------------------------
+
+" Syntax Highlight Settings {{{ ------------------------------------------------
+let g:python_highlight_all = 1
+autocmd! FileType c,java,php call CSyntaxAfter()
+let g:cpp_class_scope_highlight = 1
+let g:load_doxygen_syntax = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+
+" Rainbow Parentheses Plugin {{{
+let g:rainbow_active = 1
+" Rainbow Parentheses Plugin }}}
+
+" Polygot Plugin {{{
+let g:polyglot_disabled = ['latex']
+" Polygot Plugin }}}
+
+" Syntax Highlight Settings }}} ------------------------------------------------
