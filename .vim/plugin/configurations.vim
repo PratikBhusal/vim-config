@@ -9,17 +9,18 @@ nnoremap <leader>gp :Gpush<cr>
 " Vim-Fugitive }}} -------------------------------------------------------------
 
 " NERDTree {{{ -----------------------------------------------------------------
-let NERDTreeBookmarksFile= ( g:LINUX )
-    \ ? expand("$HOME/.vim/.cache/NERDTree/.Linux")
-    \ : expand("$HOME/.vim/.cache/NERDTree/.Windows")
-let NERDTreeShowBookmarks=1
-let NERDTreeShowLineNumbers=1
-let NERDTreeIgnore=['\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
+let g:NERDTreeBookmarksFile= ( g:LINUX )
+    \ ? expand('$HOME/.vim/.cache/NERDTree/.Linux')
+    \ : expand('$HOME/.vim/.cache/NERDTree/.Windows')
+let g:NERDTreeShowBookmarks=1
+let g:NERDTreeShowLineNumbers=1
+let g:NERDTreeHijackNetrw = 1
+let g:NERDTreeIgnore=['\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
     \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
     \ '\.embed\.manifest$', '\.embed\.manifest.res$',
     \ '\.intermediate\.manifest$', '^mt.dep$' ]
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
+let g:NERDTreeShowHidden=1
 let g:NERDTreeChDirMode = 2
 
 " Auto Expand on Startup {{{
