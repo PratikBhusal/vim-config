@@ -132,8 +132,7 @@ set guicursor=v:hor15-Cursor/lCursor
 " Change how the cursor looks }}} ----------------------------------------------
 
 " Make searching less tedious (Without it put \c (insen) or \C (sen) at end) {{{
-set ignorecase
-set smartcase
+set ignorecase smartcase
 " Make searching less tedious (Without it put \c (insen) or \C (sen) at end)  }}}
 
 " Set tab intent to 4 spaces {{{ -----------------------------------------------
@@ -141,14 +140,11 @@ set tabstop=8 softtabstop=4 expandtab shiftwidth=4 smarttab
 " Set tab intent to 4 spaces }}} -----------------------------------------------
 
 " Folding {{{ ------------------------------------------------------------------
-set foldmethod=marker
-" set foldlevelstart=0
 nnoremap <silent> \ @=(foldlevel('.')?'za':"\\")<CR>
 augroup folding
   au BufReadPre * setlocal foldmethod=indent
   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=marker | endif
 augroup END
-" Folding }}} ------------------------------------------------------------------
 
 set foldmethod=marker " Fold on marker
 " set foldclose=all     " Close folds if you leave them in any way
@@ -188,4 +184,9 @@ set wildignore+=*.zip
 " Compiled Files
 set wildignore+=*.exe,*.so
 
+" set grepprg=rg\ --vimgrep
+" if executable('rg')
+"     set grepprg=rg\ --vimgrep
+"     set grepformat=%f:%l:%c:%m
+" endif
 " Wildignore Settings }}} ------------------------------------------------------
