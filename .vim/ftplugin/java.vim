@@ -9,8 +9,9 @@ endif
 
 " Compile Code
 nnoremap <buffer> <silent> <F9> :update <bar> Java<cr><cr>
+" nnoremap <buffer> <silent> <F9> :update <bar>!java -cp "%:p:h:h:h/bin" Project6<cr><cr>
 " noremap <buffer> <silent> <F9> :update <bar> make -d "%:p:h:h/bin" "%:p"<cr><cr>
-" noremap <buffer> <silent> <F10> :!java -cp "%:p:h:h/bin" %:r<cr><cr>
+noremap <buffer> <silent> <F10> :update <bar>!java -cp "%:p:h:h/bin" %:r<cr><cr>
 " Eclim Configs }}} ------------------------------------------------------------
 
 " Windows Configs {{{ ----------------------------------------------------------
