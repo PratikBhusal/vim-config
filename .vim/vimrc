@@ -1,4 +1,5 @@
 " Essentials {{{ ---------------------------------------------------------------
+set encoding=utf-8
 scriptencoding utf-8
 set noshowmode
 set showcmd
@@ -122,7 +123,6 @@ if has("gui_running")
 else
     let g:rehash256 = 1
 endif
-set encoding=utf-8
 " Delete Trailing Whitespace
 " autocmd BufWritePre * %s/\s\+$//e
 " Make things look nice }}} ----------------------------------------------------
