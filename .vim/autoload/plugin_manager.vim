@@ -64,8 +64,10 @@ Plug 'Rip-Rip/clang_complete'
 " Plug 'hdima/python-syntax'
 Plug 'sheerun/vim-polyglot'
 " Automatic Completion Menu popup
-Plug 'Shougo/neocomplete.vim'
-Plug 'Shougo/neco-vim'
+if has('lua')
+    Plug 'Shougo/neocomplete.vim'
+    Plug 'Shougo/neco-vim'
+endif
 " Plug 'lifepillar/vim-mucomplete'
 
 
