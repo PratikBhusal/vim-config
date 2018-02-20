@@ -93,16 +93,25 @@ nnoremap <silent> <Leader>b :CtrlPBookmarkDir<CR>
 " imap <S-Tab> <plug>vim_completes_me_backward
 " VimCompletesMe }}} -----------------------------------------------------------
 
-" Syntastic {{{ ----------------------------------------------------------------
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_aggregate_errors = 1
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-" Syntastic }}} ----------------------------------------------------------------
+" ALE {{{ ----------------------------------------------------------------------
+let g:ale_sign_column_always = 1
+" c {{{
+let g:ale_c_clang_options = '-std=c11 -Wall --target=x86_64-w64-mingw32'
+let g:ale_c_clangcheck_options = '-std=c11 --target=x86_64-w64-mingw32'
+let g:ale_c_clangtidy_options = '-std=c11 --target=x86_64-w64-mingw32'
+" c }}}
+" cpp {{{
+let g:ale_cpp_clang_options = '-std=c++14 -Wall --target=x86_64-w64-mingw32'
+let g:ale_cpp_clangcheck_options = '-std=c++14 --target=x86_64-w64-mingw32'
+let g:ale_cpp_clangtidy_options = '-std=c++14 --target=x86_64-w64-mingw32'
+" cpp }}}
+let g:ale_linters = {
+\   'asm': [],
+\   'c': ['clang', 'clangtidy', 'gcc'],
+\   'cpp': ['clang','clangcheck','clangtidy','g++'],
+\   'java': [],
+\}
+" ALE }}} ----------------------------------------------------------------------
 
 " vim-airline {{{ --------------------------------------------------------------
 let g:airline_theme='molokai'
