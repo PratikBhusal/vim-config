@@ -106,7 +106,9 @@ Plug 'vim-scripts/pythoncomplete'
 " Plug 'vimwiki/vimwiki'
 
 " Add a syntax checking plugin
-Plug 'w0rp/ale'
+if v:version >= 800
+    Plug 'w0rp/ale'
+endif
 
 " Add Verilog Support
 Plug 'vhda/verilog_systemverilog.vim'
