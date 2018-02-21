@@ -14,7 +14,7 @@ elseif g:linux
     noremap <buffer> <silent> <F10> :!'%:p:r.out'<cr>
 endif
 
-if !( filereadable(expand('%:p:h') . '\/Makefile') )
+if !( filereadable( expand('%:p:h') . ( g:windows ? '\/Makefile' : '/Makefile' ) ) )
     setlocal makeprg=g++\ -Wall\ -fexceptions\ -g\ -O3\ -Wcast-align\ -Wundef\
         \ -Wnon-virtual-dtor\ -Wshadow\ -Winit-self\ -Wredundant-decls\ -Wextra\
         \ -Wfloat-equal\ -Winline\ -Wunreachable-code\ -Wmissing-declarations\
