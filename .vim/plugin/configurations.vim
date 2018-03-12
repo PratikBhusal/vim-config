@@ -1,7 +1,15 @@
-" Platform Identification {{{ --------------------------------------------------
-let g:LINUX = has('unix') && !has('macunix') && !has('win32unix')
-let g:WINDOWS = has('win32') || has('win64')
-" Platform Identification }}} --------------------------------------------------
+" vim-osplugin {{{ -------------------------------------------------------------
+if g:windows
+    call osplugin#init('windows.vim')
+elseif g:linux
+    call osplugin#init('linux.vim')
+elseif g:cygwin
+    call osplugin#init('cygwin.vim')
+    call osplugin#init('linux.vim')
+elseif g:macOS
+    call osplugin#init('macOS.vim')
+endif
+" vim-osplugin }}} -------------------------------------------------------------
 
 " Vim-Fugitive {{{ -------------------------------------------------------------
 nnoremap <leader>gg :Gstatus<cr>
@@ -9,7 +17,7 @@ nnoremap <leader>gp :Gpush<cr>
 " Vim-Fugitive }}} -------------------------------------------------------------
 
 " NERDTree {{{ -----------------------------------------------------------------
-let g:NERDTreeBookmarksFile= ( g:LINUX )
+let g:NERDTreeBookmarksFile= ( g:linux )
     \ ? expand('$HOME/.vim/.cache/NERDTree/.Linux')
     \ : expand('$HOME/.vim/.cache/NERDTree/.Windows')
 let g:NERDTreeShowBookmarks=1
@@ -63,14 +71,14 @@ let g:ctrlp_use_caching = 0
 
 " Load CtrlP at startup {{{
 autocmd StdinReadPre * let s:std_in=1
-if g:LINUX
+if g:linux
     let g:ctrlp_cache_dir = $HOME.'/.vim/.cache/ctrlp-linux'
     autocmd VimEnter *
         \ if argc() == 0 && !exists("s:std_in") |
             \ exe "CtrlP /media/pratik/10264CD2264CBB0C/Programming-Projects/" .
             \ strftime('%Y') |
         \ endif
-elseif g:WINDOWS
+elseif g:windows
     let g:ctrlp_cache_dir = $HOME.'/.vim/.cache/ctrlp-windows'
     autocmd VimEnter *
         \ if argc() == 0 && !exists("s:std_in") |
