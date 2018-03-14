@@ -161,7 +161,9 @@ set foldlevel=0       " Autofold everything by default
 " Folding }}} ------------------------------------------------------------------
 
 " Autocompletion {{{ -----------------------------------------------------------
-set completeopt=preview,menu,noinsert
+if has('patch-7.4.775')
+    set completeopt+=noinsert
+endif
 
 augroup auto_quickfix_window
     autocmd!
