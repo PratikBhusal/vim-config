@@ -11,18 +11,21 @@ endif
 
 call plug#begin('~/.vim/bundle')
 " Add my own plugins :D
-if isdirectory(expand("$HOME/.vim/src/vim-osplugin"))
+if isdirectory(expand('$HOME/.vim/src/vim-osplugin'))
     Plug '~/.vim/src/vim-osplugin'
+    execute 'helptags ' . expand('$HOME/.vim/src/vim-osplugin/doc')
 else
     Plug 'PratikBhusal/vim-osplugin'
 endif
-if isdirectory(expand("$HOME/.vim/src/vim-SnippetsCompleteMe"))
+if isdirectory(expand('$HOME/.vim/src/vim-SnippetsCompleteMe'))
     Plug '~/.vim/src/vim-SnippetsCompleteMe'
+    execute 'helptags ' . expand('$HOME/.vim/src/vim-SnippetsCompleteMe/doc')
 else
     Plug 'PratikBhusal/vim-SnippetsCompleteMe'
 endif
-if isdirectory(expand("$HOME/.vim/src/vim-grip"))
+if isdirectory(expand('$HOME/.vim/src/vim-grip'))
     Plug '~/.vim/src/vim-grip'
+    execute 'helptags ' . expand('$HOME/.vim/src/vim-grip/doc')
 else
     Plug 'PratikBhusal/vim-grip'
 endif
