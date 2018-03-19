@@ -58,7 +58,9 @@ Plug 'tpope/vim-dispatch'
 " Auto Generate Tags File
 Plug 'ludovicchabant/vim-gutentags'
 " C++ Autocompletion
+if executable('clang')
 Plug 'Rip-Rip/clang_complete'
+endif
 " Language Support
 " Plug 'octol/vim-cpp-enhanced-highlight'
 " Plug 'hdima/python-syntax'
