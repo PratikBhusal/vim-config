@@ -7,4 +7,5 @@ au GUIEnter * simalt ~x "Maximize Vim on Windows
 set encoding=utf-8
 scriptencoding utf-8
 set clipboard^=unnamed
+set shellslash
 " Misc Settings }}} ------------------------------------------------------------
