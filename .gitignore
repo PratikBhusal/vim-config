@@ -54,3 +54,6 @@ LICENSE
 # Plugin-projects folder
 !.vim/plugin-projects/vim-osplugin/
 !.vim/plugin-projects/vim-osplugin
+
+# Project Folder(s)
+# !~/CS3377
