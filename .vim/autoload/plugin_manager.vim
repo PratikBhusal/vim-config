@@ -138,6 +138,14 @@ Plug 'l04m33/vlime', {'rtp': 'vim/'}
 
 " Add better cwindow support
 " Plug 'romainl/vim-qf'
+
+"Add todo.txt support
+Plug 'freitass/todo.txt-vim'
+
+" Add camel/snake case motions
+Plug 'aykamko/vim-easymotion-segments'
+Plug 'chaoren/vim-wordmotion'
+
 " }}}
 
 " on demand loading of NERD Tree
