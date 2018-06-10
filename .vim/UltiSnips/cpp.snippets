@@ -1,4 +1,18 @@
 priority 1
+snippet fold "Insert a vim fold marker" b
+// ${1} {{{${0:1}
+endsnippet
+
+snippet foldc "Insert a vim fold close marker" b
+//  ${0:1}}}}
+endsnippet
+
+snippet foldp "Insert a vim fold marker pair" b
+// ${1:Fold Description} {{{
+${0:${VISUAL:Content}}
+// $1 }}}
+endsnippet
+
 snippet main "Default header for new cpp files" b
 #include <iostream>
 
@@ -13,9 +27,9 @@ snippet inc "Include Template" b
 #include <${1:iostream}>
 endsnippet
 
-snippet cout "std::cout" b
-std::cout << ${1:"Hello World"} << ${2:"\n"};
-endsnippet
+# snippet cout "std::cout" b
+# std::cout << ${1:"Hello World"} << std::endl;
+# endsnippet
 
 snippet cin "std::cin" b
 std::cin >> ${1};
@@ -25,16 +39,6 @@ snippet std "C++ Standard Library" b
 std::
 endsnippet
 
-snippet fold "Insert a vim fold marker" b
-// ${1} {{{${0:1}
-endsnippet
-
-snippet foldc "Insert a vim fold close marker" b
-//  ${0:1}}}}
-endsnippet
-
-snippet foldp "Insert a vim fold marker pair" b
-// ${1:Fold Description} {{{
-${0:${VISUAL:Content}}
-// $1 }}}
+snippet ifi "Single If Statment Instruction" b
+if (${1:true}) { $2; }
 endsnippet
