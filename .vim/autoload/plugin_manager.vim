@@ -17,11 +17,14 @@ if isdirectory(expand('$HOME/.vim/src/vim-osplugin'))
 else
     Plug 'PratikBhusal/vim-osplugin'
 endif
-if isdirectory(expand('$HOME/.vim/src/vim-SnippetsCompleteMe'))
-    Plug '~/.vim/src/vim-SnippetsCompleteMe'
-    execute 'helptags ' . expand('$HOME/.vim/src/vim-SnippetsCompleteMe/doc')
-else
-    Plug 'PratikBhusal/vim-SnippetsCompleteMe'
+if has('win32unix') || !has('gui_running')
+    if isdirectory(expand('$HOME/.vim/src/vim-SnippetsCompleteMe'))
+        Plug '~/.vim/src/vim-SnippetsCompleteMe'
+        execute 'helptags ' .
+            \ expand('$HOME/.vim/src/vim-SnippetsCompleteMe/doc')
+    else
+        Plug 'PratikBhusal/vim-SnippetsCompleteMe'
+    endif
 endif
 if isdirectory(expand('$HOME/.vim/src/vim-grip'))
     Plug '~/.vim/src/vim-grip'
@@ -66,14 +69,39 @@ else
 endif
 " C++ Autocompletion
 if executable('clang')
-Plug 'Rip-Rip/clang_complete'
+    Plug 'Rip-Rip/clang_complete'
+    Plug 'rhysd/vim-clang-format'
 endif
 " Language Support
 " Plug 'octol/vim-cpp-enhanced-highlight'
 " Plug 'hdima/python-syntax'
 Plug 'sheerun/vim-polyglot'
 " Automatic Completion Menu popup
-if has('lua')
+
+" if has('patch-7.4.774')
+"     Plug 'Shougo/echodoc.vim'
+" endif
+" Add Latex support
+Plug 'lervag/vimtex'
+" Rainbow parenthesis
+Plug 'luochen1990/rainbow'
+" Add a syntax checking plugin
+if v:version >= 800
+    Plug 'w0rp/ale'
+endif
+" Add vim-easy-align to quickly align code.
+Plug 'junegunn/vim-easy-align'
+" Add better folding
+Plug 'Konfekt/FastFold'
+Plug 'tmhedberg/SimpylFold'
+
+if has('python3') && v:version >= 800
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'Shougo/neco-vim'
+    Plug 'zchee/deoplete-jedi'
+elseif has('lua')
     Plug 'Shougo/neocomplete.vim'
     Plug 'Shougo/neco-vim'
 endif
@@ -88,22 +116,22 @@ endif
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Plug 'prabirshrestha/asyncomplete-buffer.vim'
 " Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+"
+
+Plug 'pboettch/vim-cmake-syntax'
+Plug 'vhdirk/vim-cmake'
+
+
+
+Plug 'vimwiki/vimwiki'
+
+" Plug 'jbgutierrez/vim-better-comments'
 
 " Add vim-clang-format to format my c-family code
-Plug 'rhysd/vim-clang-format'
 " Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
-" Add vim-easy-align to quickly align code.
-Plug 'junegunn/vim-easy-align'
-
-" Add Latex support
-Plug 'lervag/vimtex'
-
-" Rainbow parenthesis
-Plug 'luochen1990/rainbow'
-
-" Python Autocompletion
-Plug 'vim-scripts/pythoncomplete'
+" " Python Autocompletion
+" Plug 'vim-scripts/pythoncomplete'
 
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
@@ -114,13 +142,18 @@ Plug 'vim-scripts/pythoncomplete'
 " Add a vim wiki for notetaking and other needs
 " Plug 'vimwiki/vimwiki'
 
-" Add a syntax checking plugin
-if v:version >= 800
-    Plug 'w0rp/ale'
-endif
+
+Plug 'tweekmonster/startuptime.vim'
+
+
+" if executable('tmux')
+"     Plug 'christoomey/vim-tmux-navigator'
+" endif
 
 " Add Verilog Support
 Plug 'vhda/verilog_systemverilog.vim'
+
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 " Autocompletion Options
 " Plug 'ajh17/VimCompletesMe'
