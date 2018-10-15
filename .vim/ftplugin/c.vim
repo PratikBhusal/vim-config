@@ -53,10 +53,4 @@ elseif g:linux
     let g:clang_library_path = '/usr/lib/llvm-4.0/lib'
     let g:clang_user_options = '-Weverything -std=c11'
 endif
-
-" Auto-Pairs Compatibility {{{
-let g:AutoPairsMapCR = 0
-imap <buffer> <silent> <CR> <CR><Plug>AutoPairsReturn
-" Auto-Pairs Compatibility }}}
-
 " Clang_Complete }}} -----------------------------------------------------------
