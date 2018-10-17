@@ -190,7 +190,7 @@ mode "$mode_system" {
 bindsym $mod+Delete mode "$mode_system"
 
 # Make the currently focused window a scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+minus [floating] move scratchpad
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
