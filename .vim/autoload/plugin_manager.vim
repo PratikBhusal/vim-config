@@ -123,7 +123,10 @@ Plug 'andymass/vim-matchup'
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Plug 'prabirshrestha/asyncomplete-buffer.vim'
 " Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
-"
+
+" Better comments
+Plug 'jbgutierrez/vim-better-comments'
+
 
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'vhdirk/vim-cmake'
