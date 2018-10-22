@@ -56,7 +56,8 @@ Plug 'takac/vim-hardtime'
 "CtrlP- Fuzzy Finding PLugin
 Plug 'ctrlpvim/ctrlp.vim'
 "automatically add closed bracekets and braces
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
+Plug 'rstacruz/vim-closer'
 "Add a commenting plugin
 Plug 'tpope/vim-commentary'
 " Add async compiling
