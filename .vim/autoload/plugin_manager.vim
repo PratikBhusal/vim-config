@@ -108,6 +108,12 @@ elseif has('lua')
 endif
 " Plug 'lifepillar/vim-mucomplete'
 
+" Highlight pattern/ranges for Ex commands
+Plug 'markonm/traces.vim'
+
+" Extended '%' Matching
+Plug 'andymass/vim-matchup'
+
 
 " Plugins for consideration {{{
 " Async Autocompletion
