@@ -1,0 +1,30 @@
+! vim: ft=xdefaults:
+st.shell: /bin/bash
+st.font: DejaVu Sans Mono:pixelsize=14:antialias=true:autohint=true;
+st.termname: xterm-256color
+! st.cursorshape: 2
+
+st.foreground: #f8f8f2
+st.background: #1e1e1e
+st.color0:     #1e1e1e
+st.color1:     #f92672
+st.color2:     #a6e22e
+st.color3:     #f4bf75
+st.color4:     #66d9ef
+st.color5:     #ae81ff
+st.color6:     #a1efe4
+st.color7:     #f8f8f2
+st.color8:     #75715e
+st.color9:     #f92672
+st.color10:    #a6e22e
+st.color11:    #f4bf75
+st.color12:    #66d9ef
+st.color13:    #ae81ff
+st.color14:    #a1efe4
+st.color15:    #f9f8f5
+st.color16:    #fd971f
+st.color17:    #cc6633
+st.color18:    #383830
+st.color19:    #49483e
+st.color20:    #a59f85
+st.color21:    #f5f4f1
