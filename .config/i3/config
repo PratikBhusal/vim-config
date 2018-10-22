@@ -13,8 +13,8 @@ set $mod Mod1
 
 # Vim Keybindings
 set $left h
-set $up j
-set $down k
+set $down j
+set $up k
 set $right l
 
 # Font for window titles. Will also be used by the bar unless a different font
