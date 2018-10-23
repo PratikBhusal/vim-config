@@ -1,30 +1,39 @@
 ! vim: ft=xdefaults:
-st.shell: /bin/bash
-st.font: DejaVu Sans Mono:pixelsize=14:antialias=true:autohint=true;
-st.termname: xterm-256color
-! st.cursorshape: 2
+#include "base-16-monokai-256"
 
-st.foreground: #f8f8f2
-st.background: #1e1e1e
-st.color0:     #1e1e1e
-st.color1:     #f92672
-st.color2:     #a6e22e
-st.color3:     #f4bf75
-st.color4:     #66d9ef
-st.color5:     #ae81ff
-st.color6:     #a1efe4
-st.color7:     #f8f8f2
-st.color8:     #75715e
-st.color9:     #f92672
-st.color10:    #a6e22e
-st.color11:    #f4bf75
-st.color12:    #66d9ef
-st.color13:    #ae81ff
-st.color14:    #a1efe4
-st.color15:    #f9f8f5
-st.color16:    #fd971f
-st.color17:    #cc6633
-st.color18:    #383830
-st.color19:    #49483e
-st.color20:    #a59f85
-st.color21:    #f5f4f1
+st.shell: /bin/bash
+! st.font: DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true;
+st.font: monospace:pixelsize=15:antialias=true:autohint=true;
+st.termname: xterm-256color
+
+
+st.foreground: base05
+st.background: base00
+st.cursorColor: base05
+
+st.color0:  base00
+st.color1:  base08
+st.color2:  base0B
+st.color3:  base0A
+st.color4:  base0D
+st.color5:  base0E
+st.color6:  base0C
+st.color7:  base05
+
+st.color8:  base03
+st.color9:  base08
+st.color10: base0B
+st.color11: base0A
+st.color12: base0D
+st.color13: base0E
+st.color14: base0C
+st.color15: base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+st.color16: base09
+st.color17: base0F
+st.color18: base01
+st.color19: base02
+st.color20: base04
+st.color21: base06
