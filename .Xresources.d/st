@@ -5,6 +5,7 @@ st.shell: /bin/bash
 ! st.font: DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true;
 st.font: monospace:pixelsize=15:antialias=true:autohint=true;
 st.termname: xterm-256color
+st.borderpx: 0
 
 
 st.foreground: base05
