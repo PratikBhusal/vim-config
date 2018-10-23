@@ -1,1 +1,4 @@
+# Zoom Settings
 map _ zoom out
+map <C--> zoom out
+map <C-=> zoom in
