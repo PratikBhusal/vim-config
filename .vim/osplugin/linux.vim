@@ -2,7 +2,6 @@
 
 " Make Vim Useable {{{ ---------------------------------------------------------
 set guifont=DejaVu\ Sans\ Mono\ 11
-set t_Co=256
 set clipboard^=unnamedplus
 if has('autocmd') && executable('wmctrl') && has('patch-7.3.031')
     autocmd VimEnter * call system(
