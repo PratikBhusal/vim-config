@@ -1,4 +1,4 @@
-feh -B black \
+feh -x -B black \
 --draw-filename \
 --geometry 800x600 \
 --auto-zoom \
