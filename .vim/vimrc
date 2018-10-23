@@ -127,13 +127,12 @@ let g:indent_guides_guide_size= 2
 set background=dark
 "Colorscheme Choice
 colorscheme molokai
-if !has('gui_running') && g:colors_name ==? 'molokai'
+if !has('gui_running') && g:colors_name ==? 'molokai' && &t_Co == 256
     let g:rehash256 = 1
 endif
-if has('vcon') || has('termguicolors')
+if ( has('vcon') || has('termguicolors') ) &&
+    \ (&term !=# 'rxvt-unicode-256color')
     set termguicolors
-else
-    set t_Co=256
 endif
 " Delete Trailing Whitespace
 " autocmd BufWritePre * %s/\s\+$//e
