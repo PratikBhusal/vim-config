@@ -63,11 +63,11 @@ Plug 'tpope/vim-commentary'
 " Add async compiling
 Plug 'tpope/vim-dispatch'
 " Auto Generate Tags File
-if has('job') && v:version < 800
-    Plug 'ludovicchabant/vim-gutentags'
-else
-    Plug 'ludovicchabant/vim-gutentags', { 'branch': 'vim7' }
-endif
+" if has('job') && v:version < 800
+"     Plug 'ludovicchabant/vim-gutentags'
+" else
+"     Plug 'ludovicchabant/vim-gutentags', { 'branch': 'vim7' }
+" endif
 " C++ Autocompletion
 if executable('clang')
     Plug 'Rip-Rip/clang_complete'
