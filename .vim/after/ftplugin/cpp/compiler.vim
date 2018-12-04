@@ -1,6 +1,3 @@
-setlocal commentstring=//\ %s
-
-" Compile/Run programs {{{ -----------------------------------------------------
 if g:windows
     noremap <buffer> <silent> <F9> :silent update <bar>silent make %:p:r.exe<cr><cr>
 
@@ -28,4 +25,3 @@ endif
 " -std=c++11
 " -Weffc++
 " -Wfatal-errors
-" Compile/Run programs }}} -----------------------------------------------------

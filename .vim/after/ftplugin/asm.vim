@@ -1,5 +1,6 @@
 setlocal commentstring=#\ %s
 setlocal nolist
+setlocal noexpandtab softtabstop=8 shiftwidth=8
 
 " Run/Compile mips assembly code
 command! -nargs=* Mips !java -jar
