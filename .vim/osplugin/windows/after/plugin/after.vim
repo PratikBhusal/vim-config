@@ -1,0 +1,1 @@
+echom 'after/plugin test'

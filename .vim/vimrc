@@ -2,12 +2,10 @@
 set encoding=utf-8
 scriptencoding utf-8
 
-" Determine Operating System {{{
 let g:windows = has('win32') || has('win64')
 let g:cygwin  = has('unix') && has('win32unix')
 let g:linux   = has('unix') && !has('macunix') && !has('win32unix')
 let g:macOS   = has('macunix')
-" Determine Operating System }}}
 
 set noshowmode
 set showcmd
@@ -30,6 +28,19 @@ autocmd BufReadPost *
 
 call plugin_manager#vim_plug()
 " Essentials }}} ---------------------------------------------------------------
+
+" osplugin {{{ -----------------------------------------------------------------
+if g:windows
+    call osplugin#init('windows')
+elseif g:linux
+    call osplugin#init('linux')
+elseif g:cygwin
+    call osplugin#init('cygwin')
+    call osplugin#init('linux')
+elseif g:macOS
+    call osplugin#init('macOS')
+endif
+" osplugin }}} -----------------------------------------------------------------
 
 " Change location of temporary files {{{ ---------------------------------------
 set undodir=~/.vim/.cache/.undo//

@@ -1,4 +1,4 @@
-if g:windows && !(has('python3') && v:version >= 800) && has('lua')
+if !(has('python3') && v:version >= 800) && has('lua')
     " TODO : Add new configurations
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
