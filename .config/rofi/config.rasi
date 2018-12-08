@@ -50,7 +50,7 @@ configuration {
     /* window-format: "{w}    {i}{c}   {t}"; */
     /* click-to-exit: true; */
     /* show-match: true; */
-    theme: "/usr/share/rofi/themes/glue_pro_blue.rasi";
+    /* theme: "/usr/share/rofi/themes/glue_pro_blue.rasi"; */
     /* color-normal: ; */
     /* color-urgent: ; */
     /* color-active: ; */
@@ -137,3 +137,4 @@ configuration {
     /* me-accept-entry: "MouseDPrimary"; */
     /* me-accept-custom: "Control+MouseDPrimary"; */
 }
+@import "/home/pratik/.local/share/rofi/themes/base16-material.rasi"

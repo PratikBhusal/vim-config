@@ -33,6 +33,9 @@ new_float pixel 0
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+
+bindsym --release Print exec xfce4-screenshooter -f
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -128,10 +131,6 @@ bindsym $mod+Shift+r restart
 mode "resize" {
     # These bindings trigger as soon as you enter the resize mode
 
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
     bindsym $up resize shrink height 10 px or 10 ppt
     bindsym $down resize grow height 10 px or 10 ppt
     bindsym $left resize shrink width 10 px or 10 ppt
@@ -163,10 +162,10 @@ bar {
         set $ws-inactive-text-color #888888
 
         background $ws-bg-color
-        # color-class     border background text
-        focused_workspace $ws-active-bg-color $ws-active-bg-color $ws-text-color
-        inactive_workspace $ws-bg-color $ws-bg-color $ws-inactive-text-color
-        urgent_workspace $ws-urgent-bg-color $ws-urgent-bg-color $ws-text-color
+        # color-class      border              background          text
+        focused_workspace  $ws-active-bg-color $ws-active-bg-color $ws-text-color
+        inactive_workspace $ws-bg-color        $ws-bg-color        $ws-inactive-text-color
+        urgent_workspace   $ws-urgent-bg-color $ws-urgent-bg-color $ws-text-color
 
     }
 }
@@ -217,3 +216,5 @@ exec --no-startup-id pasystray
 # }}}
 
 for_window [class="Yad"] floating enable
+for_window [class="(?i)pithos"] floating enable, move position center
+for_window [class="(?i)keeweb"] floating enable, move position center
