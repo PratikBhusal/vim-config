@@ -4,9 +4,12 @@
 
 
 # Run the following programs on startup
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id redshift-gtk
-exec --no-startup-id nm-applet
+# exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id redshift-gtk
+# exec --no-startup-id nm-applet
+exec --no-startup-id "nitrogen --restore"
+exec --no-startup-id "grive --path ~/gdrive/"
+# exec --no-startup-id "sleep 2s && kalu"
 
 # Set default mod key
 set $mod Mod1
@@ -69,8 +72,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+semicolon split h
+# Toggle split orentation
+bindsym $mod+semicolon split toggle
 
 # split in vertical orientation
 bindsym $mod+v split v

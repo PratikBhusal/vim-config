@@ -1,2 +1,7 @@
 # Enable Natural Scrolling
-xinput --set-prop "DELL0825:00 06CB:7E92 Touchpad" "libinput Natural Scrolling Enabled" 1
+xinput --set-prop "DELL0825:00 06CB:7E92 Touchpad" "libinput Natural Scrolling Enabled" 1 &
+
+# Start programs at startup
+xfce4-power-manager &
+redshift-gtk &
+nm-applet &
