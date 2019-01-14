@@ -153,10 +153,6 @@ Plug 'tweekmonster/startuptime.vim'
 "     Plug 'christoomey/vim-tmux-navigator'
 " endif
 
-" Add Verilog Support
-Plug 'vhda/verilog_systemverilog.vim'
-
-
 " Autocompletion Options
 " Plug 'ajh17/VimCompletesMe'
 " Plug 'lifepillar/vim-mucomplete'
