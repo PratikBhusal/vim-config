@@ -29,19 +29,6 @@ autocmd BufReadPost *
 call plugin_manager#vim_plug()
 " Essentials }}} ---------------------------------------------------------------
 
-" osplugin {{{ -----------------------------------------------------------------
-if g:windows
-    call osplugin#init('windows')
-elseif g:linux
-    call osplugin#init('linux')
-elseif g:cygwin
-    call osplugin#init('cygwin')
-    call osplugin#init('linux')
-elseif g:macOS
-    call osplugin#init('macOS')
-endif
-" osplugin }}} -----------------------------------------------------------------
-
 " Change location of temporary files {{{ ---------------------------------------
 set undodir=~/.vim/.cache/.undo//
 set backupdir=~/.vim/.cache/.backup//
@@ -63,8 +50,8 @@ endif
 " Live the Vim Life {{{ --------------------------------------------------------
 inoremap <silent> <up> <nop>
 inoremap <silent> <down> <nop>
-inoremap <silent> <left> <nop>
-inoremap <silent> <right> <nop>
+" inoremap <silent> <left> <nop>
+" inoremap <silent> <right> <nop>
 inoremap <silent> <C-c> <nop>
 
 nnoremap <silent> <up> <nop>
@@ -98,7 +85,7 @@ command! Q q
 command! W w
 command! WQ wq
 command! Wq wq
-inoremap jk <Esc>
+inoremap <expr> jk pumvisible() ? "<C-e>" : "<Esc>"
 let g:mapleader = "\<Space>"
 let g:maplocalleader = "\<Space>"
 nnoremap <SPACE> <Nop>

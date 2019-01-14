@@ -11,21 +11,22 @@ endif
 
 call plug#begin('~/.vim/bundle')
 " Add my own plugins :D
-if isdirectory(expand('$HOME/.vim/src/vim-osplugin'))
-    Plug '~/.vim/src/vim-osplugin'
-    execute 'helptags ' . expand('$HOME/.vim/src/vim-osplugin/doc')
-else
-    Plug 'PratikBhusal/vim-osplugin'
+
+if g:windows
+    Plug '~/.vim/pack/osplugin/opt/osplugin-windows'
+elseif g:linux
+    Plug '~/.vim/pack/osplugin/opt/osplugin-linux'
 endif
-if has('win32unix') || !has('gui_running')
-    if isdirectory(expand('$HOME/.vim/src/vim-SnippetsCompleteMe'))
-        Plug '~/.vim/src/vim-SnippetsCompleteMe'
-        execute 'helptags ' .
-            \ expand('$HOME/.vim/src/vim-SnippetsCompleteMe/doc')
-    else
-        Plug 'PratikBhusal/vim-SnippetsCompleteMe'
-    endif
-endif
+
+" if has('win32unix') || !has('gui_running')
+"     if isdirectory(expand('$HOME/.vim/src/vim-SnippetsCompleteMe'))
+"         Plug '~/.vim/src/vim-SnippetsCompleteMe'
+"         execute 'helptags ' .
+"             \ expand('$HOME/.vim/src/vim-SnippetsCompleteMe/doc')
+"     else
+"         Plug 'PratikBhusal/vim-SnippetsCompleteMe'
+"     endif
+" endif
 if isdirectory(expand('$HOME/.vim/src/vim-grip'))
     Plug '~/.vim/src/vim-grip'
     execute 'helptags ' . expand('$HOME/.vim/src/vim-grip/doc')
@@ -33,87 +34,87 @@ else
     Plug 'PratikBhusal/vim-grip'
 endif
 
-if !has('nvim')
-    "add vim sensible
-    Plug 'tpope/vim-sensible'
-endif
-"add molokai colorscheme
+" Visual Plugins {{{
 Plug 'tomasr/molokai'
-" add vim-airline & themes
 Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-"add indent lines
 Plug 'Yggdroot/indentLine'
-"add utilisnips and snippets
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-"add EasyMotion
+Plug 'luochen1990/rainbow'
+" Visual Plugins }}}
+
+" Navigation Plugins {{{
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'easymotion/vim-easymotion'
-"add Git Support
-Plug 'tpope/vim-fugitive' | Plug 'airblade/vim-gitgutter'
-"add cSyntaxAfter
-Plug 'PratikBhusal/cSyntaxAfter'
-"add vim-hardtime to force learn vim movements
-Plug 'takac/vim-hardtime'
-"CtrlP- Fuzzy Finding PLugin
+Plug 'aykamko/vim-easymotion-segments'
+Plug 'chaoren/vim-wordmotion'
 Plug 'ctrlpvim/ctrlp.vim'
-"automatically add closed bracekets and braces
-" Plug 'jiangmiao/auto-pairs'
-Plug 'rstacruz/vim-closer'
-"Add a commenting plugin
-Plug 'tpope/vim-commentary'
-" Add async compiling
-Plug 'tpope/vim-dispatch'
-" Auto Generate Tags File
-" if has('job') && v:version < 800
-"     Plug 'ludovicchabant/vim-gutentags'
-" else
-"     Plug 'ludovicchabant/vim-gutentags', { 'branch': 'vim7' }
-" endif
-" C++ Autocompletion
+" Navigation Plugins }}}
+
+" Filetype plugins {{{
+if has('python3') || has('python')
+    Plug 'python-mode/python-mode', { 'branch': 'develop' }
+endif
 if executable('clang')
     Plug 'Rip-Rip/clang_complete'
     Plug 'rhysd/vim-clang-format'
 endif
-" Language Support
-" Plug 'octol/vim-cpp-enhanced-highlight'
-" Plug 'hdima/python-syntax'
-Plug 'sheerun/vim-polyglot'
-" Automatic Completion Menu popup
+if executable('cmake')
+    Plug 'pboettch/vim-cmake-syntax'
+    Plug 'vhdirk/vim-cmake'
+endif
+if executable('latexmk')
+    Plug 'lervag/vimtex'
+endif
+" Filetype plugins }}}
 
-" if has('patch-7.4.774')
-"     Plug 'Shougo/echodoc.vim'
-" endif
-" Add Latex support
-Plug 'lervag/vimtex'
-" Rainbow parenthesis
-Plug 'luochen1990/rainbow'
-" Add a syntax checking plugin
+" Syntax Plugins {{{
+Plug 'sheerun/vim-polyglot'
+Plug 'PratikBhusal/cSyntaxAfter'
+" Syntax Plugins }}}
+
+" Quality of life plugins {{{
+" Plug 'jiangmiao/auto-pairs'
+Plug 'rstacruz/vim-closer'
+Plug 'tpope/vim-commentary'
+Plug 'markonm/traces.vim'
+Plug 'andymass/vim-matchup'
+Plug 'jbgutierrez/vim-better-comments'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'junegunn/vim-easy-align'
+Plug 'Konfekt/FastFold'
+Plug 'tmhedberg/SimpylFold'
+" Quality of life plugins }}}
+
+
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'tpope/vim-dispatch'
+
+if !has('nvim')
+    Plug 'tpope/vim-sensible'
+endif
+
+Plug 'takac/vim-hardtime'
+
+Plug 'tpope/vim-fugitive' | Plug 'airblade/vim-gitgutter'
+
 if v:version >= 800
     Plug 'w0rp/ale'
 endif
-" Add vim-easy-align to quickly align code.
-Plug 'junegunn/vim-easy-align'
-" Add better folding
-Plug 'Konfekt/FastFold'
-Plug 'tmhedberg/SimpylFold'
 
-if has('python3') && v:version >= 800
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-    Plug 'Shougo/neco-vim'
-    Plug 'zchee/deoplete-jedi'
-elseif has('lua')
-    Plug 'Shougo/neocomplete.vim'
-    Plug 'Shougo/neco-vim'
-endif
-" Plug 'lifepillar/vim-mucomplete'
-
-" Highlight pattern/ranges for Ex commands
-Plug 'markonm/traces.vim'
-
-" Extended '%' Matching
-Plug 'andymass/vim-matchup'
-
+" Autocompletion Plugins {{{
+" if has('python3') && v:version >= 800
+"     Plug 'Shougo/deoplete.nvim'
+"     Plug 'roxma/nvim-yarp'
+"     Plug 'roxma/vim-hug-neovim-rpc'
+"     Plug 'Shougo/neco-vim'
+"     Plug 'zchee/deoplete-jedi'
+" elseif has('lua')
+"     Plug 'Shougo/neocomplete.vim'
+"     Plug 'Shougo/neco-vim'
+" else
+"     Plug 'lifepillar/vim-mucomplete'
+" endif
+Plug 'lifepillar/vim-mucomplete'
+" Autocompletion Plugins }}}
 
 " Plugins for consideration {{{
 " Async Autocompletion
@@ -125,13 +126,6 @@ Plug 'andymass/vim-matchup'
 " Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
 
 " Better comments
-Plug 'jbgutierrez/vim-better-comments'
-
-
-Plug 'pboettch/vim-cmake-syntax'
-Plug 'vhdirk/vim-cmake'
-
-
 
 Plug 'vimwiki/vimwiki'
 
@@ -152,7 +146,6 @@ Plug 'vimwiki/vimwiki'
 " Add a vim wiki for notetaking and other needs
 " Plug 'vimwiki/vimwiki'
 
-
 Plug 'tweekmonster/startuptime.vim'
 
 
@@ -163,18 +156,11 @@ Plug 'tweekmonster/startuptime.vim'
 " Add Verilog Support
 Plug 'vhda/verilog_systemverilog.vim'
 
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 " Autocompletion Options
 " Plug 'ajh17/VimCompletesMe'
 " Plug 'lifepillar/vim-mucomplete'
 " Plug 'ervandew/supertab'
-
-" markdown preview
-" Plug 'MikeCoder/markdown-preview.vim'
-
-" Visual whitespace detection
-Plug 'ntpeters/vim-better-whitespace'
 
 " Have statusline show buffers
 " Plug 'bling/vim-bufferline'
@@ -190,13 +176,10 @@ Plug 'l04m33/vlime', {'rtp': 'vim/'}
 Plug 'freitass/todo.txt-vim'
 
 " Add camel/snake case motions
-Plug 'aykamko/vim-easymotion-segments'
-Plug 'chaoren/vim-wordmotion'
 
 " }}}
 
 " on demand loading of NERD Tree
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 call plug#end()
 
 endfunction
