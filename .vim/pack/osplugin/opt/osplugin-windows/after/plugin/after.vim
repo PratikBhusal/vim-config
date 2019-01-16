@@ -1,1 +1,0 @@
-echom 'after/plugin test'
