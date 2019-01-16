@@ -10,3 +10,6 @@ gtk-icon-theme-name="Papirus-Dark"
 gtk-theme-name="Arc-Dark"
 # Font
 gtk-font-name="DejaVu Sans 10"
+
+# Turn off error bell sound
+gtk-error-bell = 0
