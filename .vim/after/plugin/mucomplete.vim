@@ -36,10 +36,10 @@
 "     call mucomplete#map('imap', '<c-h>', '<plug>(MUcompleteCycBwd)')
 " endif
 
-if exists(g:loaded_mucomplete)
+if exists('g:loaded_mucomplete')
     inoremap <silent> <plug>(MUcompleteFwdKey) <c-j>
-    imap <silent> <unique> <c-j> <plug>(MUcompleteCycFwd)
+    imap <unique> <c-j> <plug>(MUcompleteCycFwd)
 
     inoremap <silent> <plug>(MUcompleteBwdKey) <c-h>
-    imap <silent> <unique> <c-h> <plug>(MUcompleteCycBwd)
+    imap <unique> <c-h> <plug>(MUcompleteCycBwd)
 endif
