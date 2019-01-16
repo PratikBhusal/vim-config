@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-function dotfiles {
+dotfiles() {
     git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
 
