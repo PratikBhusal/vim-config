@@ -32,3 +32,9 @@ snippet foldp "Insert a vim fold marker pair" b
 ${0:${VISUAL:" Content }}
 " $1 }}}
 endsnippet
+
+snippet func "Create new function" b
+function! ${1:function_name}($2)
+    ${3:" code}
+endfunction
+endsnippet
