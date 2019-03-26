@@ -200,22 +200,22 @@ MouseKey mkeys[] = {
 
 static Shortcut shortcuts[] = {
 	/* mask        keysym        function       argument */
-	{ XK_ANY_MOD,  XK_Break,     sendbreak,     {.i = 0}  },
-	{ ControlMask, XK_Print,     toggleprinter, {.i = 0}  },
-	{ ShiftMask,   XK_Print,     printscreen,   {.i = 0}  },
-	{ XK_ANY_MOD,  XK_Print,     printsel,      {.i = 0}  },
-	{ TERMMOD,     XK_Prior,     zoom,          {.f = +1} },
-	{ TERMMOD,     XK_Next,      zoom,          {.f = -1} },
-	{ TERMMOD,     XK_Home,      zoomreset,     {.f = 0}  },
-	{ TERMMOD,     XK_C,         clipcopy,      {.i = 0}  },
-	{ TERMMOD,     XK_V,         clippaste,     {.i = 0}  },
-	{ TERMMOD,     XK_Y,         selpaste,      {.i = 0}  },
-	{ TERMMOD,     XK_Num_Lock,  numlock,       {.i = 0}  },
-	{ TERMMOD,     XK_I,         iso14755,      {.i = 0}  },
-	{ ShiftMask,   XK_Page_Up,   kscrollup,     {.i = -1} },
-	{ ShiftMask,   XK_Page_Down, kscrolldown,   {.i = -1} },
+	{ XK_ANY_MOD,       XK_Break,     sendbreak,     {.i = 0}  },
+	{ ControlMask,      XK_Print,     toggleprinter, {.i = 0}  },
+	{ ShiftMask,        XK_Print,     printscreen,   {.i = 0}  },
+	{ XK_ANY_MOD,       XK_Print,     printsel,      {.i = 0}  },
+	{ MODKEY|ShiftMask, XK_Prior,     zoom,          {.f = +1} },
+	{ MODKEY|ShiftMask, XK_Next,      zoom,          {.f = -1} },
+	{ MODKEY|ShiftMask, XK_Home,      zoomreset,     {.f = 0}  },
+	{ TERMMOD,          XK_C,         clipcopy,      {.i = 0}  },
+	{ TERMMOD,          XK_V,         clippaste,     {.i = 0}  },
+	{ TERMMOD,          XK_Y,         selpaste,      {.i = 0}  },
+	{ TERMMOD,          XK_Num_Lock,  numlock,       {.i = 0}  },
+	{ TERMMOD,          XK_I,         iso14755,      {.i = 0}  },
+	{ ShiftMask,        XK_Page_Up,   kscrollup,     {.i = -1} },
+	{ ShiftMask,        XK_Page_Down, kscrolldown,   {.i = -1} },
 
-	{ ShiftMask,   XK_Insert,    clippaste,     {.i = 0}  },
+	{ ShiftMask,        XK_Insert,    clippaste,     {.i = 0}  },
 };
 
 /*
