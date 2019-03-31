@@ -175,8 +175,50 @@ Plug 'freitass/todo.txt-vim'
 
 " }}}
 
+" Direnv - Local vim configuration {{{ -----------------------------------------
+" Direnv support
+if g:linux
+    call s:direnv_init()
+    " call s:direnv_test()
+
+    if exists("$DIRENV_VIM_DIR")
+        Plug $DIRENV_VIM_DIR
+    endif
+
+endif
+" Direnv - Local vim configuration }}} -----------------------------------------
+
 " on demand loading of NERD Tree
 call plug#end()
 
 endfunction
 " Vim-Plug }}} -----------------------------------------------------------------
+
+function! s:direnv_init() abort "{{{
+    let l:direnv_cmd = get(g:, 'direnv_cmd', 'direnv')
+    if !executable(l:direnv_cmd)
+        echoerr 'No Direnv executable, add it to your PATH or set g:direnv_cmd'
+        return
+    endif
+
+    let l:cmd = [l:direnv_cmd, 'export', 'vim']
+    let l:tmp = tempname()
+
+    call system(printf(join(l:cmd).' >%s', l:tmp))
+    execute 'source '.l:tmp
+
+    call delete(l:tmp)
+endfunction "}}}
+
+function! s:direnv_test() abort "{{{
+    let l:direnv_cmd = get(g:, 'direnv_cmd', 'direnv')
+    if !executable(l:direnv_cmd)
+        echoerr 'No Direnv executable, add it to your PATH or set g:direnv_cmd'
+        return
+    endif
+
+    let l:cmd = l:direnv_cmd . ' export vim'
+    for l:command in filter(split(system(l:cmd), '\n'), 'v:val =~# "^let"')
+        execute l:command
+    endfor
+endfunction "}}}
