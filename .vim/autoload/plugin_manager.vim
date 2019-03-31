@@ -10,7 +10,6 @@ endif
 " }}}
 
 call plug#begin('~/.vim/bundle')
-" Add my own plugins :D
 
 if g:windows
     Plug '~/.vim/pack/osplugin/opt/osplugin-windows'
@@ -28,10 +27,10 @@ endif
 "     endif
 " endif
 if isdirectory(expand('$HOME/.vim/src/vim-grip'))
-    Plug '~/.vim/src/vim-grip'
+    Plug '~/.vim/src/vim-grip', { 'for' : 'markdown' }
     execute 'helptags ' . expand('$HOME/.vim/src/vim-grip/doc')
 else
-    Plug 'PratikBhusal/vim-grip'
+    Plug 'PratikBhusal/vim-grip', { 'for': 'markdown' }
 endif
 
 " Visual Plugins {{{
@@ -52,17 +51,18 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Filetype plugins {{{
 if has('python3') || has('python')
     Plug 'python-mode/python-mode', { 'branch': 'develop' }
+    Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 endif
 if executable('clang')
-    Plug 'Rip-Rip/clang_complete'
+    Plug 'Rip-Rip/clang_complete',
     Plug 'rhysd/vim-clang-format'
 endif
 if executable('cmake')
-    Plug 'pboettch/vim-cmake-syntax'
+    Plug 'pboettch/vim-cmake-syntax', { 'for': 'cmake' }
     Plug 'vhdirk/vim-cmake'
 endif
 if executable('latexmk')
-    Plug 'lervag/vimtex'
+    Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
 endif
 " Filetype plugins }}}
 
@@ -81,7 +81,6 @@ Plug 'jbgutierrez/vim-better-comments'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/vim-easy-align'
 Plug 'Konfekt/FastFold'
-Plug 'tmhedberg/SimpylFold'
 " Quality of life plugins }}}
 
 
@@ -107,9 +106,6 @@ endif
 "     Plug 'roxma/vim-hug-neovim-rpc'
 "     Plug 'Shougo/neco-vim'
 "     Plug 'zchee/deoplete-jedi'
-" elseif has('lua')
-"     Plug 'Shougo/neocomplete.vim'
-"     Plug 'Shougo/neco-vim'
 " else
 "     Plug 'lifepillar/vim-mucomplete'
 " endif
@@ -124,6 +120,11 @@ Plug 'lifepillar/vim-mucomplete'
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Plug 'prabirshrestha/asyncomplete-buffer.vim'
 " Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+
+
+" Better window resizing
+Plug 'roxma/vim-window-resize-easy'
+
 
 " Better comments
 
@@ -146,6 +147,9 @@ Plug 'vimwiki/vimwiki'
 " Add a vim wiki for notetaking and other needs
 " Plug 'vimwiki/vimwiki'
 
+Plug 'editorconfig/editorconfig-vim'
+
+
 Plug 'tweekmonster/startuptime.vim'
 
 
@@ -160,10 +164,6 @@ Plug 'tweekmonster/startuptime.vim'
 
 " Have statusline show buffers
 " Plug 'bling/vim-bufferline'
-
-
-" CLISP Support
-Plug 'l04m33/vlime', {'rtp': 'vim/'}
 
 " Add better cwindow support
 " Plug 'romainl/vim-qf'
