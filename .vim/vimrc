@@ -33,7 +33,9 @@ call plugin_manager#vim_plug()
 set undodir=~/.vim/.cache/.undo//
 set backupdir=~/.vim/.cache/.backup//
 set directory=~/.vim/.cache/.swp//
-set viminfo+=n~/.vim/.cache/.viminfo
+if !has('nvim')
+    set viminfo+=n~/.vim/.cache/.viminfo
+endif
 let g:netrw_home='~/.vim/.cache//'
 
 if !isdirectory(expand(&undodir))
