@@ -132,6 +132,8 @@ if !has('gui_running') && g:colors_name ==? 'molokai' && &t_Co == 256
 endif
 if ( has('vcon') || has('termguicolors') ) &&
     \ (&term !=# 'rxvt-unicode-256color')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
 endif
 " Delete Trailing Whitespace
