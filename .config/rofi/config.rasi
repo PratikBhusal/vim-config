@@ -137,4 +137,4 @@ configuration {
     /* me-accept-entry: "MouseDPrimary"; */
     /* me-accept-custom: "Control+MouseDPrimary"; */
 }
-@import "/home/pratik/.local/share/rofi/themes/base16-material.rasi"
+@import "/usr/share/rofi/themes/Arc-Dark.rasi"
