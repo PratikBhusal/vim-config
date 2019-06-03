@@ -27,11 +27,17 @@ endsnippet
 snippet foldp "Insert a vim fold marker pair" b
 // ${1} {{{
 ${0:${VISUAL:" Content }}
-// $1 }}}
+// }}}
 endsnippet
 
 snippet dowh "do-while loop" b
 do {
 $0
 } while ($1);
+endsnippet
+
+snippet case "case in switch-case" b
+case $1:
+    $2
+    ${0:break;}
 endsnippet
