@@ -179,7 +179,6 @@ Plug 'freitass/todo.txt-vim'
 " Direnv support
 if g:linux
     call s:direnv_init()
-    " call s:direnv_test()
 
     if exists("$DIRENV_VIM_DIR")
         Plug $DIRENV_VIM_DIR
@@ -204,7 +203,7 @@ function! s:direnv_init() abort "{{{
     let l:cmd = [l:direnv_cmd, 'export', 'vim']
     let l:tmp = tempname()
 
-    call system(printf(join(l:cmd).' >%s', l:tmp))
+    call system(join(l:cmd).' > '.l:tmp)
     execute 'source '.l:tmp
 
     call delete(l:tmp)
