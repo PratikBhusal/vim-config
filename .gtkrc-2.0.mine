@@ -5,11 +5,13 @@ style "xfce-panel-window-style"
 }
 
 # Icon Theme
-gtk-icon-theme-name="Papirus-Dark"
+# gtk-icon-theme-name="Papirus-Dark"
 # Theme
 gtk-theme-name="Arc-Dark"
 # Font
 gtk-font-name="DejaVu Sans 10"
+# Cursor
+gtk-cursor-theme-name="Breeze_Default"
 
 # Turn off error bell sound
 gtk-error-bell = 0

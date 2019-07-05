@@ -45,7 +45,11 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'easymotion/vim-easymotion'
 Plug 'aykamko/vim-easymotion-segments'
 Plug 'chaoren/vim-wordmotion'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
 " Navigation Plugins }}}
 
 " Filetype plugins {{{
@@ -100,16 +104,22 @@ if v:version >= 800
 endif
 
 " Autocompletion Plugins {{{
-" if has('python3') && v:version >= 800
-"     Plug 'Shougo/deoplete.nvim'
-"     Plug 'roxma/nvim-yarp'
-"     Plug 'roxma/vim-hug-neovim-rpc'
-"     Plug 'Shougo/neco-vim'
-"     Plug 'zchee/deoplete-jedi'
-" else
-"     Plug 'lifepillar/vim-mucomplete'
-" endif
-Plug 'lifepillar/vim-mucomplete'
+if has('python3') && ( has('nvim-0.3.0') || has('patch-8.1.001') )
+    Plug 'neoclide/vim-node-rpc'
+    Plug 'Shougo/neco-vim'
+    Plug 'neoclide/coc-neco'
+    Plug 'neoclide/coc-sources'
+    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+    " Plug 'Shougo/deoplete.nvim'
+    " Plug 'roxma/nvim-yarp'
+    " Plug 'roxma/vim-hug-neovim-rpc'
+    " Plug 'Shougo/neco-vim'
+    " Plug 'zchee/deoplete-jedi'
+else
+    Plug 'lifepillar/vim-mucomplete'
+endif
+" Plug 'lifepillar/vim-mucomplete'
 " Autocompletion Plugins }}}
 
 " Plugins for consideration {{{
@@ -122,13 +132,18 @@ Plug 'lifepillar/vim-mucomplete'
 " Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
 
 
+Plug 'jaredgorski/SpaceCamp'
+
 " Better window resizing
 Plug 'roxma/vim-window-resize-easy'
+
+" Visualize undo tree
+Plug 'mbbill/undotree'
 
 
 " Better comments
 
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 
 " Plug 'jbgutierrez/vim-better-comments'
 

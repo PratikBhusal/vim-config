@@ -12,4 +12,4 @@
 	email       = PratikBhusal@users.noreply.github.com
 [core]
 	autocrlf    = input
-	editor = vim
+	editor      = vim

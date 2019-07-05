@@ -1,16 +1,25 @@
 # All the things that are being ignored:
 /*
 /*/
-/.vim/plugged
-/.vim/.cache/ctrlp-windows
-/.vim/.cache/ctrlp-linux
 /.git/index
+gdrive/**
+gdrive/
+gdrive/**/*
+gdrive
+**/gdrive/
+
+# .Vim Folders
+.vim/plugged
+.vim/.cache/*
 .vim/.swp/git.txt
 .vim/.undo/git.txt
 .vim/.backup/git.txt
 .vim/bundle
-/.vim/bundle
+.vim/bundle
 .vim/eclim
+.vim/src
+.vim/pack/minpac
+
 
 # Swap
 **/[._]*.s[a-v][a-z]
