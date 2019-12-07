@@ -32,7 +32,7 @@ export INFOPATH=$INFOPATH:$HOME/.texlive/2019/texmf-dist/doc/info/
 # export TEXMFCNF="$HOME/.texlive/2019/:"
 
 # Add python3 stuff
-PATH=$PATH:$(python3 -m site --user-base)/bin
+export PATH=$PATH:$(python3 -m site --user-base)/bin
 
 # Add rust cargo packages
 export PATH=$PATH:~/.cargo/bin
