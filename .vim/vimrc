@@ -26,7 +26,7 @@ autocmd BufReadPost *
      \     exe "normal! g`\"" |
      \ endif
 
-call plugin_manager#vim_plug()
+call plugin_manager#init()
 " Essentials }}} ---------------------------------------------------------------
 
 " Change location of temporary files {{{ ---------------------------------------
@@ -52,8 +52,8 @@ endif
 " Live the Vim Life {{{ --------------------------------------------------------
 inoremap <silent> <up> <nop>
 inoremap <silent> <down> <nop>
-" inoremap <silent> <left> <nop>
-" inoremap <silent> <right> <nop>
+inoremap <silent> <left> <nop>
+inoremap <silent> <right> <nop>
 inoremap <silent> <C-c> <nop>
 
 nnoremap <silent> <up> <nop>
@@ -110,7 +110,7 @@ vnoremap <leader>s :!sort<cr>
 " Sorting }}} ------------------------------------------------------------------
 
 " Make things look nice {{{ ----------------------------------------------------
-set shortmess=at
+set shortmess=atcI
 set list " Display whitespace
 " set listchars+=eol:¬
 syntax on
@@ -122,6 +122,8 @@ set guioptions-=m  "remove menubar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
+" set diffopt+=iwhiteall " Ignore whitespace
+set diffopt+=hiddenoff " Turn off diff mode when there is only 1 diff window
 set linespace=0
 let g:indent_guides_guide_size= 2
 set background=dark
@@ -216,9 +218,14 @@ set wildignore+=*.zip
 " Compiled Files
 set wildignore+=*.exe,*.so
 
-" set grepprg=rg\ --vimgrep
-" if executable('rg')
-"     set grepprg=rg\ --vimgrep
-"     set grepformat=%f:%l:%c:%m
-" endif
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 " Wildignore Settings }}} ------------------------------------------------------
+
+" Coc.nvim bandadge fixes {{{
+autocmd FileType json syntax match Comment +\/\/.\+$+
+" Coc.nvim bandadge fixes }}}
+
+" let g:airline#extensions#tabline#enabled = 0

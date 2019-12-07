@@ -1,11 +1,49 @@
+" Package Manager Selecter {{{
+function! plugin_manager#init()
+    if s:select_plugin_manager() ==# 'plugpac'
+        " call s:plugpac()
+        call s:vim_plug()
+    else
+        call s:vim_plug()
+    endif
+endfunction
+
+function! s:select_plugin_manager() abort
+    let l:use_packages = has('packages') && ( has('job') || exists('*jobstart()') )
+
+    if isdirectory(expand('~/.vim/pack/minpac/opt/minpac')) &&
+        \ filereadable(expand('~/.vim/autoload/plugpac.vim')) &&
+        \ l:use_packages
+        return 'plugpac'
+    endif
+
+    if !( filereadable( expand('~/.vim/autoload/plug.vim') ) || executable('curl') )
+        throw 'Cannot download plugin manager. Plesae install curl.'
+    endif
+
+    if executable('curl') && executable('git') && l:use_packages
+        silent !git clone https://github.com/k-takata/minpac.git
+            \ ~/.vim/pack/minpac/opt/minpac
+        silent !curl -fLo ~/.vim/autoload/plugpac.vim --create-dirs
+            \ https://raw.githubusercontent.com/bennyyip/plugpac.vim/master/plugpac.vim
+        return 'plugpac'
+    elseif executable('curl')
+      silent !curl -flo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      autocmd vimenter * PlugInstall --sync | source $myvimrc
+    endif
+
+    return 'vim_plug'
+
+endfunction
+" Package Manager Selecter }}}
+
 " Vim-Plug {{{ -----------------------------------------------------------------
-function! plugin_manager#vim_plug()
+function! s:vim_plug() abort
 
 " Vim-Plug automatic download {{{
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" if empty(glob('~/.vim/autoload/plug.vim'))
+if !filereadable(expand('~/.vim/autoload/plug.vim'))
 endif
 " }}}
 
@@ -45,7 +83,11 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'easymotion/vim-easymotion'
 Plug 'aykamko/vim-easymotion-segments'
 Plug 'chaoren/vim-wordmotion'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
 " Navigation Plugins }}}
 
 " Filetype plugins {{{
@@ -72,8 +114,8 @@ Plug 'PratikBhusal/cSyntaxAfter'
 " Syntax Plugins }}}
 
 " Quality of life plugins {{{
-" Plug 'jiangmiao/auto-pairs'
-Plug 'rstacruz/vim-closer'
+" Plug 'rstacruz/vim-closer'
+Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-commentary'
 Plug 'markonm/traces.vim'
 Plug 'andymass/vim-matchup'
@@ -100,16 +142,22 @@ if v:version >= 800
 endif
 
 " Autocompletion Plugins {{{
-" if has('python3') && v:version >= 800
-"     Plug 'Shougo/deoplete.nvim'
-"     Plug 'roxma/nvim-yarp'
-"     Plug 'roxma/vim-hug-neovim-rpc'
-"     Plug 'Shougo/neco-vim'
-"     Plug 'zchee/deoplete-jedi'
-" else
-"     Plug 'lifepillar/vim-mucomplete'
-" endif
-Plug 'lifepillar/vim-mucomplete'
+if has('python3') && ( has('nvim-0.3.0') || has('patch-8.1.001') )
+    Plug 'neoclide/vim-node-rpc'
+    Plug 'Shougo/neco-vim'
+    Plug 'neoclide/coc-neco'
+    Plug 'neoclide/coc-sources'
+    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+    " Plug 'Shougo/deoplete.nvim'
+    " Plug 'roxma/nvim-yarp'
+    " Plug 'roxma/vim-hug-neovim-rpc'
+    " Plug 'Shougo/neco-vim'
+    " Plug 'zchee/deoplete-jedi'
+else
+    Plug 'lifepillar/vim-mucomplete'
+endif
+" Plug 'lifepillar/vim-mucomplete'
 " Autocompletion Plugins }}}
 
 " Plugins for consideration {{{
@@ -122,13 +170,25 @@ Plug 'lifepillar/vim-mucomplete'
 " Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
 
 
+if has('nvim')
+    Plug 'RRethy/vim-hexokinase'
+else
+    Plug 'ap/vim-css-color'
+endif
+
+
+Plug 'jaredgorski/SpaceCamp'
+
 " Better window resizing
 Plug 'roxma/vim-window-resize-easy'
+
+" Visualize undo tree
+Plug 'mbbill/undotree'
 
 
 " Better comments
 
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 
 " Plug 'jbgutierrez/vim-better-comments'
 
@@ -192,6 +252,411 @@ call plug#end()
 
 endfunction
 " Vim-Plug }}} -----------------------------------------------------------------
+
+" PlugPac {{{ ------------------------------------------------------------------
+function! s:plugpac() abort
+
+call plugpac#begin()
+if g:windows
+    Pack expand('~/.vim/pack/osplugin/opt/osplugin-windows')
+elseif g:linux
+    Pack expand('~/.vim/pack/osplugin/opt/osplugin-linux')
+endif
+
+" if has('win32unix') || !has('gui_running')
+"     if isdirectory(expand('$HOME/.vim/src/vim-SnippetsCompleteMe'))
+"         Pack '~/.vim/src/vim-SnippetsCompleteMe'
+"         execute 'helptags ' .
+"             \ expand('$HOME/.vim/src/vim-SnippetsCompleteMe/doc')
+"     else
+"         Pack 'PratikBhusal/vim-SnippetsCompleteMe'
+"     endif
+" endif
+if isdirectory(expand('$HOME/.vim/src/vim-grip'))
+    Pack expand('$HOME/.vim/src/vim-grip'), { 'for' : 'markdown' }
+    execute 'helptags ' . expand('$HOME/.vim/src/vim-grip/doc')
+else
+    Pack 'PratikBhusal/vim-grip', { 'for': 'markdown' }
+endif
+
+" Visual Packins {{{
+Pack 'tomasr/molokai'
+Pack 'bling/vim-airline' | Pack 'vim-airline/vim-airline-themes'
+Pack 'Yggdroot/indentLine'
+Pack 'luochen1990/rainbow'
+" Visual Packins }}}
+
+" Navigation Packins {{{
+Pack 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Pack 'easymotion/vim-easymotion'
+Pack 'aykamko/vim-easymotion-segments'
+Pack 'chaoren/vim-wordmotion'
+" Pack 'ctrlpvim/ctrlp.vim'
+" Pack 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Pack 'PratikBhusal/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Pack expand('~/.fzf')
+Pack 'junegunn/fzf.vim'
+" Navigation Packins }}}
+
+" Filetype plugins {{{
+if has('python3') || has('python')
+    Pack 'python-mode/python-mode', { 'branch': 'develop' }
+    Pack 'tmhedberg/SimpylFold', { 'for': 'python' }
+endif
+if executable('clang')
+    Pack 'Rip-Rip/clang_complete',
+    Pack 'rhysd/vim-clang-format'
+endif
+if executable('cmake')
+    Pack 'pboettch/vim-cmake-syntax', { 'for': 'cmake' }
+    Pack 'vhdirk/vim-cmake'
+endif
+if executable('latexmk')
+    Pack 'lervag/vimtex', { 'for': ['tex', 'latex'] }
+endif
+" Filetype plugins }}}
+
+" Syntax Packins {{{
+Pack 'sheerun/vim-polyglot'
+Pack 'PratikBhusal/cSyntaxAfter'
+" Syntax Packins }}}
+
+" Quality of life plugins {{{
+" Pack 'jiangmiao/auto-pairs'
+Pack 'rstacruz/vim-closer'
+Pack 'tpope/vim-commentary'
+Pack 'markonm/traces.vim'
+Pack 'andymass/vim-matchup'
+Pack 'jbgutierrez/vim-better-comments'
+Pack 'ntpeters/vim-better-whitespace'
+Pack 'junegunn/vim-easy-align'
+Pack 'Konfekt/FastFold'
+" Quality of life plugins }}}
+
+
+Pack 'SirVer/ultisnips' | Pack 'honza/vim-snippets'
+Pack 'tpope/vim-dispatch'
+
+if !has('nvim')
+    Pack 'tpope/vim-sensible'
+endif
+
+Pack 'takac/vim-hardtime'
+
+Pack 'tpope/vim-fugitive' | Pack 'airblade/vim-gitgutter'
+
+if v:version >= 800
+    Pack 'w0rp/ale'
+endif
+
+" Autocompletion Packins {{{
+if has('python3') && ( has('nvim-0.3.0') || has('patch-8.1.001') )
+    Pack 'neoclide/vim-node-rpc'
+    Pack 'Shougo/neco-vim'
+    Pack 'neoclide/coc-neco'
+    Pack 'neoclide/coc-sources'
+    Pack 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+    " Pack 'Shougo/deoplete.nvim'
+    " Pack 'roxma/nvim-yarp'
+    " Pack 'roxma/vim-hug-neovim-rpc'
+    " Pack 'Shougo/neco-vim'
+    " Pack 'zchee/deoplete-jedi'
+else
+    Pack 'lifepillar/vim-mucomplete'
+endif
+" Pack 'lifepillar/vim-mucomplete'
+" Autocompletion Packins }}}
+
+" Packins for consideration {{{
+" Async Autocompletion
+" Pack 'prabirshrestha/asyncomplete.vim'
+" Pack 'prabirshrestha/async.vim'
+" Pack 'prabirshrestha/vim-lsp'
+" Pack 'prabirshrestha/asyncomplete-lsp.vim'
+" Pack 'prabirshrestha/asyncomplete-buffer.vim'
+" Pack 'prabirshrestha/asyncomplete-ultisnips.vim'
+
+
+if has('nvim')
+    Pack 'RRethy/vim-hexokinase'
+else
+    Pack 'ap/vim-css-color'
+endif
+
+
+Pack 'jaredgorski/SpaceCamp'
+
+" Better window resizing
+Pack 'roxma/vim-window-resize-easy'
+
+" Visualize undo tree
+Pack 'mbbill/undotree'
+
+
+" Better comments
+
+" Pack 'vimwiki/vimwiki'
+
+" Pack 'jbgutierrez/vim-better-comments'
+
+" Add vim-clang-format to format my c-family code
+" Pack 'Shougo/vimproc.vim', {'do' : 'make'}
+
+" " Python Autocompletion
+" Pack 'vim-scripts/pythoncomplete'
+
+" Pack 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Pack 'junegunn/fzf.vim'
+
+" add vim-lightline. May eventually replace vim-airline
+" Pack 'itchyny/lightline.vim'
+
+" Add a vim wiki for notetaking and other needs
+" Pack 'vimwiki/vimwiki'
+
+Pack 'editorconfig/editorconfig-vim'
+
+
+Pack 'tweekmonster/startuptime.vim'
+
+
+" if executable('tmux')
+"     Pack 'christoomey/vim-tmux-navigator'
+" endif
+
+" Autocompletion Options
+" Pack 'ajh17/VimCompletesMe'
+" Pack 'lifepillar/vim-mucomplete'
+" Pack 'ervandew/supertab'
+
+" Have statusline show buffers
+" Pack 'bling/vim-bufferline'
+
+" Add better cwindow support
+" Pack 'romainl/vim-qf'
+
+"Add todo.txt support
+Pack 'freitass/todo.txt-vim'
+
+" Add camel/snake case motions
+
+" }}}
+
+" Direnv - Local vim configuration {{{ -----------------------------------------
+" Direnv support
+if g:linux
+    call s:direnv_init()
+
+    if exists("$DIRENV_VIM_DIR")
+        Pack $DIRENV_VIM_DIR
+    endif
+
+endif
+" Direnv - Local vim configuration }}} -----------------------------------------
+if g:windows
+    Pack '~/.vim/pack/osplugin/opt/osplugin-windows'
+elseif g:linux
+    Pack '~/.vim/pack/osplugin/opt/osplugin-linux'
+endif
+
+" if has('win32unix') || !has('gui_running')
+"     if isdirectory(expand('$HOME/.vim/src/vim-SnippetsCompleteMe'))
+"         Pack '~/.vim/src/vim-SnippetsCompleteMe'
+"         execute 'helptags ' .
+"             \ expand('$HOME/.vim/src/vim-SnippetsCompleteMe/doc')
+"     else
+"         Pack 'PratikBhusal/vim-SnippetsCompleteMe'
+"     endif
+" endif
+if isdirectory(expand('$HOME/.vim/src/vim-grip'))
+    Pack '~/.vim/src/vim-grip', { 'for' : 'markdown' }
+    execute 'helptags ' . expand('$HOME/.vim/src/vim-grip/doc')
+else
+    Pack 'PratikBhusal/vim-grip', { 'for': 'markdown' }
+endif
+
+" Visual Packins {{{
+Pack 'tomasr/molokai'
+Pack 'bling/vim-airline' | Pack 'vim-airline/vim-airline-themes'
+Pack 'Yggdroot/indentLine'
+Pack 'luochen1990/rainbow'
+" Visual Packins }}}
+
+" Navigation Packins {{{
+Pack 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Pack 'easymotion/vim-easymotion'
+Pack 'aykamko/vim-easymotion-segments'
+Pack 'chaoren/vim-wordmotion'
+" Pack 'ctrlpvim/ctrlp.vim'
+" Pack 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+Pack '~/.fzf'
+Pack 'junegunn/fzf.vim'
+" Navigation Packins }}}
+
+" Filetype plugins {{{
+if has('python3') || has('python')
+    Pack 'python-mode/python-mode', { 'branch': 'develop' }
+    Pack 'tmhedberg/SimpylFold', { 'for': 'python' }
+endif
+if executable('clang')
+    Pack 'Rip-Rip/clang_complete',
+    Pack 'rhysd/vim-clang-format'
+endif
+if executable('cmake')
+    Pack 'pboettch/vim-cmake-syntax', { 'for': 'cmake' }
+    Pack 'vhdirk/vim-cmake'
+endif
+if executable('latexmk')
+    Pack 'lervag/vimtex', { 'for': ['tex', 'latex'] }
+endif
+" Filetype plugins }}}
+
+" Syntax Packins {{{
+Pack 'sheerun/vim-polyglot'
+Pack 'PratikBhusal/cSyntaxAfter'
+" Syntax Packins }}}
+
+" Quality of life plugins {{{
+" Pack 'jiangmiao/auto-pairs'
+Pack 'rstacruz/vim-closer'
+Pack 'tpope/vim-commentary'
+Pack 'markonm/traces.vim'
+Pack 'andymass/vim-matchup'
+Pack 'jbgutierrez/vim-better-comments'
+Pack 'ntpeters/vim-better-whitespace'
+Pack 'junegunn/vim-easy-align'
+Pack 'Konfekt/FastFold'
+" Quality of life plugins }}}
+
+
+Pack 'SirVer/ultisnips' | Pack 'honza/vim-snippets'
+Pack 'tpope/vim-dispatch'
+
+if !has('nvim')
+    Pack 'tpope/vim-sensible'
+endif
+
+Pack 'takac/vim-hardtime'
+
+Pack 'tpope/vim-fugitive' | Pack 'airblade/vim-gitgutter'
+
+if v:version >= 800
+    Pack 'w0rp/ale'
+endif
+
+" Autocompletion Packins {{{
+if has('python3') && ( has('nvim-0.3.0') || has('patch-8.1.001') )
+    Pack 'neoclide/vim-node-rpc'
+    Pack 'Shougo/neco-vim'
+    Pack 'neoclide/coc-neco'
+    Pack 'neoclide/coc-sources'
+    Pack 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+    " Pack 'Shougo/deoplete.nvim'
+    " Pack 'roxma/nvim-yarp'
+    " Pack 'roxma/vim-hug-neovim-rpc'
+    " Pack 'Shougo/neco-vim'
+    " Pack 'zchee/deoplete-jedi'
+else
+    Pack 'lifepillar/vim-mucomplete'
+endif
+" Pack 'lifepillar/vim-mucomplete'
+" Autocompletion Packins }}}
+
+" Packins for consideration {{{
+" Async Autocompletion
+" Pack 'prabirshrestha/asyncomplete.vim'
+" Pack 'prabirshrestha/async.vim'
+" Pack 'prabirshrestha/vim-lsp'
+" Pack 'prabirshrestha/asyncomplete-lsp.vim'
+" Pack 'prabirshrestha/asyncomplete-buffer.vim'
+" Pack 'prabirshrestha/asyncomplete-ultisnips.vim'
+
+
+if has('nvim')
+    Pack 'RRethy/vim-hexokinase'
+else
+    Pack 'ap/vim-css-color'
+endif
+
+
+Pack 'jaredgorski/SpaceCamp'
+
+" Better window resizing
+Pack 'roxma/vim-window-resize-easy'
+
+" Visualize undo tree
+Pack 'mbbill/undotree'
+
+
+" Better comments
+
+" Pack 'vimwiki/vimwiki'
+
+" Pack 'jbgutierrez/vim-better-comments'
+
+" Add vim-clang-format to format my c-family code
+" Pack 'Shougo/vimproc.vim', {'do' : 'make'}
+
+" " Python Autocompletion
+" Pack 'vim-scripts/pythoncomplete'
+
+" Pack 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Pack 'junegunn/fzf.vim'
+
+" add vim-lightline. May eventually replace vim-airline
+" Pack 'itchyny/lightline.vim'
+
+" Add a vim wiki for notetaking and other needs
+" Pack 'vimwiki/vimwiki'
+
+Pack 'editorconfig/editorconfig-vim'
+
+
+Pack 'tweekmonster/startuptime.vim'
+
+
+" if executable('tmux')
+"     Pack 'christoomey/vim-tmux-navigator'
+" endif
+
+" Autocompletion Options
+" Pack 'ajh17/VimCompletesMe'
+" Pack 'lifepillar/vim-mucomplete'
+" Pack 'ervandew/supertab'
+
+" Have statusline show buffers
+" Pack 'bling/vim-bufferline'
+
+" Add better cwindow support
+" Pack 'romainl/vim-qf'
+
+"Add todo.txt support
+Pack 'freitass/todo.txt-vim'
+
+" Add camel/snake case motions
+
+" }}}
+
+" Direnv - Local vim configuration {{{ -----------------------------------------
+" Direnv support
+if g:linux
+    call s:direnv_init()
+
+    if exists("$DIRENV_VIM_DIR")
+        Pack $DIRENV_VIM_DIR
+    endif
+
+endif
+" Direnv - Local vim configuration }}} -----------------------------------------
+
+call plugpac#end()
+
+endfunction
+" PlugPac }}} ------------------------------------------------------------------
 
 function! s:direnv_init() abort "{{{
     let l:direnv_cmd = get(g:, 'direnv_cmd', 'direnv')
