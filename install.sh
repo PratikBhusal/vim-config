@@ -18,14 +18,16 @@ dotfiles() {
 }
 while ! dotfiles checkout; do
     mkdir -p ~/.dotfiles-backup
-    dotfiles checkout 2>&1 | grep -E "^\s+" | cut -f 2 | \
+    dotfiles checkout 2>&1 | grep -E "^\\s+" | cut -f 2 | \
         sed 's/\(.*\)\//\1 /' | \
         awk 'NF!=1 {print $0; next} {print "." , $0}' | \
-        xargs -l sh -c 'mkdir -p ~/.dotfiles-backup/$0 && \
-        mv ~/$0/$1 ~/.dotfiles-backup/$0/$1' 1> /dev/null 2>&1
+        xargs -l sh -c "mkdir -p ~/.dotfiles-backup/$0 && \
+        mv ~/$0/$1 ~/.dotfiles-backup/$0/$1" 1> /dev/null 2>&1
 done
 
-# if [[ -x "$(command -v git)" && -x "$(command -v rsync)" &&  ! -d $HOME/.dotfiles ]]; then
+# if  [ -x "$(command -v git)" ] &&
+#     [ -x "$(command -v rsync)" ] &&
+#     [ ! -d "$HOME/.dotfiles" ]; then
 #     git clone --separate-git-dir="$HOME"/.dotfiles git@github.com:PratikBhusal/dotfiles.git tmpdotfiles
 
 #     rsync --recursive --verbose --links --exclude '.git' tmpdotfiles/ "$HOME"/
@@ -33,6 +35,6 @@ done
 
 #     dotfiles config --local status.showUntrackedFiles no
 
-# elif [[ ! -x "$(command -v git)" || ! -x "$(command -v rsync)" ]]; then
+# elif [ ! -x "$(command -v git)" ] || [ ! -x "$(command -v rsync)" ]; then
 #     echo "please install git and rsync before trying to install dotfiles"
 # fi
