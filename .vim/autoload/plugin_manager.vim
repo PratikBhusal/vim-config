@@ -1,8 +1,7 @@
 " Package Manager Selecter {{{
 function! plugin_manager#init()
     if s:select_plugin_manager() ==# 'plugpac'
-        " call s:plugpac()
-        call s:vim_plug()
+        call s:plugpac()
     else
         call s:vim_plug()
     endif
