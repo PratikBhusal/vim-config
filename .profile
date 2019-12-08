@@ -9,6 +9,7 @@
 
 # if running bash
 if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
+    # shellcheck source=.bashrc
     . "$HOME/.bashrc"
 fi
 
@@ -26,13 +27,15 @@ if command -v st 1> /dev/null 2>&1; then
    export TERMINAL="st"
 fi
 
-export PATH=$PATH:$HOME/.texlive/2019/bin/x86_64-linux/
-export MANPATH=$MANPATH:$HOME/.texlive/2019/texmf-dist/doc/man/
-export INFOPATH=$INFOPATH:$HOME/.texlive/2019/texmf-dist/doc/info/
-# export TEXMFCNF="$HOME/.texlive/2019/:"
-
-# Add python3 stuff
-export PATH=$PATH:$(python3 -m site --user-base)/bin
+# Add texlive
+if [ -d "$HOME/.texlive/2019/" ]; then
+    export PATH=$PATH:$HOME/.texlive/2019/bin/x86_64-linux/
+    export MANPATH=$MANPATH:$HOME/.texlive/2019/texmf-dist/doc/man/
+    export INFOPATH=$INFOPATH:$HOME/.texlive/2019/texmf-dist/doc/info/
+    # export TEXMFCNF="$HOME/.texlive/2019/:"
+fi
 
 # Add rust cargo packages
-export PATH=$PATH:~/.cargo/bin
+if [ -d "$HOME/.cargo/bin" ]; then
+    export PATH=$PATH:~/.cargo/bin
+fi
