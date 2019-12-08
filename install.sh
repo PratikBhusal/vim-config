@@ -10,7 +10,7 @@ if [ -d "$HOME"/.dotfiles ]; then
     exit 2
 fi
 
-git clone --bare https://github.com/PratikBhusal/dotfiles.git "$HOME"/.dotfiles
+git clone --bare git@github.com:PratikBhusal/dotfiles.git "$HOME"/.dotfiles
 cd "$HOME" || exit 1
 
 dotfiles() {
