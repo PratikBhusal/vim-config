@@ -20,10 +20,7 @@ HISTCONTROL=ignoreboth
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-
-if [ "$LANG" = '' ]; then
-    export LANG=en_US.UTF-8
-fi
+[ "$LANG" = '' ] && export LANG=en_US.UTF-8
 
 # shellcheck source=.config/bash/aliases
 [ -s ~/.config/bash/aliases ] && . ~/.config/bash/aliases
