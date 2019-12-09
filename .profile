@@ -27,6 +27,10 @@ if command -v st 1> /dev/null 2>&1; then
    export TERMINAL="st"
 fi
 
+if command -v pyenv 1> /dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 # Add texlive
 if [ -d "$HOME/.texlive/2019/" ]; then
     export PATH=$PATH:$HOME/.texlive/2019/bin/x86_64-linux/
