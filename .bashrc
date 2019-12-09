@@ -38,16 +38,18 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # Direnv {{{
-show_virtual_env() {
-  if [ -n "$DIRENV_DIR" ]; then
-    if [ -n "$VIRTUAL_ENV" ]; then
-      echo "($(basename "$VIRTUAL_ENV"))"
-    elif [ -n "$CONDA_DEFAULT_ENV" ]; then
-      echo "($(basename "$CONDA_DEFAULT_ENV"))"
+if command -v direnv 1> /dev/null 2>&1; then
+  show_virtual_env() {
+    if [ -n "$DIRENV_DIR" ]; then
+      if [ -n "$VIRTUAL_ENV" ]; then
+        echo "($(basename "$VIRTUAL_ENV"))"
+      elif [ -n "$CONDA_DEFAULT_ENV" ]; then
+        echo "($(basename "$CONDA_DEFAULT_ENV"))"
+      fi
     fi
-  fi
-}
-export -f show_virtual_env
-PS1='$(show_virtual_env)'$PS1
-eval "$(direnv hook bash)"
+  }
+  export -f show_virtual_env
+  PS1='$(show_virtual_env)'$PS1
+  eval "$(direnv hook bash)"
+fi
 # Direnv }}}
