@@ -7,6 +7,10 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+
+# shellcheck source=.config/sh/functions.sh
+[ -r ~/.config/sh/functions.sh ] && . ~/.config/sh/functions.sh
+
 # if running bash
 if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
     # shellcheck source=.bashrc
@@ -14,14 +18,10 @@ if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
+append_to_path "$HOME/bin"
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
+prepend_to_path "$HOME/.local/bin"
 
 if command -v st 1> /dev/null 2>&1; then
    export TERMINAL="st"
@@ -33,13 +33,15 @@ fi
 
 # Add texlive
 if [ -d "$HOME/.texlive/2019/" ]; then
-    export PATH=$PATH:$HOME/.texlive/2019/bin/x86_64-linux/
-    export MANPATH=$MANPATH:$HOME/.texlive/2019/texmf-dist/doc/man/
-    export INFOPATH=$INFOPATH:$HOME/.texlive/2019/texmf-dist/doc/info/
+    append_to_path "$HOME/.texlive/2019/bin/x86_64-linux/"
+    MANPATH=$MANPATH:$HOME/.texlive/2019/texmf-dist/doc/man/
+    INFOPATH=$INFOPATH:$HOME/.texlive/2019/texmf-dist/doc/info/
     # export TEXMFCNF="$HOME/.texlive/2019/:"
 fi
 
 # Add rust cargo packages
-if [ -d "$HOME/.cargo/bin" ]; then
-    export PATH=$PATH:~/.cargo/bin
-fi
+append_to_path "$PATH:~/.cargo/bin"
+
+PATH=$(cleanup_path "$PATH")
+MANPATH=$(cleanup_path "$MANPATH")
+INFOPATH=$(cleanup_path "$INFOPATH")

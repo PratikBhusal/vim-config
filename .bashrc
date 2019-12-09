@@ -23,7 +23,7 @@ shopt -s checkwinsize
 [ "$LANG" = '' ] && export LANG=en_US.UTF-8
 
 # shellcheck source=.config/bash/aliases
-[ -s ~/.config/bash/aliases ] && . ~/.config/bash/aliases
+[ -s ~/.config/bash/aliases.bash ] && . ~/.config/bash/aliases.bash
 
 # If on bash version >= 4, enable going into directory using only the
 # directory's name (no need to type "cd dirname")
