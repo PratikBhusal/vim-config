@@ -25,11 +25,12 @@ function! s:select_plugin_manager() abort
             \ ~/.vim/pack/minpac/opt/minpac
         silent !curl -fLo ~/.vim/autoload/plugpac.vim --create-dirs
             \ https://raw.githubusercontent.com/bennyyip/plugpac.vim/master/plugpac.vim
+        autocmd vimenter * PackUpdate | source $MYVIMRC
         return 'plugpac'
     elseif executable('curl')
       silent !curl -flo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      autocmd vimenter * PlugInstall --sync | source $myvimrc
+      autocmd vimenter * PlugInstall --sync | source $MYVIMRC
     endif
 
     return 'vim_plug'
@@ -141,7 +142,7 @@ if v:version >= 800
 endif
 
 " Autocompletion Plugins {{{
-if has('python3') && ( has('nvim-0.3.0') || has('patch-8.1.001') )
+if has('python3') && ( has('nvim-0.3.0') || has('patch-8.1.001') ) && executable('node')
     Plug 'neoclide/vim-node-rpc'
     Plug 'Shougo/neco-vim'
     Plug 'neoclide/coc-neco'
@@ -235,8 +236,7 @@ Plug 'freitass/todo.txt-vim'
 " }}}
 
 " Direnv - Local vim configuration {{{ -----------------------------------------
-" Direnv support
-if g:linux
+if g:linux && exectuable('direnv')
     call s:direnv_init()
 
     if exists("$DIRENV_VIM_DIR")
@@ -258,9 +258,9 @@ function! s:plugpac() abort
 call plugpac#begin()
 
 if g:windows
-    Pack expand('~/.vim/pack/osplugin/opt/osplugin-windows')
+    packadd osplugin-windows
 elseif g:linux
-    Pack expand('~/.vim/pack/osplugin/opt/osplugin-linux')
+    packadd osplugin-linux
 endif
 
 " if has('win32unix') || !has('gui_running')
@@ -272,9 +272,8 @@ endif
 "         Pack 'PratikBhusal/vim-SnippetsCompleteMe'
 "     endif
 " endif
-if isdirectory(expand('$HOME/.vim/src/vim-grip'))
-    Pack expand('$HOME/.vim/src/vim-grip'), { 'for' : 'markdown' }
-    execute 'helptags ' . expand('$HOME/.vim/src/vim-grip/doc')
+if isdirectory(expand('$HOME/.vim/pack/src/opt/vim-grip'))
+    autocmd! Filetype markdown packadd vim-grip
 else
     Pack 'PratikBhusal/vim-grip', { 'for': 'markdown' }
 endif
@@ -351,7 +350,7 @@ if v:version >= 800
 endif
 
 " Autocompletion Packins {{{
-if has('python3') && ( has('nvim-0.3.0') || has('patch-8.1.001') )
+if has('python3') && ( has('nvim-0.3.0') || has('patch-8.1.001') ) && executable('coc')
     Pack 'neoclide/vim-node-rpc'
     Pack 'Shougo/neco-vim'
     Pack 'neoclide/coc-neco'
@@ -445,8 +444,7 @@ Pack 'freitass/todo.txt-vim'
 " }}}
 
 " Direnv - Local vim configuration {{{ -----------------------------------------
-" Direnv support
-if g:linux
+if g:linux && executable('direnv')
     call s:direnv_init()
 
     if exists("$DIRENV_VIM_DIR")
