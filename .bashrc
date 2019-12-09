@@ -36,3 +36,18 @@ fi
 # Set default editor to vim
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+# Direnv {{{
+show_virtual_env() {
+  if [ -n "$DIRENV_DIR" ]; then
+    if [ -n "$VIRTUAL_ENV" ]; then
+      echo "($(basename "$VIRTUAL_ENV"))"
+    elif [ -n "$CONDA_DEFAULT_ENV" ]; then
+      echo "($(basename "$CONDA_DEFAULT_ENV"))"
+    fi
+  fi
+}
+export -f show_virtual_env
+PS1='$(show_virtual_env)'$PS1
+eval "$(direnv hook bash)"
+# Direnv }}}
