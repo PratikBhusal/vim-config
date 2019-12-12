@@ -3,6 +3,9 @@
 # To find program class name: xprop | awk '/CLASS/ {print substr($0, 20); exit}'
 
 
+set $config_dir ~/.config/i3
+
+
 # Run the following programs on startup
 # exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id redshift-gtk
@@ -42,21 +45,25 @@ floating_modifier $mod
 
 
 # bindsym --release Print exec xfce4-screenshooter -f
-set $Screenshooter maim -f "png" -m 1 ~/Pictures/Screenshots/$(date +%F-%T)
+set $Screenshooter maim -u -f "png" -m 1 ~/Pictures/Screenshots/$(date +%F-%T).png -r crosshair
 set $screenshot (f) fullscreen, (s) selection
 mode "$screenshot" {
-    bindsym f exec --no-startup-id $hide_bar && sleep 0.01 && $Screenshooter && $show_bar, mode "default"
+    bindsym f exec --no-startup-id $hide_bar && sleep 0.1 && $Screenshooter && $show_bar, mode "default"
     bindsym s exec --no-startup-id $hide_bar && $Screenshooter -s && $show_bar, mode "default"
 
     # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym Return exec --no-startup-id $show_bar, mode "default"
+    bindsym Escape exec --no-startup-id $show_bar, mode "default"
 }
 bindsym --release Print mode "$screenshot"
 
+# bindsym Shift+p exec /home/pratik/.config/i3/commands/Screenshooter.sh/Screenshooter.sh
+
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec cd `xcwd` && i3-sensible-terminal
+# bindsym $mod+Return exec notify-send `xcwd`
+bindsym $mod+Return exec ~/.i3/i3-shell.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -234,3 +241,8 @@ exec --no-startup-id pasystray
 for_window [class="Yad"] floating enable
 for_window [class="(?i)pithos"] floating enable, move position center
 for_window [class="(?i)keeweb"] floating enable, move position center
+
+# volume
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
+bindsym XF86AudioMute exec amixer sset Master toggle
