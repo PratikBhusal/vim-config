@@ -22,7 +22,7 @@ shopt -s checkwinsize
 
 [ "$LANG" = '' ] && export LANG=en_US.UTF-8
 
-# shellcheck source=.config/bash/aliases
+# shellcheck source=.config/bash/aliases.bash
 [ -s ~/.config/bash/aliases.bash ] && . ~/.config/bash/aliases.bash
 
 # If on bash version >= 4, enable going into directory using only the
@@ -33,6 +33,9 @@ shopt -s checkwinsize
 # Set default editor to vim
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+# shellcheck source=.fzf.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Direnv {{{
 if command -v direnv 1> /dev/null 2>&1; then
