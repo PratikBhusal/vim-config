@@ -1,4 +1,6 @@
+arandr
 arc-gtk-theme
+bash-completion
 checkbashisms
 cryptomator
 direnv
@@ -6,13 +8,13 @@ discord
 dmenu
 firefox
 git
-vim
-i3-wm
 i3blocks
 i3lock
+i3-wm
 joplin
 keepassxc
 maim
+ncdu
 neofetch
 netctl
 nnn
@@ -24,6 +26,7 @@ ripgrep
 rsync
 shellcheck
 tmux
+vim
 xautolock
 xclip
 yay
