@@ -21,16 +21,20 @@ function! s:select_plugin_manager() abort
     endif
 
     if executable('curl') && executable('git') && l:use_packages
-        silent !git clone https://github.com/k-takata/minpac.git
-            \ ~/.vim/pack/minpac/opt/minpac
-        silent !curl -fLo ~/.vim/autoload/plugpac.vim --create-dirs
-            \ https://raw.githubusercontent.com/bennyyip/plugpac.vim/master/plugpac.vim
-        autocmd vimenter * PackUpdate | source $MYVIMRC
+        if !isdirectory(expand('~/.vim/pack/minpac/opt/minpac'))
+            silent !git clone https://github.com/k-takata/minpac.git
+                \ ~/.vim/pack/minpac/opt/minpac
+        endif
+        if !filereadable(expand('~/.vim/autoload/plugpac.vim'))
+            silent !curl -fLo ~/.vim/autoload/plugpac.vim --create-dirs
+                \ https://raw.githubusercontent.com/bennyyip/plugpac.vim/master/plugpac.vim
+        endif
+        autocmd VimEnter * PackUpdate | source $MYVIMRC
         return 'plugpac'
     elseif executable('curl')
       silent !curl -flo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      autocmd vimenter * PlugInstall --sync | source $MYVIMRC
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 
     return 'vim_plug'
@@ -83,11 +87,18 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'easymotion/vim-easymotion'
 Plug 'aykamko/vim-easymotion-segments'
 Plug 'chaoren/vim-wordmotion'
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-Plug '~/.fzf'
-Plug 'junegunn/fzf.vim'
+if executable('go')
+    if isdirectory(expand('~/.fzf'))
+        Plug '~/.fzf'
+    else
+        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    endif
+    Plug 'junegunn/fzf.vim'
+else
+    Plug 'ctrlpvim/ctrlp.vim'
+endif
+
 " Navigation Plugins }}}
 
 " Filetype plugins {{{
@@ -236,7 +247,7 @@ Plug 'freitass/todo.txt-vim'
 " }}}
 
 " Direnv - Local vim configuration {{{ -----------------------------------------
-if g:linux && exectuable('direnv')
+if g:linux && executable('direnv')
     call s:direnv_init()
 
     if exists("$DIRENV_VIM_DIR")
@@ -254,6 +265,10 @@ endfunction
 
 " PlugPac {{{ ------------------------------------------------------------------
 function! s:plugpac() abort
+
+augroup LazyLoadPlugin
+    autocmd!
+augroup END
 
 call plugpac#begin()
 
@@ -273,29 +288,32 @@ endif
 "     endif
 " endif
 if isdirectory(expand('$HOME/.vim/pack/src/opt/vim-grip'))
-    autocmd! Filetype markdown packadd vim-grip
+    autocmd LazyLoadPlugin Filetype markdown packadd vim-grip
 else
     Pack 'PratikBhusal/vim-grip', { 'for': 'markdown' }
 endif
 
-" Visual Packins {{{
+" Visual plugins {{{
 Pack 'tomasr/molokai'
 Pack 'bling/vim-airline' | Pack 'vim-airline/vim-airline-themes'
 Pack 'Yggdroot/indentLine'
 Pack 'luochen1990/rainbow'
 " Visual Packins }}}
 
-" Navigation Packins {{{
+" Navigation plugins {{{
 Pack 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Pack 'justinmk/vim-dirvish'
 Pack 'easymotion/vim-easymotion'
 Pack 'aykamko/vim-easymotion-segments'
 Pack 'chaoren/vim-wordmotion'
-" Pack 'ctrlpvim/ctrlp.vim'
-" Pack 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Pack 'PratikBhusal/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" Pack expand('~/.fzf')
-Pack 'junegunn/fzf.vim'
+if executable('go')
+    Pack 'junegunn/fzf', { 'do': {-> system('./install --all')} }
+    Pack 'junegunn/fzf.vim'
+else
+    Pack 'ctrlpvim/ctrlp.vim'
+endif
+
 " Navigation Packins }}}
 
 " Filetype plugins {{{
@@ -304,7 +322,7 @@ if has('python3') || has('python')
     Pack 'tmhedberg/SimpylFold', { 'for': 'python' }
 endif
 if executable('clang')
-    Pack 'Rip-Rip/clang_complete',
+"     Pack 'Rip-Rip/clang_complete',
     Pack 'rhysd/vim-clang-format'
 endif
 if executable('cmake')
@@ -334,7 +352,9 @@ Pack 'Konfekt/FastFold'
 " Quality of life plugins }}}
 
 
-Pack 'SirVer/ultisnips' | Pack 'honza/vim-snippets'
+if executable('python3')
+    Pack 'SirVer/ultisnips' | Pack 'honza/vim-snippets'
+endif
 Pack 'tpope/vim-dispatch'
 
 if !has('nvim')
@@ -349,24 +369,37 @@ if v:version >= 800
     Pack 'w0rp/ale'
 endif
 
-" Autocompletion Packins {{{
-if has('python3') && ( has('nvim-0.3.0') || has('patch-8.1.001') ) && executable('coc')
+" Autocompletion plugins {{{
+if ( has('nvim-0.3.0') || has('patch-8.1.001') ) && executable('node') && v:false
     Pack 'neoclide/vim-node-rpc'
     Pack 'Shougo/neco-vim'
     Pack 'neoclide/coc-neco'
     Pack 'neoclide/coc-sources'
-    Pack 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-    autocmd FileType json syntax match Comment +\/\/.\+$+
+    Pack 'neoclide/coc.nvim', {'branch': 'release'}
+    autocmd LazyLoadPlugin FileType json syntax match Comment +\/\/.\+$+
     " Pack 'Shougo/deoplete.nvim'
     " Pack 'roxma/nvim-yarp'
     " Pack 'roxma/vim-hug-neovim-rpc'
     " Pack 'Shougo/neco-vim'
     " Pack 'zchee/deoplete-jedi'
+elseif ( has('nvim-0.3.0') || has('patch-8.1.001') )
+    Pack 'prabirshrestha/async.vim'
+    Pack 'prabirshrestha/vim-lsp'
+    Pack 'prabirshrestha/asyncomplete.vim'
+    Pack 'prabirshrestha/asyncomplete-lsp.vim'
+
+    if executable('python3')
+        Pack 'thomasfaingnaert/vim-lsp-snippets'
+        Pack 'thomasfaingnaert/vim-lsp-ultisnips'
+    endif
+
+    call plugins#lsp#setup()
+
 else
     Pack 'lifepillar/vim-mucomplete'
 endif
 " Pack 'lifepillar/vim-mucomplete'
-" Autocompletion Packins }}}
+" Autocompletion plugins }}}
 
 " Packins for consideration {{{
 " Async Autocompletion
