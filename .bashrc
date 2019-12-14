@@ -22,7 +22,7 @@ shopt -s checkwinsize
 
 [ "$LANG" = '' ] && export LANG=en_US.UTF-8
 
-# shellcheck source=.config/sh/aliases.sh
+# shellcheck source=.config/bash/aliases.sh
 [ -s ~/.config/bash/aliases.sh ] && . ~/.config/bash/aliases.sh
 
 # If on bash version >= 4, enable going into directory using only the
