@@ -25,7 +25,12 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # alias ls='ls --color=auto'
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -i'
+
+if command -v trash >/dev/null 2>&1; then
+    alias rm='echo "This is not the command you are looking for."; false'
+else
+    alias rm='rm -i'
+fi
 
 alias journalctl='sudo journalctl'
 alias systemctl='sudo systemctl'

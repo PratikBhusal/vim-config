@@ -40,8 +40,10 @@ if [ -d "$HOME/.texlive/2019/" ]; then
 fi
 
 # Add rust cargo packages
-append_to_path "$PATH:~/.cargo/bin"
+append_to_path "~/.cargo/bin"
 
 PATH=$(cleanup_path "$PATH")
 MANPATH=$(cleanup_path "$MANPATH")
 INFOPATH=$(cleanup_path "$INFOPATH")
+
+[ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ] && startx
