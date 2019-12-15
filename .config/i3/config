@@ -162,25 +162,6 @@ bar {
     }
 }
 
-# Menu Option to turn off system in various ways
-set $Locker i3lock -c 202020
-set $mode_system (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, \
-(Shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id $Locker, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id  systemctl poweroff -i, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Delete mode "$mode_system"
-
-
 # Volume Controls {{{
 
 # To see current volume: pactl list sinks | awk '/Volume/ {print $5; exit}'
@@ -246,5 +227,24 @@ exec --no-startup-id sxhkd -c ~/.config/sxhkd/i3_sxhkdrc
 
 # # Show the first scratchpad window
 # bindsym $mod+minus scratchpad show
+
+
+# # Menu Option to turn off system in various ways
+# set $Locker i3lock -c 202020
+# set $mode_system (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, \
+# (Shift+s) shutdown
+# mode "$mode_system" {
+#     bindsym l exec --no-startup-id $Locker, mode "default"
+#     bindsym e exec --no-startup-id i3-msg exit, mode "default"
+#     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+#     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+#     bindsym r exec --no-startup-id systemctl reboot, mode "default"
+#     bindsym Shift+s exec --no-startup-id  systemctl poweroff -i, mode "default"
+
+#     # back to normal: Enter or Escape
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
+# bindsym $mod+Delete mode "$mode_system"
 
 # # i3 specific shortcuts (replaced by sxhkd) }}}
