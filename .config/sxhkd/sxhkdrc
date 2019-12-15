@@ -1,0 +1,19 @@
+! vim: ft=sxhkdrc:
+# Please see https://i3wm.org/docs/userguide.html for a complete reference
+# To find key symbols: xev
+# To find program class name: xprop | awk '/CLASS/ {print substr($0, 20); exit}'
+
+# mod1 = alt
+# mod4 = Windows Key
+
+mod1 + Return
+    ~/.config/xorg/scripts/terminal.sh
+
+# mod1 + shift + q
+#     kill $(xdotool getwindowfocus getwindowpid)
+
+XF86Audio{Raise,Lower}Volume
+    amixer -q -D pulse sset Master 5%{+,-}
+
+XF86AudioMute
+    amixer -q sset Master toggle

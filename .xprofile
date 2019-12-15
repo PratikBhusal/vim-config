@@ -10,3 +10,4 @@ xset -b &
 picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil --no-fading-openclose
 xrdb .Xresources
 hsetroot -solid "#000000"
+sxhkd &
