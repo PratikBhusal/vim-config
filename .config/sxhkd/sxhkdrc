@@ -7,7 +7,7 @@
 # mod4 = Windows Key
 
 mod1 + Return
-    ~/.config/xorg/scripts/terminal.sh
+    ~/.config/xorg/scripts/sensible-terminal.sh
 
 # mod1 + shift + q
 #     kill $(xdotool getwindowfocus getwindowpid)

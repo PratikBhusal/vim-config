@@ -9,11 +9,16 @@ done
 
 [ ! "$CMD" ] && echo 'No terminal emulator found! Install one please.' && exit 1
 
+
+CWD=''
 if command -v xcwd > /dev/null 2>&1; then
-    cd "$(xcwd)" && $CMD
+    CWD=$(xcwd)
+    case "$CWD" in
+        $HOME/*) cd "$CWD" && $CMD;;
+        *)                    $CMD;;
+    esac
 else
     # i3 thread: https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/?answer=152#post-id-152
-    CWD=''
 
     # Get window ID
     ID=$(xdpyinfo | grep focus | cut -f4 -d " ")

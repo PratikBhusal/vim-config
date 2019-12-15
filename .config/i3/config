@@ -211,7 +211,7 @@ exec --no-startup-id sxhkd -c ~/.config/sxhkd/i3_sxhkdrc
 # # i3 specific shortcuts (replaced by sxhkd) {{{
 
 # # start a terminal
-# bindsym $mod+Return exec ~/.config/xorg/scripts/terminal.sh
+# bindsym $mod+Return exec ~/.config/xorg/scripts/sensible-terminal.sh
 
 # # kill focused window
 # bindsym $mod+Shift+q kill
