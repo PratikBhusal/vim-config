@@ -1,21 +1,18 @@
 #!/usr/bin/env sh
 
 PROMPT="What state do you want the computer to be in?"
-LOCKER="i3lock -c 202020"
+OPTIONS="cancel\nlock\nlogout\nsuspend\nhibernate\nreboot\nshutdown"
 
 
 confirm() {
     [ "$( printf "No\nYes" | dmenu -i -p "Are you sure you want to $1?")" = "Yes" ] && return 0
 }
 
-
-OPTION=$(printf "cancel\nlock\nlogout\nsuspend\nhibernate\nreboot\nshutdown" | dmenu -i -p "$PROMPT")
-case "$OPTION"  in
-    cancel    ) ;;
-    lock      ) $LOCKER;;
+case $(printf "%b" "$OPTIONS" | dmenu -i -p "$PROMPT")  in
+    lock      ) ~/.config/xorg/scripts/sensible-locker.sh;;
     logout    ) killall Xorg;;
-    suspend   ) $LOCKER && systemctl suspend;;
-    hibernate ) $LOCKER && systemctl hibernate;;
-    reboot    ) confirm "$OPTION" && systemctl reboot;;
-    shutdown  ) confirm "$OPTION" && systemctl poweroff -i;;
+    suspend   ) ~/.config/xorg/scripts/sensible-locker.sh && systemctl suspend;;
+    hibernate ) ~/.config/xorg/scripts/sensible-locker.sh && systemctl hibernate;;
+    reboot    ) confirm "reboot" && systemctl reboot;;
+    shutdown  ) confirm "shutdown" && systemctl poweroff -i;;
 esac

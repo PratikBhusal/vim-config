@@ -4,7 +4,7 @@ prepend_to_path() {
   if [ -d "$1" ]; then
     case ":$PATH:" in
       *":$1:"*) :;; # already there
-      *) PATH="$PATH:$1";;
+      *) export PATH="$PATH:$1";;
     esac
   fi
 }
@@ -13,7 +13,7 @@ append_to_path() {
   if [ -d "$1" ]; then
     case ":$PATH:" in
       *":$1:"*) :;; # already there
-      *) PATH="$1:$PATH";;
+      *) export PATH="$1:$PATH";;
     esac
   fi
 }

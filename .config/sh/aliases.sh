@@ -7,7 +7,7 @@ case "$-" in
 esac
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
+if command -v dircolors >/dev/null 2>&1 ; then
 
     if [ -r ~/.dircolors ]; then
         eval "$(dircolors -b ~/.dircolors)"
@@ -24,16 +24,14 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 else
     alias ls='ls -hN --group-directories-first'
-
 fi
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-# alias ls='ls --color=auto'
 alias cp='cp -i'
 alias mv='mv -i'
 
 if command -v trash >/dev/null 2>&1; then
-    alias rm='echo "This is not the command you are looking for."; false'
+    alias rm='echo "Use \"trash\". If you meant rm, use \"\\rm\""; false'
 else
     alias rm='rm -i'
 fi
@@ -49,11 +47,9 @@ alias latexmk="latexmk -pdf"
 
 alias mkdir="mkdir -vp"
 
-if command -v cat >/dev/null 2>&1; then
-    alias cat="bat"
-fi
-
-
+command -v cat >/dev/null 2>&1 && alias cat="bat"
+command -v nnn >/dev/null 2>&1 && alias nnn="nnn -d"
+command -v i3lock >/dev/null 2>&1 && alias i3lock="i3lock -c 202020"
 
 # export QT_STYLE_OVERRIDE=gtk
 # export QT_SELECT=qt5

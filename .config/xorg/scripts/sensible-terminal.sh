@@ -14,10 +14,10 @@ CWD=''
 if command -v xcwd > /dev/null 2>&1; then
     CWD=$(xcwd)
     case "$CWD" in
-        $HOME/*) cd "$CWD" && $CMD;;
-        *)                    $CMD;;
+        $HOME/*) cd "$CWD" && $CMD 1> /dev/null 2>&1;;
+        *)                    $CMD 1> /dev/null 2>&1;;
     esac
-else
+elif command -v xdpyinfo > /dev/null 2>&1 && command -v xprop > /dev/null 2>&1; then
     # i3 thread: https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/?answer=152#post-id-152
 
     # Get window ID
@@ -37,8 +37,8 @@ else
         fi
     fi
     if [ -n "$CWD" ]; then
-        cd "$CWD" && $CMD
+        cd "$CWD" && $CMD 1> /dev/null 2>&1
     else
-        $CMD
+        $CMD 1> /dev/null 2>&1
     fi
 fi

@@ -23,13 +23,10 @@ append_to_path "$HOME/bin"
 # set PATH so it includes user's private bin if it exists
 prepend_to_path "$HOME/.local/bin"
 
-if command -v st 1> /dev/null 2>&1; then
-   export TERMINAL="st"
-fi
-
-if command -v pyenv 1> /dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+command -v st    1> /dev/null 2>&1 && export TERMINAL="st"
+command -v pyenv 1> /dev/null 2>&1 && eval   "$(pyenv init -)"
+command -v firefox 1> /dev/null 2>&1 && export BROWSER="firefox"
+command -v i3lock  1> /dev/null 2>&1 && export LOCKER="i3lock"
 
 # Add texlive
 if [ -d "$HOME/.texlive/2019/" ]; then
@@ -40,10 +37,12 @@ if [ -d "$HOME/.texlive/2019/" ]; then
 fi
 
 # Add rust cargo packages
-append_to_path "~/.cargo/bin"
+# shellcheck source=.config/cargo/bin
+append_to_path "$HOME/.cargo/bin"
 
 PATH=$(cleanup_path "$PATH")
 MANPATH=$(cleanup_path "$MANPATH")
 INFOPATH=$(cleanup_path "$INFOPATH")
 
+# startx should always be the last line
 [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ] && startx
