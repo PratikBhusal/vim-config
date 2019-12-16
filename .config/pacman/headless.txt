@@ -1,5 +1,7 @@
+base
 bash-completion
 checkbashisms
+dashbinsh
 direnv
 git
 maim
