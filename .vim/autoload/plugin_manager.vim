@@ -401,7 +401,7 @@ endif
 " Pack 'lifepillar/vim-mucomplete'
 " Autocompletion plugins }}}
 
-" Packins for consideration {{{
+" Plugins for consideration {{{
 " Async Autocompletion
 " Pack 'prabirshrestha/asyncomplete.vim'
 " Pack 'prabirshrestha/async.vim'
@@ -410,15 +410,15 @@ endif
 " Pack 'prabirshrestha/asyncomplete-buffer.vim'
 " Pack 'prabirshrestha/asyncomplete-ultisnips.vim'
 
+Pack 'kovetskiy/sxhkd-vim'
+Pack 'lambdalisue/suda.vim'
 
 if has('nvim')
-    Pack 'RRethy/vim-hexokinase'
+    Pack 'RRethy/vim-hexokinase' { 'do': {-> system('make hexokinase')} }
 else
     Pack 'ap/vim-css-color'
 endif
 
-
-Pack 'jaredgorski/SpaceCamp'
 
 " Better window resizing
 Pack 'roxma/vim-window-resize-easy'
