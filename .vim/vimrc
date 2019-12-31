@@ -26,7 +26,7 @@ autocmd BufReadPost *
      \     exe "normal! g`\"" |
      \ endif
 
-call plugin_manager#init()
+let g:plugin_manager = plugin_manager#init()
 " Essentials }}} ---------------------------------------------------------------
 
 " Change location of temporary files {{{ ---------------------------------------
@@ -49,28 +49,10 @@ if !isdirectory(expand(&directory))
 endif
 " Change location of temporary files  1}}} -------------------------------------
 
-" Live the Vim Life {{{ --------------------------------------------------------
-inoremap <silent> <up> <nop>
-inoremap <silent> <down> <nop>
-inoremap <silent> <left> <nop>
-inoremap <silent> <right> <nop>
-inoremap <silent> <C-c> <nop>
-
-nnoremap <silent> <up> <nop>
-nnoremap <silent> <down> <nop>
-nnoremap <silent> <left> <nop>
-nnoremap <silent> <right> <nop>
-
-vnoremap <silent> <up> <nop>
-vnoremap <silent> <down> <nop>
-vnoremap <silent> <left> <nop>
-vnoremap <silent> <right> <nop>
-" Live the Vim Life  }}} -------------------------------------------------------
-
 " Auto Update at save {{{ ------------------------------------------------------
 augroup reload_vimrc " {
-autocmd!
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    autocmd!
+    autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 augroup END " }
 " Auto Update at save }}} ------------------------------------------------------
 
@@ -127,20 +109,28 @@ set diffopt+=hiddenoff " Turn off diff mode when there is only 1 diff window
 set linespace=0
 let g:indent_guides_guide_size= 2
 set background=dark
-"Colorscheme Choice
-colorscheme molokai
-if !has('gui_running') && g:colors_name ==? 'molokai' && &t_Co == 256
-    let g:rehash256 = 1
-endif
+" autocmd BufWritePre * %s/\s\+$//e " Delete Trailing Whitespace
+" Make things look nice }}} ----------------------------------------------------
+
+" Custom colors for colorscheme {{{ --------------------------------------------
+try
+    if g:plugin_manager ==# 'plugpac'
+        packadd! molokai
+    endif
+    if !has('gui_running') && &t_Co == 256
+        let g:rehash256 = 1
+    endif
+    colorscheme molokai
+catch /^Vim\%((\a\+)\)\=:E185/
+endtry
+
 if ( has('vcon') || has('termguicolors') ) &&
     \ (&term !=# 'rxvt-unicode-256color')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
 endif
-" Delete Trailing Whitespace
-" autocmd BufWritePre * %s/\s\+$//e
-" Make things look nice }}} ----------------------------------------------------
+" Custom colors for colorscheme }}} --------------------------------------------
 
 " Change how the cursor looks {{{ ----------------------------------------------
 set guicursor=c-i-ci:ver15-Cursor/lCursor

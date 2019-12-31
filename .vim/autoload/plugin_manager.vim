@@ -1,10 +1,14 @@
 " Package Manager Selecter {{{
-function! plugin_manager#init()
-    if s:select_plugin_manager() ==# 'plugpac'
+function! plugin_manager#init() abort
+    let l:plugin_manager = s:select_plugin_manager()
+
+    if  l:plugin_manager==# 'plugpac'
         call s:plugpac()
     else
         call s:vim_plug()
     endif
+
+    return l:plugin_manager
 endfunction
 
 function! s:select_plugin_manager() abort
@@ -294,7 +298,7 @@ else
 endif
 
 " Visual plugins {{{
-Pack 'tomasr/molokai'
+Pack 'tomasr/molokai', { 'type': 'opt' }
 Pack 'bling/vim-airline' | Pack 'vim-airline/vim-airline-themes'
 Pack 'Yggdroot/indentLine'
 Pack 'luochen1990/rainbow'
