@@ -1,0 +1,8 @@
+! vim: ft=xdefaults:
+#include "base-16-molokai-256"
+
+dmenu.font: monospace:pixelsize=20:antialias=true:autohint=true;
+dmenu.background: base00
+dmenu.foreground: base05
+dmenu.selbackground: base0D
+dmenu.selforeground: base00

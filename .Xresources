@@ -1,2 +1,6 @@
 #include ".Xresources.d/st"
 #include ".Xresources.d/sxiv"
+#include ".Xresources.d/dmenu"
+
+xterm*faceName: Monospace
+xterm*faceSize: 20
