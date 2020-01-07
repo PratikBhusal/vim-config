@@ -350,9 +350,14 @@ Pack 'tpope/vim-commentary'
 Pack 'markonm/traces.vim'
 Pack 'andymass/vim-matchup'
 Pack 'jbgutierrez/vim-better-comments'
-Pack 'ntpeters/vim-better-whitespace'
 Pack 'junegunn/vim-easy-align'
 Pack 'Konfekt/FastFold'
+
+if v:version >= 802
+    Pack 'axelf4/vim-strip-trailing-whitespace'
+else
+    Pack 'ntpeters/vim-better-whitespace'
+endif
 " Quality of life plugins }}}
 
 
@@ -395,10 +400,9 @@ elseif ( has('nvim-0.3.0') || has('patch-8.1.001') )
     if executable('python3')
         Pack 'thomasfaingnaert/vim-lsp-snippets'
         Pack 'thomasfaingnaert/vim-lsp-ultisnips'
+        Pack 'prabirshrestha/asyncomplete-ultisnips.vim'
     endif
-
-    call plugins#lsp#setup()
-
+    Pack 'mattn/vim-lsp-settings'
 else
     Pack 'lifepillar/vim-mucomplete'
 endif
@@ -451,6 +455,8 @@ Pack 'mbbill/undotree'
 
 " Add a vim wiki for notetaking and other needs
 " Pack 'vimwiki/vimwiki'
+
+Pack 'gerw/vim-HiLinkTrace'
 
 Pack 'editorconfig/editorconfig-vim'
 
