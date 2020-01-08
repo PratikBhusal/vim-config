@@ -22,16 +22,12 @@ shopt -s checkwinsize
 
 [ "$LANG" = '' ] && export LANG=en_US.UTF-8
 
-# shellcheck source=.config/bash/aliases.sh
-[ -s ~/.config/bash/aliases.sh ] && . ~/.config/bash/aliases.sh
+# shellcheck source=.config/bash/aliases.bashsh
+[ -s ~/.config/bash/aliases.bash ] && . ~/.config/bash/aliases.bash
 
 # If on bash version >= 4, enable going into directory using only the
 # directory's name (no need to type "cd dirname")
 [ "${BASH_VERSINFO[0]}" -ge 4 ] && shopt -s autocd
-
-# shellcheck source=.config/nnn/misc/quitcd.bash
-[ -x "$(command -v nnn)" ] && [ -r ~/.config/nnn/misc/quitcd.bash ] && . ~/.config/nnn/misc/quitcd.bash
-
 
 # Set default editor to vim
 export VISUAL=vim
@@ -39,6 +35,7 @@ export EDITOR="$VISUAL"
 
 # shellcheck source=.fzf.bash
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 
 # Direnv {{{
 if command -v direnv 1> /dev/null 2>&1; then
@@ -56,7 +53,3 @@ if command -v direnv 1> /dev/null 2>&1; then
   eval "$(direnv hook bash)"
 fi
 # Direnv }}}
-
-
-
-export PF_INFO="ascii title os host kernel uptime pkgs memory shell editor wm de palette"

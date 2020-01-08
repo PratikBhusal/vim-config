@@ -48,7 +48,6 @@ alias latexmk="latexmk -pdf"
 alias mkdir="mkdir -vp"
 
 command -v cat >/dev/null 2>&1 && alias cat="bat"
-command -v nnn >/dev/null 2>&1 && alias nnn="nnn -d"
 command -v i3lock >/dev/null 2>&1 && alias i3lock="i3lock -c 202020"
 
 # export QT_STYLE_OVERRIDE=gtk
