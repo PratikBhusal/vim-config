@@ -23,8 +23,9 @@ append_to_path "$HOME/bin"
 # set PATH so it includes user's private bin if it exists
 prepend_to_path "$HOME/.local/bin"
 
-command -v st    1> /dev/null 2>&1 && export TERMINAL="st"
-command -v pyenv 1> /dev/null 2>&1 && eval   "$(pyenv init -)"
+command -v st      1> /dev/null 2>&1 && export TERMINAL="st"
+command -v less    1> /dev/null 2>&1 && export PAGER="less"
+command -v pyenv   1> /dev/null 2>&1 && eval   "$(pyenv init -)"
 command -v firefox 1> /dev/null 2>&1 && export BROWSER="firefox"
 command -v i3lock  1> /dev/null 2>&1 && export LOCKER="i3lock"
 

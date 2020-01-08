@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+export NNN_BMS='u:~'
+
+export NNN_TRASH=1
