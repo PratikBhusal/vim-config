@@ -21,6 +21,7 @@ i3-wm
 intel-ucode
 joplin
 keepassxc
+light
 maim
 maim
 ncdu
@@ -45,6 +46,7 @@ shellcheck
 sxhkd
 tmux
 trash-cli
+ttf-dejavu
 ttf-font-awesome
 ttf-iconsolata
 vim
@@ -57,4 +59,3 @@ youtube-dl
 zathura-djvu
 zathura-pdf-mupdf
 zoom
-ttf-dejavu
