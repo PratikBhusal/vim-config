@@ -26,9 +26,12 @@ done
 
 CWD=''
 
-if command -v xdpyinfo > /dev/null 2>&1 && command -v xprop > /dev/null 2>&1; then
-    PID=$(xprop -id "$(xdpyinfo | grep focus | cut -f4 -d " ")" | grep -m 1 PID |
-          cut -d " " -f 3)
+if command -v xprop > /dev/null 2>&1; then
+    PID=$(
+        xprop -id "$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/ {print $NF}')" |
+        grep -m 1 PID |
+        cut -d " " -f 3
+    )
     if [ -n "$PID" ]; then
         PROCESS=$(pstree -lpA "$PID" | tail -n 1 | awk -F'---' '{print $NF}')
         PID=$(echo "$PROCESS" | sed -re 's/[^0-9]//g')
@@ -78,8 +81,7 @@ if command -v xdpyinfo > /dev/null 2>&1 && command -v xprop > /dev/null 2>&1; th
 
 elif command -v xcwd > /dev/null 2>&1 ; then
     # Note: xcwd is currently NOT compatible with terminal multiplexers. Please
-    # install xdpyinfo and xprop. The package names could be: xorg-xdpyinfo,
-    # xorg-xprop, x11-utils.
+    # install xprop. The package name could be: xorg-xprop, x11-utils, etc.
     CWD=$(xcwd)
     case "$CWD" in
         $HOME/* ) ;;
@@ -90,10 +92,21 @@ fi
 if [ $OPEN_IN_TMUX = 1 ] && command -v tmux > /dev/null 2>&1; then
     case "$CMD" in
         *-e* ) ;;
-        *    ) CMD="$CMD -e tmux";;
+        *    )
+            if [ -z "$TMUX" ]; then
+                TMUX_SESSION_ID="$(tmux ls | grep -vm1 attached | cut -d: -f1)"
+
+                if [ "$TMUX_SESSION_ID" ]; then
+                    CMD="$CMD -e tmux attach-session -t $TMUX_SESSION_ID"
+                else
+                    CMD="$CMD -e tmux"
+                fi
+            else
+                CMD="$CMD -e tmux"
+            fi
+            ;;
     esac
 fi
-
 
 if [ -n "$CWD" ]; then
     cd "$CWD" && $CMD 1> /dev/null 2>&1
