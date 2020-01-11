@@ -12,8 +12,6 @@
 # You should have received a copy of the GNU General Public License along with
 # this program.  If not, see <https://www.gnu.org/licenses/>.
 
-OPEN_IN_TMUX=1
-
 for term in "$TERMINAL" st x-terminal-emulator xfce4-terminal uxterm xterm; do
     if command -v "$term" > /dev/null 2>&1; then
         CMD="$term $*"
@@ -89,21 +87,26 @@ elif command -v xcwd > /dev/null 2>&1 ; then
     esac
 fi
 
+if [ -z "$OPEN_IN_TMUX" ]; then
+    OPEN_IN_TMUX=1
+fi
+
 if [ $OPEN_IN_TMUX = 1 ] && command -v tmux > /dev/null 2>&1; then
     case "$CMD" in
         *-e* ) ;;
         *    )
-            if [ -z "$TMUX" ]; then
-                TMUX_SESSION_ID="$(tmux ls | grep -vm1 attached | cut -d: -f1)"
+            CMD="$CMD -e tmux"
+            # if [ -z "$TMUX" ]; then
+            #     TMUX_SESSION_ID="$(tmux ls | grep -vm1 attached | cut -d: -f1)"
 
-                if [ "$TMUX_SESSION_ID" ]; then
-                    CMD="$CMD -e tmux attach-session -t $TMUX_SESSION_ID"
-                else
-                    CMD="$CMD -e tmux"
-                fi
-            else
-                CMD="$CMD -e tmux"
-            fi
+            #     if [ "$TMUX_SESSION_ID" ]; then
+            #         CMD="$CMD -e tmux attach-session -t $TMUX_SESSION_ID"
+            #     else
+            #         CMD="$CMD -e tmux"
+            #     fi
+            # else
+            #     CMD="$CMD -e tmux"
+            # fi
             ;;
     esac
 fi
