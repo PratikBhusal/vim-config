@@ -1,0 +1,7 @@
+! vim: ft=xdefaults:
+#include "darkokai"
+
+xterm*renderFont: true
+xterm*faceName: Monospace
+xterm*faceSize: 15
+xterm.vt100.locale: true

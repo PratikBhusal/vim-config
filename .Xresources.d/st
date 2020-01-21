@@ -1,40 +1,19 @@
 ! vim: ft=xdefaults:
-#include "base-16-molokai-256"
+#include "darkokai"
 
 st.shell: /bin/bash
 ! st.font: DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true;
-st.font: monospace:pixelsize=20:antialias=true:autohint=true;
+st.font: monospace:pixelsize=20:antialias=true;
 st.termname: xterm-256color
 st.borderpx: 0
 
-
-st.foreground: base05
-st.background: base00
-st.cursorColor: base05
-
-st.color0:  base00
-st.color1:  base08
-st.color2:  base0B
-st.color3:  base0A
-st.color4:  base0D
-st.color5:  base0E
-st.color6:  base0C
-st.color7:  base05
-
-st.color8:  base03
-st.color9:  base08
-st.color10: base0B
-st.color11: base0A
-st.color12: base0D
-st.color13: base0E
-st.color14: base0C
-st.color15: base07
+st.cursorColor: colorscheme_white
 
 ! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
 ! use 'shell' template to set these if necessary
-st.color16: base09
-st.color17: base0F
-st.color18: base01
-st.color19: base02
-st.color20: base04
-st.color21: base06
+st.color16: colorscheme_orange
+st.color17: colorscheme_brown
+st.color18: colorscheme_dark_gray
+st.color19: colorscheme_gray
+st.color20: colorscheme_light_gray
+st.color21: colorscheme_white
