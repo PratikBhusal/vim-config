@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "Monospace:pixelsize=12:antialias=true";
 static int borderpx = 0;
 
 /*
@@ -57,6 +57,18 @@ static unsigned int blinktimeout = 800;
 static unsigned int cursorthickness = 2;
 
 /*
+ * 1: render most of the lines/blocks characters without using the font for
+ *    perfect alignment between cells (U2500 - U259F except dashes/diagonals).
+ *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
+ * 0: disable (render all U25XX glyphs normally from the font).
+ */
+const int boxdraw = 0;
+const int boxdraw_bold = 0;
+
+/* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
+const int boxdraw_braille = 0;
+
+/*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
  * it
  */
@@ -84,22 +96,32 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-    "#272822", /* base00 */
-    "#f92672", /* base08 */
-    "#a6e22e", /* base0B */
-    "#f4bf75", /* base0A */
-    "#66d9ef", /* base0D */
-    "#ae81ff", /* base0E */
-    "#a1efe4", /* base0C */
-    "#f8f8f2", /* base05 */
-    "#75715e", /* base03 */
-    "#fd971f", /* base09 */
-    "#383830", /* base01 */
-    "#49483e", /* base02 */
-    "#a59f85", /* base04 */
-    "#f5f4f1", /* base06 */
-    "#cc6633", /* base0F */
-    "#f9f8f5", /* base07 */
+	/* 8 normal colors */
+	"black",
+	"red3",
+	"green3",
+	"yellow3",
+	"blue2",
+	"magenta3",
+	"cyan3",
+	"gray90",
+
+	/* 8 bright colors */
+	"gray50",
+	"red",
+	"green",
+	"yellow",
+	"#5c5cff",
+	"magenta",
+	"cyan",
+	"white",
+
+	[255] = 0,
+
+	/* more colors can be added after 255 to use with DefaultXX */
+	"#cccccc",
+	"#555555",
+	"#cccccc",
 };
 
 
@@ -107,10 +129,10 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
-static unsigned int defaultcs = 7;
-static unsigned int defaultrcs = 0;
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+static unsigned int defaultcs = 258;
+static unsigned int defaultrcs = 256;
 
 /*
  * Default shape of cursor
@@ -132,8 +154,8 @@ static unsigned int rows = 24;
  * Default colour and shape of the mouse cursor
  */
 static unsigned int mouseshape = XC_xterm;
-static unsigned int mousefg = 7;
-static unsigned int mousebg = 0;
+static unsigned int mousefg = 257;
+static unsigned int mousebg = 256;
 
 /*
  * Color used to display font attributes when fontconfig selected a font which
@@ -172,10 +194,9 @@ ResourcePref resources[] = {
 		{ "blinktimeout", INTEGER, &blinktimeout },
 		{ "bellvolume",   INTEGER, &bellvolume },
 		{ "tabspaces",    INTEGER, &tabspaces },
+		{ "borderpx",     INTEGER, &borderpx },
 		{ "cwscale",      FLOAT,   &cwscale },
 		{ "chscale",      FLOAT,   &chscale },
-
-		{ "borderpx",     INTEGER, &borderpx },
 };
 
 /*
@@ -199,23 +220,21 @@ MouseKey mkeys[] = {
 #define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
-	/* mask        keysym        function       argument */
-	{ XK_ANY_MOD,       XK_Break,     sendbreak,     {.i = 0}  },
-	{ ControlMask,      XK_Print,     toggleprinter, {.i = 0}  },
-	{ ShiftMask,        XK_Print,     printscreen,   {.i = 0}  },
-	{ XK_ANY_MOD,       XK_Print,     printsel,      {.i = 0}  },
-	{ MODKEY|ShiftMask, XK_Prior,     zoom,          {.f = +1} },
-	{ MODKEY|ShiftMask, XK_Next,      zoom,          {.f = -1} },
-	{ MODKEY|ShiftMask, XK_Home,      zoomreset,     {.f = 0}  },
-	{ TERMMOD,          XK_C,         clipcopy,      {.i = 0}  },
-	{ TERMMOD,          XK_V,         clippaste,     {.i = 0}  },
-	{ TERMMOD,          XK_Y,         selpaste,      {.i = 0}  },
-	{ TERMMOD,          XK_Num_Lock,  numlock,       {.i = 0}  },
-	{ TERMMOD,          XK_I,         iso14755,      {.i = 0}  },
-	{ ShiftMask,        XK_Page_Up,   kscrollup,     {.i = -1} },
-	{ ShiftMask,        XK_Page_Down, kscrolldown,   {.i = -1} },
-
-	{ ShiftMask,        XK_Insert,    clippaste,     {.i = 0}  },
+	/* mask                 keysym          function        argument */
+	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
+	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
+	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
+	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
+	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
+	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
+	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
+	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
+	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
+	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
+	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 };
 
 /*

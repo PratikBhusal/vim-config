@@ -1,5 +1,5 @@
 diff --git a/x.c b/x.c
-index c343ba2..f2a4f65 100644
+index 0422421..e00d930 100644
 --- a/x.c
 +++ b/x.c
 @@ -627,6 +627,8 @@ setsel(char *str, Time t)
@@ -11,3 +11,12 @@ index c343ba2..f2a4f65 100644
  }
  
  void
+@@ -644,7 +646,7 @@ brelease(XEvent *e)
+ 	}
+ 
+ 	if (e->xbutton.button == Button2)
+-		selpaste(NULL);
++		clippaste(NULL);
+ 	else if (e->xbutton.button == Button1)
+ 		mousesel(e, 1);
+ }
