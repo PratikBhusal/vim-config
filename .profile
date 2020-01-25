@@ -17,8 +17,8 @@ if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
 fi
 
-# set PATH so it includes user's private bin if it exists
-append_to_path "$HOME/bin"
+# Setup readline inputrc config
+export INPUTRC="$HOME/.config/readline/inputrc"
 
 # set PATH so it includes user's private bin if it exists
 prepend_to_path "$HOME/.local/bin"
