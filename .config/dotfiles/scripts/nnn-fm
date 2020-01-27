@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+# stty start undef
+# stty stop undef
+
+# stty start undef
+# stty stop undef
+
+$TERMINAL -e nnn -d "$@"
