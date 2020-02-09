@@ -49,6 +49,9 @@ alias mkdir="mkdir -vp"
 
 command -v cat >/dev/null 2>&1 && alias cat="bat"
 command -v i3lock >/dev/null 2>&1 && alias i3lock="i3lock -c 202020"
+command -v uxterm >/dev/null 2>&1 && alias xterm="uxterm"
+
+alias clear="export screen_clear='true'; clear"
 
 # export QT_STYLE_OVERRIDE=gtk
 # export QT_SELECT=qt5
