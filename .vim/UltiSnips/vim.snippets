@@ -1,17 +1,17 @@
 priority 1
 
 snippet bord "Insert a vim fold border" b
-" ${1} {{{${0:1} `!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 8)`
+" ${1} {{{${0:1} `!p snip.rv = u"\u2500" * (int(snip.opt('&tw')) - len(t[1]) - 8)`
 endsnippet
 
 snippet bordc "Insert a vim fold close border" b
-" $1${0:1}}}} `!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 7)`
+" $1${0:1}}}} `!p snip.rv = u"\u2500" * (int(snip.opt('&tw')) - len(t[1]) - 7)`
 endsnippet
 
 snippet bordp "Insert a vim border pair" b
-" $1 {{{ `!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 7)`
+" $1 {{{ `!p snip.rv = u"\u2500" * (int(snip.opt('&tw')) - len(t[1]) - 7)`
 ${0:${VISUAL:" Content }}
-" $1 }}} `!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 7)`
+" $1 }}} `!p snip.rv = u"\u2500" * (int(snip.opt('&tw')) - len(t[1]) - 7)`
 endsnippet
 
 snippet pl "Vim-plug Plugin definition"
@@ -33,7 +33,13 @@ ${0:${VISUAL:" Content }}
 endsnippet
 
 snippet func "Create new function" b
-function! ${1:function_name}($2)
+function! ${1:function_name}($2) abort
+    ${3:" code}
+endfunction
+endsnippet
+
+snippet function "Create new function" b
+function! ${1:function_name}($2) abort
     ${3:" code}
 endfunction
 endsnippet

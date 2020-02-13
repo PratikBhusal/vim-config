@@ -11,9 +11,3 @@ snippet foldp "Insert a vim fold marker pair" b
 ${0:${VISUAL:# Content }}
 # $1 }}}
 endsnippet
-
-snippet bordp "Insert a vim border pair" b
-# $1 {{{ `!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 7)`
-${0:${VISUAL:# Content }}
-# $1 }}} `!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - 7)`
-endsnippet

@@ -11,13 +11,12 @@ endsnippet
 
 snippet foldp "Insert a vim fold marker pair" b
 `!p snip.rv = get_comment_format()[0]` ${1:Fold description} `!p snip.rv = foldmarker()[0]`
-${2:${VISUAL:Content}}
+`!p snip.rv = get_comment_format()[0]` ${2:${VISUAL:Content}}
 `!p snip.rv = get_comment_format()[0]` $1 `!p snip.rv = foldmarker()[1]`
 endsnippet
 
-
-# snippet foldp "Insert a vim fold marker pair" b
-# `!p snip.rv = get_comment_format()[0]`${1:Fold description} `!p snip.rv = foldmarker()[0]` `!p snip.rv = get_comment_format()[2]`
-# ${2:${VISUAL:Content}}
-# `!p snip.rv = get_comment_format()[0]`$1 `!p snip.rv = foldmarker()[1]` `!p snip.rv = get_comment_format()[2]`
-# endsnippet
+snippet bordp "Insert a vim border pair" b
+`!p snip.rv = get_comment_format()[0]` ${1:Fold description} {{{ `!p snip.rv = u"\u2500" * (int(snip.opt('&tw')) - len(t[1]) - len(get_comment_format()[0]) - 6)`
+`!p snip.rv = get_comment_format()[0]` ${0:${VISUAL:Content}}
+`!p snip.rv = get_comment_format()[0]` $1 }}} `!p snip.rv = u"\u2500" * (int(snip.opt('&tw')) - len(t[1]) - len(get_comment_format()[0]) - 6)`
+endsnippet
