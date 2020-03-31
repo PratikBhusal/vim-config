@@ -44,11 +44,11 @@ floating_modifier $mod
 
 
 # bindsym --release Print exec xfce4-screenshooter -f
-set $Screenshooter maim -u -f "png" -m 1 ~/Pictures/Screenshots/$(date +%F-%T).png -r crosshair
+set $Screenshooter maim -u -f "png" -m 1 ~/Pictures/Screenshots/$(date +%F-%T).png
 set $screenshot (f) fullscreen, (s) selection
 mode "$screenshot" {
-    bindsym f exec --no-startup-id $hide_bar && sleep 0.1 && $Screenshooter && $show_bar, mode "default"
-    bindsym s exec --no-startup-id $hide_bar && $Screenshooter -s && $show_bar, mode "default"
+    bindsym f exec --no-startup-id $hide_bar && $Screenshooter -d 0.1 -q && $show_bar, mode "default"
+    bindsym s exec --no-startup-id $hide_bar && $Screenshooter -s -r boxzoom && $show_bar, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return exec --no-startup-id $show_bar, mode "default"
