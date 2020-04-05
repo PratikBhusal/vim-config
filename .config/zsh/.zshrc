@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+# Enable colors and changeprompt
 autoload -U colors && colors
 
 # shellcheck source=.config/zsh/aliases.zsh
@@ -26,14 +27,19 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # auto-completion for aliases
 setopt COMPLETE_ALIASES
 
-
+# Change directory via directory name
 setopt autocd
 
-# # Auto complete with case insenstivity
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# Auto complete with case insenstivity
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # Rehash every so oftern
 zstyle ':completion:*' rehash true
+
+
+# Vim-mode
+bindkey -v
+export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
@@ -47,7 +53,6 @@ bindkey -M menuselect 'right' vi-forward-char
 # Fix backspace bug when switching modes
 bindkey "^?" backward-delete-char
 
-export KEYTIMEOUT=1
 
 # # Change cursor shape for different vi modes.
 # function zle-keymap-select {
