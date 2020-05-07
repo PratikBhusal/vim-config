@@ -3,8 +3,16 @@
 # Enable colors and changeprompt
 autoload -U colors && colors
 
+[ "$LANG" = '' ] && export LANG=en_US.UTF-8
+
 # shellcheck source=.config/zsh/aliases.zsh
 [ -s ~/.config/zsh/aliases.zsh ] && . ~/.config/zsh/aliases.zsh
+
+
+if command -v vim 1> /dev/null 2>&1; then
+    export VISUAL=vim
+    export EDITOR="$VISUAL"
+fi
 
 
 # History in cache directory:
@@ -106,3 +114,16 @@ bindkey "^?" backward-delete-char
 
 # shellcheck source=.config/zsh/plugins.zsh
 [ -s ~/.config/zsh/plugins.zsh ] && . ~/.config/zsh/plugins.zsh
+
+# shellcheck source=.config/nnn/config
+[ -s ~/.config/nnn/config ] && . ~/.config/nnn/config
+
+# Setup pipx
+if command -v vim 1> /dev/null 2>&1; then
+    autoload -U bashcompinit
+    bashcompinit
+    eval "$(register-python-argcomplete pipx)"
+fi
+
+# Setup direnv
+command -v direnv 1> /dev/null 2>&1 && eval "$(direnv hook zsh)"

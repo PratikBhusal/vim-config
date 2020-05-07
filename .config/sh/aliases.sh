@@ -30,12 +30,6 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias cp='cp -i'
 alias mv='mv -i'
 
-if command -v trash >/dev/null 2>&1; then
-    alias rm='echo "Use \"trash\". If you meant rm, use \"\\rm\""; false'
-else
-    alias rm='rm -i'
-fi
-
 alias journalctl='sudo journalctl'
 alias systemctl='sudo systemctl'
 
@@ -47,11 +41,34 @@ alias latexmk="latexmk -pdf"
 
 alias mkdir="mkdir -vp"
 
-command -v cat >/dev/null 2>&1 && alias cat="bat"
+command -v bat >/dev/null 2>&1 && alias cat="bat"
 command -v i3lock >/dev/null 2>&1 && alias i3lock="i3lock -c 202020"
 command -v uxterm >/dev/null 2>&1 && alias xterm="uxterm"
+command -v dragon-drag-and-drop >/dev/null 2>&1 && alias dragon="dragon-drag-and-drop"
+command -v ncdu >/dev/null 2>&1 && alias du="ncdu"
+command -v xdg-open >/dev/null 2>&1 && alias open="xdg-open"
 
-alias clear="export screen_clear='true'; clear"
+
+if command -v ipython >/dev/null; then
+    interactive_python () {
+        if [ -z "$1" ]; then
+            ipython
+        else
+            command python "$@"
+        fi
+    }
+    alias python=interactive_python
+    alias python3=interactive_python
+fi
+
+
+
+
+# if command -v vim >/dev/null; then
+#     alias vi="vim"
+# elif command -v nvim >/dev/null; then
+#     alias vi="nvim"
+# fi
 
 # export QT_STYLE_OVERRIDE=gtk
 # export QT_SELECT=qt5

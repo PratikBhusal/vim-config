@@ -19,5 +19,5 @@ append_to_path() {
 }
 
 cleanup_path() {
-    echo -n $1 | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'
+    echo "$1" | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'
 }
