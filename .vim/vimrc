@@ -101,8 +101,11 @@ set guioptions-=m  "remove menubar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
-" set diffopt+=iwhiteall " Ignore whitespace
-set diffopt+=hiddenoff " Turn off diff mode when there is only 1 diff window
+try
+    " set diffopt+=iwhiteall " Ignore whitespace
+    set diffopt+=hiddenoff " Turn off diff mode when there is only 1 diff window
+catch /^Vim\%((\a\+)\)\=:E474/
+endtry
 set linespace=0
 let g:indent_guides_guide_size= 2
 set background=dark
@@ -215,4 +218,6 @@ exec 'set fillchars+=diff:' . nr2char('0x2500', 'utf-8')
 autocmd FileType json syntax match Comment +\/\/.\+$+
 " Coc.nvim bandadge fixes }}}
 
-set noemoji
+if exists('&emoji')
+    set noemoji
+endif

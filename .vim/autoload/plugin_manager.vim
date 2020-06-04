@@ -24,6 +24,10 @@ function! s:select_plugin_manager() abort
         return 'plugpac'
     endif
 
+    if filereadable( expand('~/.vim/autoload/plug.vim') )
+        return 'vim_plug'
+    endif
+
     if !( filereadable( expand('~/.vim/autoload/plug.vim') ) || executable('curl') )
         throw 'Cannot download plugin manager. Plesae install curl.'
     endif
@@ -83,11 +87,19 @@ else
     Plug 'PratikBhusal/vim-grip', { 'for': 'markdown' }
 endif
 
+if isdirectory(expand('$HOME/.vim/pack/src/start/vim-darkokai'))
+    Plug '~/.vim/pack/src/start/vim-darkokai'
+else
+    Plug 'PratikBhusal/vim-darkokai'
+endif
+
 " Visual Plugins {{{
 Plug 'tomasr/molokai'
 Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
-Plug 'Yggdroot/hiPairs'
+if exists('*reltimefloat')
+    Plug 'Yggdroot/hiPairs'
+endif
 Plug 'luochen1990/rainbow'
 " Visual Plugins }}}
 
@@ -135,7 +147,11 @@ Plug 'PratikBhusal/cSyntaxAfter'
 
 " Quality of life plugins {{{
 " Plug 'rstacruz/vim-closer'
-Plug 'tmsvg/pear-tree'
+if v:version < 800
+    Plug 'PratikBhusal/pear-tree'
+else
+    Plug 'tmsvg/pear-tree'
+endif
 Plug 'tpope/vim-commentary'
 Plug 'markonm/traces.vim'
 Plug 'andymass/vim-matchup'
