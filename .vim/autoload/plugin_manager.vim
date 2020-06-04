@@ -34,18 +34,18 @@ function! s:select_plugin_manager() abort
 
     if executable('curl') && executable('git') && l:use_packages
         if !isdirectory(expand('~/.vim/pack/minpac/opt/minpac'))
-            silent !git clone https://github.com/k-takata/minpac.git
-                \ ~/.vim/pack/minpac/opt/minpac
+            execute 'silent !git clone https://github.com/k-takata/minpac.git ' .
+                \ expand('~/.vim/pack/minpac/opt/minpac')
         endif
         if !filereadable(expand('~/.vim/autoload/plugpac.vim'))
-            silent !curl -fLo ~/.vim/autoload/plugpac.vim --create-dirs
-                \ https://raw.githubusercontent.com/bennyyip/plugpac.vim/master/plugpac.vim
+            execute 'silent !curl -fLo ' . expand('~/.vim/autoload/plugpac.vim') . ' --create-dirs ' .
+                \ 'https://raw.githubusercontent.com/bennyyip/plugpac.vim/master/plugpac.vim'
         endif
         autocmd VimEnter * PackUpdate | source $MYVIMRC
         return 'plugpac'
     elseif executable('curl')
-      silent !curl -flo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      execute 'silent !curl -flo ' . expand('~/.vim/autoload/plug.vim') . ' --create-dirs ' .
+        \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
       autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 
@@ -316,6 +316,7 @@ else
 endif
 
 " Visual plugins {{{
+Pack 'PratikBhusal/vim-darkokai'
 Pack 'tomasr/molokai', { 'type': 'opt' }
 Pack 'bling/vim-airline' | Pack 'vim-airline/vim-airline-themes'
 " add vim-lightline. May eventually replace vim-airline
@@ -464,7 +465,9 @@ Pack 'bfrg/vim-cpp-modern'
 Pack 'janko/vim-test'
 Pack 'tpope/vim-surround'
 Pack 'cakebaker/scss-syntax.vim'
-Pack 'ryanoasis/vim-devicons'
+if !g:windows
+    Pack 'ryanoasis/vim-devicons'
+endif
 Pack 'thezeroalpha/vim-relatively-complete'
 
 Pack 'Xuyuanp/nerdtree-git-plugin'
