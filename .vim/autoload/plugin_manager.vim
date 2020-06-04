@@ -315,8 +315,11 @@ else
     Pack 'PratikBhusal/vim-grip', { 'for': 'markdown' }
 endif
 
+if !isdirectory(expand('$HOME/.vim/pack/src/start/vim-darkokai'))
+    Pack 'PratikBhusal/vim-darkokai'
+endif
+
 " Visual plugins {{{
-Pack 'PratikBhusal/vim-darkokai'
 Pack 'tomasr/molokai', { 'type': 'opt' }
 Pack 'bling/vim-airline' | Pack 'vim-airline/vim-airline-themes'
 " add vim-lightline. May eventually replace vim-airline
