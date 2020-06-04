@@ -5,3 +5,6 @@ xterm*renderFont: true
 xterm*faceName: Monospace
 xterm*faceSize: 15
 xterm.vt100.locale: true
+xterm*VT100.Translations: #override \
+                 Shift <Key>Insert:    insert-selection(SELECT) \n\
+                 Ctrl Shift <Key>V:    insert-selection(SELECT) \n\

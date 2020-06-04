@@ -24,5 +24,5 @@ mod1 + shift + {1-9,0}
     i3-msg -q move container to workspace \" {1-9,10} \"
 
 # i3 - move & load via scratchpad
-mod1 + {_, shift +} + minus
-    i3-msg -q {scratchpad show, [floating] move scratchpad} 2> /dev/null
+# mod1 + {_, shift +} + minus
+#     i3-msg -q {scratchpad show, [floating] move scratchpad} 2> /dev/null

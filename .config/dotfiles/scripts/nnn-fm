@@ -6,4 +6,7 @@
 # stty start undef
 # stty stop undef
 
+# shellcheck source=../../nnn/config
+[ -s ~/.config/nnn/config ] && . ~/.config/nnn/config
+
 $TERMINAL -e nnn -d "$@"

@@ -2,8 +2,9 @@
 #include "darkokai"
 
 st.shell: /bin/bash
-! st.font: DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true;
-st.font: monospace:pixelsize=20:antialias=true;
+! st.font: DejaVu Sans Mono:pixelsize=16:antialias=true:autohint=true;
+! st.font: Inconsolata-dz:pixelsize=16:antialias=true;
+st.font: monospace:pixelsize=20:antialias=true:autohint=true;
 st.termname: xterm-256color
 st.borderpx: 0
 

@@ -13,3 +13,5 @@
 [core]
 	autocrlf    = input
 	editor = vim
+[diff]
+	tool = vimdiff

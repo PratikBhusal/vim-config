@@ -3,15 +3,15 @@ let &packpath = &runtimepath
 source ~/.vim/vimrc
 
 let g:loaded_python_provider = 1
-autocmd GUIEnter * set lines=999 columns=999
+" autocmd GUIEnter * set lines=999 columns=999
 " let g:GuiWindowFullScreen=1
 
 " Colorscheme Settings {{{ -----------------------------------------------------
 if (empty($TMUX))
-  if (has("nvim"))
+  if (has('nvim'))
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
-  if (has("termguicolors"))
+  if (has('termguicolors'))
     set termguicolors
   endif
 endif

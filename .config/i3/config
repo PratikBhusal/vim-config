@@ -222,11 +222,11 @@ exec --no-startup-id sxhkd -c ~/.config/sxhkd/i3_sxhkdrc
 # bindsym $mod+Shift+9 move container to workspace " 9 "
 # bindsym $mod+Shift+0 move container to workspace " 10 "
 
-# # Make the currently focused window a scratchpad
-# bindsym $mod+Shift+minus [floating] move scratchpad
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus [floating] move scratchpad
 
-# # Show the first scratchpad window
-# bindsym $mod+minus scratchpad show
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 
 
 # # Menu Option to turn off system in various ways
