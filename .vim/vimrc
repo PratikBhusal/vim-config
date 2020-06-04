@@ -15,10 +15,7 @@ set nostartofline
 set confirm
 set fileformat=unix
 set fileformats=unix,dos
-set noerrorbells visualbell t_vb=
-if has('autocmd')
-  autocmd GUIEnter * set visualbell t_vb=
-endif
+set noerrorbells novisualbell t_vb=
 nnoremap <silent> <TAB> :bnext<cr>
 " Return to last edit position
 autocmd BufReadPost *
@@ -82,8 +79,8 @@ cabbrev vimtutor view $HOME/.vim/vimtutor
 " Lazy Kebindings }}} ----------------------------------------------------------
 
 " Text Wrapping & Border Config {{{ --------------------------------------------
-set tw=80
-execute "set colorcolumn=" .join(range(81,120), ',')
+set textwidth=80
+execute 'set colorcolumn=' . join(range(&textwidth + 1,120), ',')
 " Text Wrapping & Border Config }}} --------------------------------------------
 
 " Sorting {{{ ------------------------------------------------------------------
@@ -113,16 +110,7 @@ set background=dark
 " Make things look nice }}} ----------------------------------------------------
 
 " Custom colors for colorscheme {{{ --------------------------------------------
-try
-    if g:plugin_manager ==# 'plugpac'
-        packadd! molokai
-    endif
-    if !has('gui_running') && &t_Co == 256
-        let g:rehash256 = 1
-    endif
-    colorscheme molokai
-catch /^Vim\%((\a\+)\)\=:E185/
-endtry
+let g:darkokai#debug = 1
 
 if ( has('vcon') || has('termguicolors') ) &&
     \ (&term !=# 'rxvt-unicode-256color')
@@ -130,6 +118,8 @@ if ( has('vcon') || has('termguicolors') ) &&
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
 endif
+
+autocmd LazyLoadPlugin VimEnter * colorscheme darkokai | AirlineRefresh
 " Custom colors for colorscheme }}} --------------------------------------------
 
 " Change how the cursor looks {{{ ----------------------------------------------
@@ -139,7 +129,7 @@ set guicursor=v:hor15-Cursor/lCursor
 
 " Make searching less tedious (Without it put \c (insen) or \C (sen) at end) {{{
 set ignorecase smartcase
-" Make searching less tedious (Without it put \c (insen) or \C (sen) at end)  }}}
+" Make searching less tedious (Without it put \c (insen) or \C (sen) at end) }}}
 
 " Set tab intent to 4 spaces {{{ -----------------------------------------------
 set tabstop=8 softtabstop=4 expandtab shiftwidth=4 smarttab
@@ -188,13 +178,13 @@ augroup LineNumber
 augroup END
 " Line Number }}}
 
-" CursorLine {{{
+" " CursorLine {{{
 " augroup CursorLine
 "   au!
 "   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
 "   au WinLeave * setlocal nocursorline
 " augroup END
-" CursorLine }}}
+" " CursorLine }}}
 
 " Window Focus }}} -------------------------------------------------------------
 
@@ -208,14 +198,21 @@ set wildignore+=*.zip
 " Compiled Files
 set wildignore+=*.exe,*.so
 
-if executable("rg")
+if executable('rg')
     set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 " Wildignore Settings }}} ------------------------------------------------------
 
+" Fillchars {{{
+set fillchars=
+exec 'set fillchars+=vert:' . nr2char('0x2503', 'utf-8')
+exec 'set fillchars+=fold:' . nr2char('0x2500', 'utf-8')
+exec 'set fillchars+=diff:' . nr2char('0x2500', 'utf-8')
+" Fillchars }}}
+
 " Coc.nvim bandadge fixes {{{
 autocmd FileType json syntax match Comment +\/\/.\+$+
 " Coc.nvim bandadge fixes }}}
 
-" let g:airline#extensions#tabline#enabled = 0
+set noemoji

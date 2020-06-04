@@ -8,3 +8,5 @@ let g:UltiSnipsEditSplit='context'
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<Leader>.'
 let g:UltiSnipsJumpBackwardTrigger = '<Leader>,'
+
+let g:snips_author = 'Pratik Bhusal'

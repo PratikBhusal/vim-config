@@ -1,6 +1,6 @@
 " Change how netrw Looks {{{ ---------------------------------------------------
 let g:netrw_liststyle = 1
-let g:netrw_sizestyle = "H"
+let g:netrw_sizestyle = 'H'
 " Change how netrw Looks }}} ---------------------------------------------------
 
 " " If avalable, open CtrlP instead {{{ -----------------------------------------

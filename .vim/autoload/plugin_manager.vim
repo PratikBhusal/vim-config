@@ -2,6 +2,10 @@
 function! plugin_manager#init() abort
     let l:plugin_manager = s:select_plugin_manager()
 
+    augroup LazyLoadPlugin
+        autocmd!
+    augroup END
+
     if  l:plugin_manager==# 'plugpac'
         call s:plugpac()
     else
@@ -83,6 +87,7 @@ endif
 Plug 'tomasr/molokai'
 Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/hiPairs'
 Plug 'luochen1990/rainbow'
 " Visual Plugins }}}
 
@@ -134,7 +139,7 @@ Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-commentary'
 Plug 'markonm/traces.vim'
 Plug 'andymass/vim-matchup'
-Plug 'jbgutierrez/vim-better-comments'
+" Plug 'jbgutierrez/vim-better-comments'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/vim-easy-align'
 Plug 'Konfekt/FastFold'
@@ -270,9 +275,6 @@ endfunction
 " PlugPac {{{ ------------------------------------------------------------------
 function! s:plugpac() abort
 
-augroup LazyLoadPlugin
-    autocmd!
-augroup END
 
 call plugpac#begin()
 
@@ -300,13 +302,24 @@ endif
 " Visual plugins {{{
 Pack 'tomasr/molokai', { 'type': 'opt' }
 Pack 'bling/vim-airline' | Pack 'vim-airline/vim-airline-themes'
+" add vim-lightline. May eventually replace vim-airline
+" Pack 'itchyny/lightline.vim'
 Pack 'Yggdroot/indentLine'
+Pack 'Yggdroot/hiPairs'
 Pack 'luochen1990/rainbow'
 " Visual Packins }}}
 
 " Navigation plugins {{{
 Pack 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-" Pack 'justinmk/vim-dirvish'
+
+" Replace Netrw with Dirvish {{{
+Pack 'justinmk/vim-dirvish'
+let g:loaded_netrwPlugin = 1
+command! -nargs=? -complete=dir Explore Dirvish <args>
+command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
+command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
+" Replace Netrw with Dirvish }}}
+
 Pack 'easymotion/vim-easymotion'
 Pack 'aykamko/vim-easymotion-segments'
 Pack 'chaoren/vim-wordmotion'
@@ -322,12 +335,13 @@ endif
 
 " Filetype plugins {{{
 if has('python3') || has('python')
-    Pack 'python-mode/python-mode', { 'branch': 'develop' }
+    Pack 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
     Pack 'tmhedberg/SimpylFold', { 'for': 'python' }
+    " Pack 'abarker/cyfolds', { 'for': 'python' }
 endif
 if executable('clang')
 "     Pack 'Rip-Rip/clang_complete',
-    Pack 'rhysd/vim-clang-format'
+    " Pack 'rhysd/vim-clang-format'
 endif
 if executable('cmake')
     Pack 'pboettch/vim-cmake-syntax', { 'for': 'cmake' }
@@ -335,6 +349,9 @@ if executable('cmake')
 endif
 if executable('latexmk')
     Pack 'lervag/vimtex', { 'for': ['tex', 'latex'] }
+endif
+if executable('java')
+    Pack 'uiiaoo/java-syntax.vim'
 endif
 " Filetype plugins }}}
 
@@ -349,7 +366,7 @@ Pack 'tmsvg/pear-tree'
 Pack 'tpope/vim-commentary'
 Pack 'markonm/traces.vim'
 Pack 'andymass/vim-matchup'
-Pack 'jbgutierrez/vim-better-comments'
+" Pack 'jbgutierrez/vim-better-comments'
 Pack 'junegunn/vim-easy-align'
 Pack 'Konfekt/FastFold'
 
@@ -417,15 +434,33 @@ endif
 " Pack 'prabirshrestha/asyncomplete-lsp.vim'
 " Pack 'prabirshrestha/asyncomplete-buffer.vim'
 " Pack 'prabirshrestha/asyncomplete-ultisnips.vim'
-
+Pack 'haya14busa/incsearch.vim'
+Pack 'haya14busa/incsearch-easymotion.vim'
 Pack 'kovetskiy/sxhkd-vim'
 Pack 'lambdalisue/suda.vim'
+Pack 'ErichDonGubler/vim-sublime-monokai'
+" Pack 'dylanaraps/root.vim'
+Pack 'airblade/vim-rooter'
+" Pack 'liuchengxu/vista.vim'
+Pack 'bfrg/vim-cpp-modern'
+" Pack 'wellle/context.vim'
+" Pack 'chrisbra/csv.vim', { 'for': 'csv' }
+Pack 'janko/vim-test'
+Pack 'tpope/vim-surround'
+Pack 'cakebaker/scss-syntax.vim'
+Pack 'ryanoasis/vim-devicons'
+Pack 'thezeroalpha/vim-relatively-complete'
 
-if has('nvim')
-    Pack 'RRethy/vim-hexokinase' { 'do': {-> system('make hexokinase')} }
-else
-    Pack 'ap/vim-css-color'
-endif
+Pack 'Xuyuanp/nerdtree-git-plugin'
+
+" Pack 'goerz/jupytext.vim'
+
+" if has('nvim')
+"     Pack 'RRethy/vim-hexokinase' { 'do': {-> system('make hexokinase')} }
+" else
+"     Pack 'ap/vim-css-color'
+" endif
+Pack 'ap/vim-css-color'
 
 
 " Better window resizing
@@ -456,7 +491,6 @@ Pack 'mbbill/undotree'
 " Add a vim wiki for notetaking and other needs
 " Pack 'vimwiki/vimwiki'
 
-Pack 'gerw/vim-HiLinkTrace'
 
 Pack 'editorconfig/editorconfig-vim'
 
@@ -490,7 +524,7 @@ Pack 'freitass/todo.txt-vim'
 if g:linux && executable('direnv')
     call s:direnv_init()
 
-    if exists("$DIRENV_VIM_DIR")
+    if exists('$DIRENV_VIM_DIR')
         Pack $DIRENV_VIM_DIR
     endif
 

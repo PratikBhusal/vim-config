@@ -6,7 +6,7 @@ from vimsnippets import foldmarker
 endglobal
 
 snippet todo "TODO comment" bw
-`!p snip.rv=get_comment_format()[0]` ${2:TODO}: $0${3: <${4:`!v strftime('%F')`}${5:, `!v g:snips_author`}>} `!p snip.rv=get_comment_format()[2]`
+`!p snip.rv=get_comment_format()[0]` ${2:TODO}: ${0:${VISUAL:}}${3: <${4:`!v strftime('%F')`}${5:, `!v g:snips_author`}>}
 endsnippet
 
 snippet foldp "Insert a vim fold marker pair" b
@@ -16,7 +16,7 @@ snippet foldp "Insert a vim fold marker pair" b
 endsnippet
 
 snippet bordp "Insert a vim border pair" b
-`!p snip.rv = get_comment_format()[0]` ${1:Fold description} {{{ `!p snip.rv = u"\u2500" * (int(snip.opt('&tw')) - len(t[1]) - len(get_comment_format()[0]) - 6)`
+`!p snip.rv = get_comment_format()[0]` ${1:Fold description} {{{ `!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - len(get_comment_format()[0]) - 6)`
 `!p snip.rv = get_comment_format()[0]` ${0:${VISUAL:Content}}
-`!p snip.rv = get_comment_format()[0]` $1 }}} `!p snip.rv = u"\u2500" * (int(snip.opt('&tw')) - len(t[1]) - len(get_comment_format()[0]) - 6)`
+`!p snip.rv = get_comment_format()[0]` $1 }}} `!p snip.rv = '-' * (int(snip.opt('&tw')) - len(t[1]) - len(get_comment_format()[0]) - 6)`
 endsnippet
