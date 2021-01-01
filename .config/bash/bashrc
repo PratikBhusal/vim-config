@@ -7,12 +7,15 @@ esac
 
 # Set PS1 prompt
 # shellcheck source=.config/git/git-prompt.sh
-source ~/.config/git/git-prompt.sh
-# export GIT_PS1_SHOWDIRTYSTATE=true
-# export GIT_PS1_SHOWUNTRACKEDFILES=true
-# PS1='[\u@\h \w]\n\$ '
-PS1='[\u@\h \W]\[\e[36m\]$(__git_ps1 " (%s)")\[\e[m\]\n\$ '
-# PS1='[\u@\h \W]\[\e[36m\]$(__git_ps1 " (%s)")\[\e[m\]\$ '
+if [ -s ~/.config/git/git-prompt.sh ]; then
+    source ~/.config/git/git-prompt.sh
+    # export GIT_PS1_SHOWDIRTYSTATE=true
+    # export GIT_PS1_SHOWUNTRACKEDFILES=true
+    PS1='[\u@\h \W]\[\e[36m\]$(__git_ps1 " (%s)")\[\e[m\]\n\$ '
+    # PS1='[\u@\h \W]\[\e[36m\]$(__git_ps1 " (%s)")\[\e[m\]\$ '
+else
+    PS1='[\u@\h \w]\n\$ '
+fi
 
 # Automatically trim long paths in the prompt (requires Bash 4.x)
 export PROMPT_DIRTRIM=2

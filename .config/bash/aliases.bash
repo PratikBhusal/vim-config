@@ -7,7 +7,7 @@
 # nnn file manager
 if [ "$(command -v nnn)" ] && [ -s ~/.config/nnn/misc/quitcd.bash_zsh ]; then
     . ~/.config/nnn/misc/quitcd.bash_zsh
-    alias nnn="nnncd -d"
+    alias nnn="nnncd -Ad"
 fi
 
 if command -v trash >/dev/null 2>&1; then
@@ -17,3 +17,9 @@ else
 fi
 
 alias clear="export screen_clear='true'; clear"
+
+
+if [ "$(command -v git)" ] && [ "$(alias dotfiles)" ]; then
+    _completion_loader git
+    __git_complete dotfiles __git_main
+fi
