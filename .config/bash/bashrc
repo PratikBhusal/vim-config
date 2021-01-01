@@ -5,9 +5,11 @@ case "$-" in
     *)   return ;;
 esac
 
+set -o vi
+
 # Set PS1 prompt
-# shellcheck source=.config/git/git-prompt.sh
 if [ -s ~/.config/git/git-prompt.sh ]; then
+    # shellcheck source=.config/git/git-prompt.sh
     source ~/.config/git/git-prompt.sh
     # export GIT_PS1_SHOWDIRTYSTATE=true
     # export GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -82,5 +84,4 @@ fi
 # Direnv }}}
 
 
-# shellcheck source=.config/bash/scripts/aliases.bash
-source ~/.config/bash/scripts/prompt.bash
+PS1='\n'$PS1

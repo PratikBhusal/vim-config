@@ -41,7 +41,11 @@ alias latexmk="latexmk -pdf"
 
 alias mkdir="mkdir -vp"
 
-command -v bat >/dev/null 2>&1 && alias cat="bat"
+if command -v bat >/dev/null; then
+    alias cat="bat"
+elif command -v batcat >/dev/null; then
+    alias cat="batcat"
+fi
 command -v i3lock >/dev/null 2>&1 && alias i3lock="i3lock -c 202020"
 command -v uxterm >/dev/null 2>&1 && alias xterm="uxterm"
 command -v dragon-drag-and-drop >/dev/null 2>&1 && alias dragon="dragon-drag-and-drop"
